@@ -24,8 +24,8 @@ To change the site:
 3. Commit the source change **together with** the regenerated `index.html` / `es.html` / `ru.html`.
 4. `bash _tpl/verify.sh` asserts the committed pages match a fresh build and guards against dashes.
 
-Standalone pages (`review.html`, `health-form.html`, `media-consent.html`, `partnership/`) are not
-template-generated and are edited directly.
+Standalone pages (`review.html`, `health-form.html`, `media-consent.html`, `for-diana/`,
+`partnership/`) are not template-generated and are edited directly.
 
 ## House conventions
 

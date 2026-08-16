@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Everything in one place · Breathe with Diana</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#F4EFE6; --cream:#EFE7D8; --terracotta:#C97B5A; --terracotta-deep:#905840;
+    --sage:#8A8C6E; --umber:#5B4636; --ochre:#D4A24C; --muted:rgba(91,70,54,.62);
+    --hairline:rgba(91,70,54,.14);
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;scroll-behavior:smooth}
+  body{background:var(--bone);color:var(--umber);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(at 82% 6%,rgba(212,162,76,.10),transparent 44%),radial-gradient(at 8% 92%,rgba(201,123,90,.10),transparent 52%);
+    background-attachment:fixed}
+  .wrap{max-width:780px;margin:0 auto;padding:clamp(28px,6vw,56px) 22px 80px}
+
+  header.top{display:flex;align-items:center;gap:14px;margin-bottom:clamp(28px,6vw,44px)}
+  header.top img{height:52px;width:auto;display:block}
+  header.top .ttl{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted)}
+
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--terracotta-deep);margin:0 0 18px}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(36px,8vw,58px);line-height:1.06;
+    letter-spacing:-.01em;margin:0 0 22px}
+  h1 em{font-style:italic;color:var(--terracotta-deep)}
+  .lead{font-size:clamp(16.5px,2.4vw,19px);max-width:610px;margin:0 0 14px}
+  .lead.soft{color:var(--muted)}
+
+  .tally{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 6px}
+  .tally .t{flex:1 1 150px;background:rgba(255,255,255,.5);border:1px solid var(--hairline);
+    border-radius:14px;padding:14px 16px}
+  .tally .t .n{font-family:var(--serif);font-size:30px;line-height:1;color:var(--terracotta-deep)}
+  .tally .t .l{font-size:12.5px;color:var(--muted);margin-top:5px}
+
+  .rule{width:56px;height:1px;background:var(--hairline);border:none;margin:44px 0 30px}
+
+  h2.sec{font-family:var(--serif);font-weight:500;font-size:clamp(27px,5.5vw,34px);line-height:1.12;margin:0 0 6px}
+  .sec-note{font-size:15px;color:var(--muted);margin:0 0 24px;max-width:56ch}
+
+  .cards{display:flex;flex-direction:column;gap:16px}
+  .card{display:block;text-decoration:none;color:inherit;background:rgba(255,255,255,.5);
+    border:1px solid var(--hairline);border-radius:16px;padding:24px 24px 22px;transition:.18s ease}
+  .card:hover{transform:translateY(-2px);border-color:rgba(144,88,64,.4);box-shadow:0 10px 30px rgba(91,70,54,.08)}
+  .card .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    padding:3px 10px;border-radius:999px;margin-bottom:12px}
+  .tag.you{background:var(--terracotta);color:#fff}
+  .tag.read{background:var(--ochre);color:var(--umber)}
+  .tag.quick{background:transparent;color:var(--sage);border:1px solid var(--sage)}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,5vw,30px);line-height:1.12;margin:0 0 8px}
+  .card p{font-size:15.5px;margin:0 0 6px;max-width:56ch}
+  .card ul{margin:12px 0 0;padding-left:19px}
+  .card li{font-size:14.5px;color:var(--umber);margin:0 0 6px}
+  .card li b{font-weight:600;color:var(--terracotta-deep)}
+  .card .go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;
+    font-weight:600;color:var(--terracotta-deep)}
+  .card .go svg{width:16px;height:16px}
+
+  .mini{background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:8px 4px;margin-top:4px}
+  .mini .row{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-bottom:1px solid var(--hairline)}
+  .mini .row:last-child{border-bottom:none}
+  .mini .dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:var(--terracotta);margin-top:8px}
+  .mini .body h4{font-family:var(--serif);font-size:20px;font-weight:500;margin:0 0 4px;line-height:1.2}
+  .mini .body p{font-size:14.5px;margin:0;color:var(--umber);max-width:56ch}
+  .mini .body a{color:var(--terracotta-deep);font-weight:500}
+
+  details.done{background:rgba(255,255,255,.42);border:1px solid var(--hairline);border-radius:16px;
+    padding:18px 22px;margin-top:16px}
+  details.done summary{cursor:pointer;font-family:var(--serif);font-size:22px;font-weight:500;list-style:none}
+  details.done summary::-webkit-details-marker{display:none}
+  details.done summary::after{content:" ↓";color:var(--muted);font-family:var(--sans);font-size:14px}
+  details.done[open] summary::after{content:" ↑"}
+  details.done ul{margin:14px 0 2px;padding-left:19px}
+  details.done li{font-size:14.5px;margin:0 0 8px;color:var(--umber)}
+  details.done li a{color:var(--terracotta-deep)}
+
+  .howto{background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:24px 26px;margin-top:44px}
+  .howto h3{font-family:var(--serif);font-weight:500;font-size:22px;margin:0 0 10px}
+  .howto ul{margin:0;padding-left:19px}
+  .howto li{font-size:15px;margin:0 0 8px}
+  .howto li b{font-weight:600}
+
+  .foot{margin-top:36px;font-size:13.5px;color:var(--muted);line-height:1.7}
+  .foot b{color:var(--umber);font-weight:600}
+
+  @media(max-width:560px){
+    header.top img{height:44px}
+    .card{padding:20px 20px 18px}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="top">
+    <img src="/logo-mark.svg" alt="Breathe with Diana">
+    <div class="ttl">Just for you</div>
+  </header>
+
+  <p class="eyebrow">Your project, in one place</p>
+  <h1>Everything that is <em>waiting for you</em>.</h1>
+  <p class="lead">Hola Diana. Instead of hunting for links in old messages, this one page holds every piece of your project that still needs something from you, and shows you what is already finished.</p>
+  <p class="lead soft">Bookmark it on your phone. Nothing here is urgent, and nothing has to happen in one sitting. Do one, tell me, and come back when you have space for the next.</p>
+
+  <div class="tally">
+    <div class="t"><div class="n">5</div><div class="l">things waiting on you</div></div>
+    <div class="t"><div class="n">5</div><div class="l">small answers</div></div>
+    <div class="t"><div class="n">6</div><div class="l">already done</div></div>
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="sec">Waiting on you</h2>
+  <p class="sec-note">Each one opens a page made for you. They are private, nobody else can find them.</p>
+
+  <div class="cards">
+
+    <a class="card" href="/v2/">
+      <span class="tag you">Your turn</span>
+      <h3>Your new website</h3>
+      <p>Built from everything you loved in the three directions I sent you, all merged into one. This is the version I would like to make real, once it feels like you.</p>
+      <p>Move through it slowly on your phone, heart what you like, and leave notes on anything that feels off.</p>
+      <ul>
+        <li><b>Three pieces only you can give:</b></li>
+        <li>a line of your own for the photo of the room</li>
+        <li>a short voice note, in English, Spanish and Russian</li>
+        <li>which photo of you sits beside your honesty letter</li>
+      </ul>
+      <span class="go">Open your new website
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="card" href="/shoot-list.html">
+      <span class="tag you">Your turn</span>
+      <h3>Your photo and video shoot list</h3>
+      <p>A gallery of images to build up through the year, so you never again need a photo you do not have. Your space, the beach at golden hour, the jungle, the waterfall.</p>
+      <p>Heart the shots you actually want to do, skip the ones you do not, and add anything I missed.</p>
+      <span class="go">Open the shoot list
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="card" href="/health-form.html">
+      <span class="tag you">Your turn</span>
+      <h3>Your health form for clients</h3>
+      <p>The few gentle questions someone answers before their first session, so you know what you are holding. It is written, it works, and it is waiting for your yes.</p>
+      <p>Read it as a client would. Heart the questions you love, and tell me what to add, soften or drop. It only goes to real clients once you say it is right.</p>
+      <span class="go">Read the health form
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="card" href="/media-consent.html">
+      <span class="tag you">Your turn</span>
+      <h3>Your photo and video consent form</h3>
+      <p>What you send someone when you would love to share a photo or a clip of them. It lets them say yes to some things and no to others, and change their mind later.</p>
+      <p>Read it in their shoes. Nothing goes out to anyone until you approve it.</p>
+      <span class="go">Read the consent form
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+      </span>
+    </a>
+
+    <a class="card" href="/content-studio.html">
+      <span class="tag read">Read before we sit down</span>
+      <h3>Your content studio</h3>
+      <p>How your posts will actually get made, step by step, without you ever touching a video timeline. Plus the few small choices we make together before the first one.</p>
+      <p>Read it before our session, heart what excites you, and note anything that worries you. That way we start from where your energy is.</p>
+      <span class="go">Open the content studio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+      </span>
+    </a>
+
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="sec">Five small answers</h2>
+  <p class="sec-note">No page to read for these. Just tell me in a message or a voice note whenever they come to you.</p>
+
+  <div class="mini">
+
+    <div class="row">
+      <span class="dot"></span>
+      <div class="body">
+        <h4>Russian, formal or warm?</h4>
+        <p>Your <a href="/ru.html">Russian page</a> speaks to people formally, with «вы». Some healers prefer the closer «ты». Which one sounds like you?</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <span class="dot"></span>
+      <div class="body">
+        <h4>Reviews in Spanish</h4>
+        <p>Your <a href="/es.html">Spanish page</a> currently shows translations of reviews written in English, which is a temporary stand-in. When two or three Spanish-speaking clients feel ready, send them <a href="/review.html">your review form</a> and we swap in their real words.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <span class="dot"></span>
+      <div class="body">
+        <h4>Your words in Spanish</h4>
+        <p>Your four voice words are Honest · Grounded · Warm · Embodied. In Spanish I have them as Honesta · Aterrizada · Cálida · Encarnada. Do those feel right in your mouth, or would you say them differently?</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <span class="dot"></span>
+      <div class="body">
+        <h4>The honesty note before booking</h4>
+        <p>We wrote two versions of "A little honesty before you book" and never picked one out loud. Read <a href="/#session">the one that is live</a> and tell me if it is the version you want, or if it needs a change.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <span class="dot"></span>
+      <div class="body">
+        <h4>Group pricing</h4>
+        <p>Your private session price is set. Groups are still open. When you have a feeling for the number, tell me and I will hold it with everything else. Prices never appear on the website either way.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <details class="done">
+    <summary>Already done, nothing needed from you</summary>
+    <ul>
+      <li><a href="/">Your website</a> is live in English, and in <a href="/es.html">Spanish</a> and <a href="/ru.html">Russian</a>.</li>
+      <li>Your logo is finished and on every page, with its seeds quietly drifting.</li>
+      <li><a href="/review.html">Your review form</a> is live, with its own QR code for after a session, and six real client reviews are on the site.</li>
+      <li>WhatsApp and your fifteen minute intro call are both connected to the site.</li>
+      <li>Both Instagram accounts, English and Spanish, exist and are ready.</li>
+      <li><a href="/proposals/">The three website directions</a> you chose from are kept here, already merged into your new version above.</li>
+    </ul>
+  </details>
+
+  <div class="howto">
+    <h3>How to tell me things</h3>
+    <ul>
+      <li><b>On a page:</b> tap the small heart beside anything you love, type a note where you have a thought, then press <b>Send feedback</b> at the bottom right. It comes straight to me.</li>
+      <li><b>Anywhere else:</b> a voice note is perfect. Speak in whichever language the thought arrives in.</li>
+      <li><b>Nothing here is fixed,</b> and you cannot break anything by tapping. Every page above is private and hidden from Google.</li>
+    </ul>
+  </div>
+
+  <p class="foot"><b>No rush, and no wrong answers.</b> One thing at a time is exactly the right pace. When a page is done, tell me and I will take it off this list.</p>
+
+</main>
+</body>
+</html>
