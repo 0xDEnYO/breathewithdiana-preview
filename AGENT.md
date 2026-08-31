@@ -25,7 +25,12 @@ To change the site:
 4. `bash _tpl/verify.sh` asserts the committed pages match a fresh build and guards against dashes.
 
 Standalone pages (`review.html`, `health-form.html`, `media-consent.html`, `for-diana/`,
-`partnership/`) are not template-generated and are edited directly.
+`partnership/`, `v2/index.html`) are not template-generated and are edited directly.
+
+`v2/a/index.html` and `v2/b/index.html` are the exception: they have their own small generator,
+`node v2/_drafts/build.js`, which builds both from `v2/_drafts/base.html`. The two pages are one
+review draft in two variants and must stay identical apart from that variant, so edit the base and
+rebuild rather than either page. See `v2/_drafts/README.md`.
 
 ## House conventions
 
