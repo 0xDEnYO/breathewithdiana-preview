@@ -108,6 +108,13 @@
     .proc-step h4{font-family:var(--sans);font-weight:600;font-size:var(--fs-xs);margin:0 0 7px;
       text-transform:uppercase;letter-spacing:.04em}
     .proc-step p{font-size:var(--fs-sm);color:var(--muted);margin:0;line-height:1.55}
+    .proc-more{margin-top:7px}
+    .proc-more summary{cursor:pointer;list-style:none;display:inline-block}
+    .proc-more summary::-webkit-details-marker{display:none}
+    .proc-more summary::after{content:"Seguir leyendo →";font-family:var(--sans);font-weight:500;
+      font-size:var(--fs-xs);color:var(--terracotta-deep);white-space:nowrap}
+    .proc-more[open] summary::after{content:"Mostrar menos"}
+    .proc-step .proc-more-body{margin-top:7px}
     .proc-arrow{display:flex;align-items:center;justify-content:center;padding-top:29px}
     .proc-arrow svg{width:26px;height:11px;stroke:#8D4A28;stroke-width:1.6;
       stroke-linecap:round;stroke-linejoin:round;fill:none}
@@ -181,6 +188,8 @@
     .story p.story-sig{font-family:var(--serif);font-style:italic;font-size:var(--fs-lg);line-height:1.3;color:var(--terracotta-deep);margin-top:22px}
     .space-band{position:relative;height:clamp(220px,38vw,440px);overflow:hidden}
     .space-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;display:block}
+    .reset-kicker{font-family:var(--sans);font-weight:600;font-size:var(--fs-xs);letter-spacing:.09em;
+      text-transform:uppercase;color:var(--bone);opacity:.72;margin:-6px 0 14px}
     .amt-note{font-family:var(--serif);font-size:var(--fs-xl);font-weight:500;color:var(--umber);margin:6px 0 2px}
 
     /* ===================================================================== REVIEWS */
@@ -512,7 +521,11 @@
         <div class="proc-step">
           <div class="ic"><img src="img/proc-active-breathing.png" alt="" width="58" height="58"></div>
           <h4>Respiración activa</h4>
-          <p>Comenzamos con una respiración continua y conectada. Poco a poco, la atención se dirige hacia dentro, la respiración despierta la energía del cuerpo y activa el sistema nervioso.</p>
+          <p>Comenzamos con una respiración continua y conectada. Poco a poco, la atención se dirige hacia dentro.</p>
+          <details class="proc-more">
+            <summary></summary>
+            <p class="proc-more-body">La respiración despierta la energía del cuerpo y activa el sistema nervioso.</p>
+          </details>
         </div>
 
         <div class="proc-arrow" aria-hidden="true"><svg viewBox="0 0 40 16"><path d="M1 8h34m0 0-8-6m8 6-8 6"/></svg></div>
@@ -520,7 +533,11 @@
         <div class="proc-step">
           <div class="ic"><img src="img/proc-energy-motion.png" alt="" width="58" height="58"></div>
           <h4>Energía en movimiento</h4>
-          <p>La energía comienza a circular. Pueden aparecer sensaciones físicas, emociones, recuerdos o experiencias que han permanecido contenidas durante mucho tiempo. No hay nada que buscar ni nada que forzar. Simplemente observamos y permitimos.</p>
+          <p>La energía comienza a circular. Pueden aparecer sensaciones físicas, emociones o recuerdos.</p>
+          <details class="proc-more">
+            <summary></summary>
+            <p class="proc-more-body">También experiencias que han permanecido contenidas durante mucho tiempo.</p>
+          </details>
         </div>
 
         <div class="proc-arrow" aria-hidden="true"><svg viewBox="0 0 40 16"><path d="M1 8h34m0 0-8-6m8 6-8 6"/></svg></div>
@@ -536,7 +553,11 @@
         <div class="proc-step">
           <div class="ic"><img src="img/proc-integration.png" alt="" width="58" height="58"></div>
           <h4>Integración</h4>
-          <p>Después de la respiración activa, el sistema nervioso comienza a asentarse y el cuerpo integra la experiencia a su propio ritmo. Con frecuencia aparece una sensación profunda de alivio, una mayor claridad o comprensiones que no nacen del pensamiento, sino de una conexión más profunda con uno mismo.</p>
+          <p>Después de la respiración activa, el sistema nervioso comienza a asentarse.</p>
+          <details class="proc-more">
+            <summary></summary>
+            <p class="proc-more-body">El cuerpo integra la experiencia a su propio ritmo. Con frecuencia aparece una sensación profunda de alivio, una mayor claridad o comprensiones que no nacen del pensamiento, sino de una conexión más profunda con uno mismo.</p>
+          </details>
         </div>
       </div>
 
@@ -607,9 +628,8 @@
       <div class="honest">
         <h3>Un poco de honestidad antes de reservar</h3>
         <p>El rebirthing no se trata de perseguir experiencias extraordinarias ni de escapar de ti. Se trata de crear las condiciones para que puedas encontrarte contigo con honestidad y compasión.</p>
-        <p>Las sesiones suelen durar alrededor de dos horas y media y pueden ser intensas, física y emocionalmente. Algunas personas salen sintiéndose livianas y con energía. Otras se sienten profundamente relajadas, sensibles o agradablemente cansadas.</p>
         <p>No te voy a prometer transformar tu vida en una sesión. Lo que sí te prometo es un espacio seguro, con los pies en la tierra e informado en trauma, donde puedes explorar lo que surja a tu propio ritmo.</p>
-        <p>No hay nada que necesites forzar, ni nada que necesites demostrar. Confío en la sabiduría y en los tiempos de tu cuerpo, y estaré ahí para apoyarte, no para empujarte hacia un gran momento. Porque <em>cuando nos sentimos realmente seguros, el cuerpo suele saber exactamente lo que necesita hacer.</em></p>
+        <p>Confío en la sabiduría y en los tiempos de tu cuerpo, y estaré ahí para apoyarte, no para empujarte hacia un gran momento. Porque <em>cuando nos sentimos realmente seguros, el cuerpo suele saber exactamente lo que necesita hacer.</em></p>
         <div class="pull">Aquí no tienes que sostenerlo todo.<br>Estaré justo a&nbsp;tu&nbsp;lado.</div>
       </div>
     </div>
@@ -668,8 +688,7 @@
           <details class="rev-more">
             <summary>
               <div class="quote-excerpt">
-                <p class="quote">“[...] Durante la sesión sentí mi cuerpo muy intensamente. Los labios, las manos y la zona pélvica me hormigueaban y ardían de energía. Podía sentir un flujo muy fuerte moviéndose a través de mí. En algún momento empezó una liberación emocional profunda. Empecé a llorar, a llorar de verdad, y era exactamente lo que necesitaba.</p>
-                <p class="quote">El proceso me ayudó a ver en qué momentos me estoy traicionando a mí misma, mis propios deseos y necesidades, y qué quiero cambiar en la forma en que me relaciono conmigo misma, con mi pareja y con otras personas. Llegaron ideas muy importantes. [...] <span class="toggle-cta">Seguir leyendo →</span></p>
+                <p class="quote">“[...] Durante la sesión sentí mi cuerpo muy intensamente. Podía sentir un flujo muy fuerte moviéndose a través de mí. En algún momento empezó una liberación emocional profunda. Empecé a llorar, a llorar de verdad, y era exactamente lo que necesitaba. [...] <span class="toggle-cta">Seguir leyendo →</span></p>
               </div>
               <div class="quote-full">
                 <p class="quote">“Hacía tiempo que quería probar el rebirthing, pero nunca terminaba de animarme. Entonces vi el mensaje de Diana, y llegó justo en el momento en que más lo necesitaba. Lo que más me gustó fue la forma en que Diana guio el proceso, con mucho cuidado, presencia y atención a cada detalle. Antes de empezar me explicó todo con claridad, y eso me ayudó a sentirme segura y a confiar en la experiencia.</p>
@@ -715,8 +734,9 @@
 <!-- ===== FREE RESET BAND ===== -->
 <section class="reset" id="reset">
   <div class="wrap-narrow">
-    <div class="eyebrow" style="color:var(--bone)">Empieza aquí · gratis</div>
+    <div class="eyebrow" style="color:var(--bone)">Empieza aquí</div>
     <h2>Una pausa para volver a ti.</h2>
+    <p class="reset-kicker">Reset de respiración gratis</p>
     <p>Si todavía no sientes que sea el momento para una sesión completa, puedes empezar aquí. Una práctica guiada y gratuita para bajar el ritmo, volver a tu respiración y experimentar, estés donde estés, una pequeña muestra de este trabajo. Déjame tu correo y te la enviaré directamente.</p>
     <form class="reset-form" onsubmit="return false">
       <input type="email" placeholder="tu@correo.com" aria-label="correo">

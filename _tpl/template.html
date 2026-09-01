@@ -114,6 +114,15 @@
     .proc-step h4{font-family:var(--sans);font-weight:600;font-size:var(--fs-xs);margin:0 0 7px;
       text-transform:uppercase;letter-spacing:.04em}
     .proc-step p{font-size:var(--fs-sm);color:var(--muted);margin:0;line-height:1.55}
+{{#if proc_more_open}}
+    .proc-more{margin-top:7px}
+    .proc-more summary{cursor:pointer;list-style:none;display:inline-block}
+    .proc-more summary::-webkit-details-marker{display:none}
+    .proc-more summary::after{content:"{{proc_more_open}}";font-family:var(--sans);font-weight:500;
+      font-size:var(--fs-xs);color:var(--terracotta-deep);white-space:nowrap}
+    .proc-more[open] summary::after{content:"{{proc_more_less}}"}
+    .proc-step .proc-more-body{margin-top:7px}
+{{/if}}
     .proc-arrow{display:flex;align-items:center;justify-content:center;padding-top:29px}
     .proc-arrow svg{width:26px;height:11px;stroke:#8D4A28;stroke-width:1.6;
       stroke-linecap:round;stroke-linejoin:round;fill:none}
@@ -187,6 +196,10 @@
     .story p.story-sig{font-family:var(--serif);font-style:italic;font-size:var(--fs-lg);line-height:1.3;color:var(--terracotta-deep);margin-top:22px}
     .space-band{position:relative;height:clamp(220px,38vw,440px);overflow:hidden}
     .space-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;display:block}
+{{#if reset_kicker}}
+    .reset-kicker{font-family:var(--sans);font-weight:600;font-size:var(--fs-xs);letter-spacing:.09em;
+      text-transform:uppercase;color:var(--bone);opacity:.72;margin:-6px 0 14px}
+{{/if}}
     .amt-note{font-family:var(--serif);font-size:var(--fs-xl);font-weight:500;color:var(--umber);margin:6px 0 2px}
 
     /* ===================================================================== REVIEWS */
@@ -530,6 +543,12 @@
           <div class="ic"><img src="{{img}}" alt="" width="58" height="58"></div>
           <h4>{{h4}}</h4>
           <p>{{p}}</p>
+{{#if p_more}}
+          <details class="proc-more">
+            <summary></summary>
+            <p class="proc-more-body">{{p_more}}</p>
+          </details>
+{{/if}}
         </div>
 {{/each}}
       </div>
@@ -666,6 +685,9 @@
   <div class="wrap-narrow">
     <div class="eyebrow" style="color:var(--bone)">{{reset_eyebrow}}</div>
     <h2>{{reset_h2}}</h2>
+{{#if reset_kicker}}
+    <p class="reset-kicker">{{reset_kicker}}</p>
+{{/if}}
     <p>{{reset_p}}</p>
     <form class="reset-form" onsubmit="return false">
       <input type="email" placeholder="{{reset_placeholder}}" aria-label="{{reset_aria}}">

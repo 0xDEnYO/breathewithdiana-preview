@@ -10,6 +10,8 @@
   "title": "Respira con Diana · Volver a casa, a tu cuerpo",
   "story_more_less": "  Mostrar menos",
   "story_more_open": "  Lee más de mi historia →",
+  "proc_more_open": "Seguir leyendo →",
+  "proc_more_less": "Mostrar menos",
   "promo_inner": "✦&nbsp;&nbsp;<b>¿Primera vez aquí?</b> Ven a respirar conmigo, empieza con un reset gratuito.&nbsp;&nbsp;<a href=\"#reset\">Empezar →</a>",
   "promo_short": "✦&nbsp;&nbsp;<b>¿Primera vez?</b>&nbsp;&nbsp;<a href=\"#reset\">Reset gratuito →</a>",
   "nav_menu_label": "Menú",
@@ -37,12 +39,14 @@
     {
       "img": "img/proc-active-breathing.png",
       "h4": "Respiración activa",
-      "p": "Comenzamos con una respiración continua y conectada. Poco a poco, la atención se dirige hacia dentro, la respiración despierta la energía del cuerpo y activa el sistema nervioso."
+      "p": "Comenzamos con una respiración continua y conectada. Poco a poco, la atención se dirige hacia dentro.",
+      "p_more": "La respiración despierta la energía del cuerpo y activa el sistema nervioso."
     },
     {
       "img": "img/proc-energy-motion.png",
       "h4": "Energía en movimiento",
-      "p": "La energía comienza a circular. Pueden aparecer sensaciones físicas, emociones, recuerdos o experiencias que han permanecido contenidas durante mucho tiempo. No hay nada que buscar ni nada que forzar. Simplemente observamos y permitimos."
+      "p": "La energía comienza a circular. Pueden aparecer sensaciones físicas, emociones o recuerdos.",
+      "p_more": "También experiencias que han permanecido contenidas durante mucho tiempo."
     },
     {
       "img": "img/proc-release.png",
@@ -52,7 +56,8 @@
     {
       "img": "img/proc-integration.png",
       "h4": "Integración",
-      "p": "Después de la respiración activa, el sistema nervioso comienza a asentarse y el cuerpo integra la experiencia a su propio ritmo. Con frecuencia aparece una sensación profunda de alivio, una mayor claridad o comprensiones que no nacen del pensamiento, sino de una conexión más profunda con uno mismo."
+      "p": "Después de la respiración activa, el sistema nervioso comienza a asentarse.",
+      "p_more": "El cuerpo integra la experiencia a su propio ritmo. Con frecuencia aparece una sensación profunda de alivio, una mayor claridad o comprensiones que no nacen del pensamiento, sino de una conexión más profunda con uno mismo."
     }
   ],
   "fact1_head": "¿Cuánto dura una sesión?",
@@ -94,9 +99,8 @@
   "honest_h3": "Un poco de honestidad antes de reservar",
   "honest_paras": [
     "El rebirthing no se trata de perseguir experiencias extraordinarias ni de escapar de ti. Se trata de crear las condiciones para que puedas encontrarte contigo con honestidad y compasión.",
-    "Las sesiones suelen durar alrededor de dos horas y media y pueden ser intensas, física y emocionalmente. Algunas personas salen sintiéndose livianas y con energía. Otras se sienten profundamente relajadas, sensibles o agradablemente cansadas.",
     "No te voy a prometer transformar tu vida en una sesión. Lo que sí te prometo es un espacio seguro, con los pies en la tierra e informado en trauma, donde puedes explorar lo que surja a tu propio ritmo.",
-    "No hay nada que necesites forzar, ni nada que necesites demostrar. Confío en la sabiduría y en los tiempos de tu cuerpo, y estaré ahí para apoyarte, no para empujarte hacia un gran momento. Porque <em>cuando nos sentimos realmente seguros, el cuerpo suele saber exactamente lo que necesita hacer.</em>"
+    "Confío en la sabiduría y en los tiempos de tu cuerpo, y estaré ahí para apoyarte, no para empujarte hacia un gran momento. Porque <em>cuando nos sentimos realmente seguros, el cuerpo suele saber exactamente lo que necesita hacer.</em>"
   ],
   "honest_pull": "Aquí no tienes que sostenerlo todo.<br>Estaré justo a&nbsp;tu&nbsp;lado.",
   "session_leadstrong": "Ya sea que llores, rías, grites, te quedes en silencio o simplemente respires, eres bienvenida tal como eres.",
@@ -127,8 +131,9 @@
   "reviews_intro_note": "Todavía no tenemos reseñas escritas directamente en español. Mientras llegan las primeras, aquí compartimos, traducidas, las palabras de quienes ya vivieron una sesión.",
   "reviews_note": "Reseñas reales de clientes, compartidas con su permiso. Traducidas del inglés mientras reunimos las primeras reseñas escritas en español.",
   "reviews_share_cta": "¿Ya viviste una sesión? Comparte tu experiencia →",
-  "reset_eyebrow": "Empieza aquí · gratis",
+  "reset_eyebrow": "Empieza aquí",
   "reset_h2": "Una pausa para volver a ti.",
+  "reset_kicker": "Reset de respiración gratis",
   "reset_p": "Si todavía no sientes que sea el momento para una sesión completa, puedes empezar aquí. Una práctica guiada y gratuita para bajar el ritmo, volver a tu respiración y experimentar, estés donde estés, una pequeña muestra de este trabajo. Déjame tu correo y te la enviaré directamente.",
   "reset_placeholder": "tu@correo.com",
   "reset_aria": "correo",
