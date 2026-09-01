@@ -115,8 +115,10 @@
       text-transform:uppercase;letter-spacing:.04em}
     .proc-step p{font-size:var(--fs-sm);color:var(--muted);margin:0;line-height:1.55}
 {{#if proc_more_open}}
-    .proc-more{margin-top:7px}
-    .proc-more summary{cursor:pointer;list-style:none;display:inline-block}
+    /* same reasoning as .story-more below: this is prose, not a FAQ row, so it drops the
+       generic details border/padding. */
+    .proc-more{border-bottom:none;padding:9px 0 0}
+    .proc-more summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center}
     .proc-more summary::-webkit-details-marker{display:none}
     .proc-more summary::after{content:"{{proc_more_open}}";font-family:var(--sans);font-weight:500;
       font-size:var(--fs-xs);color:var(--terracotta-deep);white-space:nowrap}
@@ -209,7 +211,12 @@
     .rev .rev-body{flex:1;margin-bottom:22px}
     .rev .quote{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.4;font-style:italic;color:var(--umber);margin:0}
     .rev .av-letter{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:var(--fs-md);font-style:italic;color:var(--terracotta-deep);border:1px solid var(--hairline)}
+    /* a review expander is prose too, so it drops the FAQ's generic details chrome. Its
+       label is the inline .toggle-cta span, not a ::after, so killing the "+" is safe here
+       (unlike .story-more, whose label IS the ::after). */
+    .rev-more{border-bottom:none;padding:0}
     .rev-more summary{cursor:pointer;list-style:none;display:block;font-weight:400}
+    .rev-more summary::after{content:none}
     .rev-more summary::-webkit-details-marker{display:none}
     .rev-more .quote-full{display:none}
     .rev-more[open] .quote-excerpt{display:none}
