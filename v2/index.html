@@ -367,11 +367,11 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .plate{margin:0 auto;text-align:center}
 .plate img{margin-inline:auto;box-shadow:0 0 0 1px var(--hairline)}
 .plate figcaption{margin-top:1rem}
-#frontispiece{padding:clamp(1.2rem,3vh,3rem) 1.25rem clamp(3.2rem,7vw,5.5rem)}
+#frontispiece{padding:clamp(1.2rem,3vh,3rem) 1.25rem clamp(2.2rem,4.4vw,3.4rem)}
 /* per Diana: crop the hero photo shorter (less floor). Was 2/3 (very tall); now 4/5
    with the frame biased upward so the floor at the bottom is cropped, not Diana. */
 #frontispiece .plate img{width:min(520px,86vw);aspect-ratio:4/5;border-radius:22px;object-fit:cover;object-position:50% 20%}
-#space{padding:clamp(3rem,7vw,5.5rem) 1.25rem}
+#space{padding:clamp(2.4rem,5vw,3.8rem) 1.25rem}
 /* the story photo takes the frontispiece's 4/5 frame so an upright shot does not
    tower over the text column beside it. The figure needs the explicit width: with
    `.plate{margin:0 auto}` an auto-margin grid item sizes to max-content, and a
@@ -380,7 +380,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 #story .plate img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 62%}
 
 /* ============ chapters ============ */
-.chapter{padding:clamp(3.6rem,8vw,6.5rem) 0}
+.chapter{padding:clamp(2.6rem,5.4vw,4.4rem) 0}
 .chapter-head{text-align:center;margin-bottom:clamp(2.2rem,5vw,3.5rem)}
 .chapter-head .divider{margin-bottom:1.6rem}
 .chapter-head .smallcaps{display:block;margin-bottom:1.1rem}
@@ -674,7 +674,6 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 /* ============ colophon ============ */
 .colophon{
   background:var(--umber);color:var(--bone);
-  margin-top:clamp(3.5rem,8vw,6rem);
   padding:clamp(3rem,7vw,4.5rem) 1.5rem clamp(2.2rem,5vw,3rem);
   text-align:center;
 }
