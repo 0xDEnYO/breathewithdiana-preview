@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Breathe with Diana, your free breath reset</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{background:var(--bone);color:var(--umber);font-family:var(--sans);font-weight:400;
+      line-height:1.6;-webkit-font-smoothing:antialiased;padding:30px 18px 70px}
+    .card{background:#fff;border:1px solid var(--hairline);border-radius:20px;
+      box-shadow:0 22px 54px -34px rgba(91,70,54,.55);overflow:hidden;max-width:520px;margin:0 auto}
+    .top{height:7px;background:linear-gradient(90deg,var(--terracotta-deep),var(--umber))}
+    .inner{padding:30px 28px 34px}
+    .logo{display:block;width:188px;max-width:62%;height:auto;margin:0 0 22px}
+
+    /* draft banner, for Diana's review only */
+    .draft{background:rgba(138,140,110,.14);border:1px solid rgba(138,140,110,.4);border-radius:12px;
+      padding:13px 15px;font-size:var(--fs-xs);line-height:1.55;color:var(--umber);margin:0 0 24px}
+    .draft b{font-weight:600}
+
+    .intro{font-family:var(--serif);font-size:var(--fs-xl);line-height:1.2;color:var(--umber);margin:0 0 10px;font-weight:500}
+    .sub{font-size:var(--fs-base);color:var(--muted);margin:0 0 26px;line-height:1.6}
+
+    /* ===== the player ===== */
+    .player{background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:20px 20px 18px;margin:0 0 8px}
+    .player-title{font-family:var(--serif);font-size:var(--fs-md);font-weight:600;color:var(--umber);margin:0 0 3px}
+    .player-meta{font-size:var(--fs-2xs);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 15px}
+    audio{width:100%;display:block}
+    /* until the recording exists, the card says so instead of showing a dead player */
+    .pending{background:rgba(212,162,76,.13);border:1px solid rgba(212,162,76,.34);border-radius:12px;
+      padding:15px 16px;font-size:var(--fs-sm);line-height:1.55;color:var(--umber)}
+    .download{font-size:var(--fs-xs);color:var(--muted);margin:12px 0 0;text-align:center}
+    .download a{color:var(--terracotta-deep);font-weight:500}
+
+    .sectionhead{font-family:var(--sans);font-size:var(--fs-xs);font-weight:500;letter-spacing:.14em;
+      text-transform:uppercase;color:var(--terracotta-deep);margin:34px 0 12px}
+    ul.steps{list-style:none;padding:0;margin:0}
+    ul.steps li{position:relative;padding-left:18px;font-size:var(--fs-sm);line-height:1.6;margin-bottom:9px;color:var(--umber)}
+    ul.steps li::before{content:"·";position:absolute;left:2px;color:var(--terracotta);font-weight:700}
+    .after{font-size:var(--fs-sm);line-height:1.65;color:var(--muted);margin:16px 0 0}
+
+    hr.rule{border:none;border-top:1px solid var(--hairline);margin:32px 0 0}
+
+    .deeper h2{font-family:var(--serif);font-size:var(--fs-lg);line-height:1.22;font-weight:500;color:var(--umber);margin:26px 0 12px}
+    .deeper p{font-size:var(--fs-sm);line-height:1.65;color:var(--umber);margin:0 0 14px}
+    .cta{display:block;text-align:center;background:var(--terracotta-deep);color:var(--bone);text-decoration:none;
+      border-radius:999px;padding:15px;font-size:var(--fs-base);font-weight:500;margin:20px 0 0;
+      transition:background .15s,transform .05s}
+    .cta:hover{background:#7A4A36}
+    .cta:active{transform:translateY(1px)}
+    .alt{font-size:var(--fs-sm);color:var(--muted);text-align:center;margin:14px 0 0;line-height:1.6}
+    .alt a{color:var(--terracotta-deep);font-weight:500}
+    .sign{font-family:var(--serif);font-size:var(--fs-md);font-style:italic;color:var(--umber);margin:30px 0 0}
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="top"></div>
+  <div class="inner">
+
+    <img class="logo" src="img/logo-site.svg" alt="Breathe with Diana">
+
+    <!-- ===== draft banner, Diana only, not part of the client copy ===== -->
+    <!-- STRIP-BEFORE-LAUNCH -->
+    <div class="draft">
+      <b>This is a draft for you, Diana 🤎</b><br>
+      This is the page your free breath reset lives on. It is where the email sends people.
+      The player below is waiting for your recording. Read the words as someone new to you
+      would, and tell me anything that does not sound like you.
+    </div>
+
+    <p class="intro">Your breath reset.</p>
+    <p class="sub">Ten quiet minutes, lying down, wherever you are. Nothing to get right.</p>
+
+    <!-- Keep both the player and the download link when the audio lands: some people
+         want it on the phone for a flight or a room with no signal. -->
+    <div class="player">
+      <p class="player-title">A breath to come home to</p>
+      <p class="player-meta">Guided by Diana</p>
+      <!-- STRIP-WHEN-AUDIO-LANDS -->
+      <div class="pending">
+        The recording is being finished. As soon as it is ready it will play right here,
+        and you will not need to do anything, this page will simply have it.
+      </div>
+      <!--
+      <audio controls preload="metadata">
+        <source src="audio/breath-reset-en.m4a" type="audio/mp4">
+        <source src="audio/breath-reset-en.mp3" type="audio/mpeg">
+        Your browser cannot play this. <a href="audio/breath-reset-en.mp3">Download it instead.</a>
+      </audio>
+      -->
+    </div>
+    <!--
+    <p class="download"><a href="audio/breath-reset-en.mp3" download>Save it to your phone</a></p>
+    -->
+
+    <div class="sectionhead">Before you begin</div>
+    <ul class="steps">
+      <li>Find ten minutes where nobody needs you.</li>
+      <li>Lie down somewhere warm and comfortable.</li>
+      <li>Headphones if you have them, so my voice is close.</li>
+      <li>If it becomes too much, open your eyes and breathe normally. That is not failing, that is listening.</li>
+    </ul>
+    <p class="after">Afterwards you may feel lighter, or tired, or a little tender. All of it is
+      welcome. There is nothing to do with it except let it settle.</p>
+
+    <hr class="rule">
+
+    <div class="deeper">
+      <h2>If this opens a door</h2>
+      <p>Some people do this practice and feel a small, quiet relief. Others notice something
+        older underneath it, something a ten minute practice does not reach. If that is you,
+        we can sit with it together.</p>
+      <p>The first conversation is free and takes fifteen minutes. No plan, no pressure, just
+        the two of us working out whether this is right for you.</p>
+      <a class="cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B_Pi3BGo1dXRyh1MfxqbBzI2WsJi37BYzN_wqbi-OFiDytP4g3b6O6x13jVz-aQx00vrF55f2" target="_blank" rel="noopener">Book a free 15 minute call</a>
+      <p class="alt">or write to me on
+        <a href="https://wa.me/66631259588?text=Hi%20Diana%2C%20I%20listened%20to%20the%20breath%20reset" target="_blank" rel="noopener">WhatsApp</a>.</p>
+      <p class="sign">With warmth,<br>Diana</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
