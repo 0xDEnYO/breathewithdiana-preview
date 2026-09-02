@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{lang}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
      below also carries an explicit bgcolor attribute alongside its CSS. -->
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
-<title>Your free breath reset</title>
+<title>{{email_title}}</title>
 <style>
   /* Honoured by Apple Mail and iOS Mail; Gmail and Outlook strip @import and fall
      back to the inline Georgia / system stacks, which the design is built around. */
@@ -30,7 +30,7 @@
 
 <!-- preheader: the grey line of text next to the subject in most inboxes -->
 <div style="display:none;font-size:1px;color:#EFE7D8;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden">
-  Your breath reset is inside, with a few words on how to use it.
+  {{preheader}}
 </div>
 
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EFE7D8" style="background:#EFE7D8">
@@ -42,10 +42,10 @@
              and Outlook, none of which an SVG logo does. ===== -->
     <tr><td align="center" style="padding:0 24px 24px">
       <div style="font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:25px;font-weight:500;letter-spacing:.01em;color:#5B4636;line-height:1.2">
-        Breathe with Diana
+        {{brand}}
       </div>
       <div style="font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(91,70,54,.62);padding-top:9px">
-        Coming back home through breath
+        {{brand_sub}}
       </div>
     </td></tr>
 
@@ -58,19 +58,19 @@
 
         <tr><td style="padding:0">
           <img src="https://breathe-with-diana.com/img/studio-space.jpg"
-               width="600" alt="The room where Diana holds her sessions, cushions in a circle around a small altar"
+               width="600" alt="{{hero_alt}}"
                style="display:block;width:100%;max-width:600px;height:auto">
         </td></tr>
 
         <tr><td class="pad" style="padding:34px 44px 0">
           <h1 class="h1" style="margin:0 0 18px;font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:34px;line-height:1.14;font-weight:500;color:#5B4636">
-            Your breath reset.
+            {{h1}}
           </h1>
           <p style="margin:0 0 15px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.65;color:#5B4636">
-            Thank you for asking for this.
+            {{p_thanks}}
           </p>
           <p style="margin:0 0 15px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.65;color:#5B4636">
-            It is a short practice you can do lying down, wherever you are. It does not ask you to get anything right. It asks for a few quiet minutes, and for your willingness to feel what is already there.
+            {{p_what}}
           </p>
         </td></tr>
 
@@ -78,35 +78,35 @@
         <tr><td class="pad" align="center" style="padding:22px 44px 6px">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn">
             <tr><td bgcolor="#905840" align="center" style="background:#905840;border-radius:999px">
-              <a href="https://breathe-with-diana.com/breath-reset.html"
+              <a href="{{listen_url}}"
                  style="display:inline-block;padding:16px 34px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;font-weight:500;color:#F4EFE6;text-decoration:none;border-radius:999px">
-                Listen to your breath reset
+                {{cta_listen}}
               </a>
             </td></tr>
           </table>
           <p style="margin:12px 0 0;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:rgba(91,70,54,.62)">
-            It opens in your browser, so you can come back to it any time.
+            {{cta_listen_note}}
           </p>
         </td></tr>
 
         <!-- ===== how to use it ===== -->
         <tr><td class="pad" style="padding:30px 44px 0">
           <div style="font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#905840;padding-bottom:12px">
-            Before you begin
+            {{before_h}}
           </div>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
                  style="font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#5B4636">
             <tr><td width="18" valign="top" style="padding:0 0 9px;color:#C97B5A">&middot;</td>
-                <td style="padding:0 0 9px">Find ten minutes where nobody needs you.</td></tr>
+                <td style="padding:0 0 9px">{{before_1}}</td></tr>
             <tr><td width="18" valign="top" style="padding:0 0 9px;color:#C97B5A">&middot;</td>
-                <td style="padding:0 0 9px">Lie down somewhere warm and comfortable.</td></tr>
+                <td style="padding:0 0 9px">{{before_2}}</td></tr>
             <tr><td width="18" valign="top" style="padding:0 0 9px;color:#C97B5A">&middot;</td>
-                <td style="padding:0 0 9px">Headphones if you have them, so my voice is close.</td></tr>
+                <td style="padding:0 0 9px">{{before_3}}</td></tr>
             <tr><td width="18" valign="top" style="padding:0;color:#C97B5A">&middot;</td>
-                <td style="padding:0">If it becomes too much, open your eyes and breathe normally. That is not failing, that is listening.</td></tr>
+                <td style="padding:0">{{before_4}}</td></tr>
           </table>
           <p style="margin:18px 0 0;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.65;color:rgba(91,70,54,.78)">
-            Afterwards you may feel lighter, or tired, or a little tender. All of it is welcome. There is nothing to do with it except let it settle.
+            {{after_p}}
           </p>
         </td></tr>
 
@@ -117,28 +117,28 @@
         <!-- ===== the deeper invitation ===== -->
         <tr><td class="pad" style="padding:28px 44px 0">
           <h2 style="margin:0 0 14px;font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:25px;line-height:1.2;font-weight:500;color:#5B4636">
-            If this opens a door
+            {{door_h}}
           </h2>
           <p style="margin:0 0 15px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.65;color:#5B4636">
-            Some people do this practice and feel a small, quiet relief. Others notice something older underneath it, something a ten minute practice does not reach. If that is you, we can sit with it together.
+            {{door_p1}}
           </p>
           <p style="margin:0 0 22px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.65;color:#5B4636">
-            The first conversation is free and takes fifteen minutes. No plan, no pressure, just the two of us working out whether this is right for you.
+            {{door_p2}}
           </p>
         </td></tr>
 
         <tr><td class="pad" align="center" style="padding:0 44px 4px">
           <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn">
             <tr><td bgcolor="#F4EFE6" align="center" style="background:#F4EFE6;border-radius:999px;border:1px solid #5B4636">
-              <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B_Pi3BGo1dXRyh1MfxqbBzI2WsJi37BYzN_wqbi-OFiDytP4g3b6O6x13jVz-aQx00vrF55f2"
+              <a href="{{book_url}}"
                  style="display:inline-block;padding:15px 32px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;font-weight:500;color:#5B4636;text-decoration:none;border-radius:999px">
-                Book a free 15 minute call
+                {{cta_book}}
               </a>
             </td></tr>
           </table>
           <p style="margin:14px 0 0;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:rgba(91,70,54,.78)">
-            or write to me on
-            <a href="https://wa.me/66631259588?text=Hi%20Diana%2C%20I%20listened%20to%20the%20breath%20reset" style="color:#905840;font-weight:500">WhatsApp</a>, or simply reply to this email.
+            {{alt_before}}
+            <a href="{{wa_url}}" style="color:#905840;font-weight:500">WhatsApp</a>{{alt_after}}
           </p>
         </td></tr>
 
@@ -152,7 +152,7 @@
               </td>
               <td valign="middle">
                 <p style="margin:0;font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-size:21px;line-height:1.4;font-style:italic;color:#5B4636">
-                  With warmth,<br>Diana
+                  {{sign}}
                 </p>
               </td>
             </tr>
@@ -165,13 +165,13 @@
     <!-- ===== footer ===== -->
     <tr><td class="pad" align="center" style="padding:26px 34px 0">
       <p style="margin:0 0 8px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:rgba(91,70,54,.78)">
-        Diana Marcela Ramirez &middot; Rebirthing breathwork, in person and online
+        {{foot_who}}
       </p>
       <p style="margin:0 0 14px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6">
-        <a href="https://breathe-with-diana.com/" style="color:#905840;text-decoration:none">breathe-with-diana.com</a>
+        <a href="{{site_url}}" style="color:#905840;text-decoration:none">{{site_label}}</a>
       </p>
       <p style="margin:0;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;line-height:1.6;color:rgba(91,70,54,.62)">
-        You are receiving this because you asked for the free breath reset. If you would rather not hear from me again, just reply and say so.
+        {{foot_why}}
       </p>
     </td></tr>
 

@@ -194,35 +194,69 @@ function main() {
 
   const DIR = __dirname;
   const outRoot = path.resolve(DIR, '..');
-  const template = fs.readFileSync(path.join(DIR, 'template.html'), 'utf8');
-  let langs = [
-    { code: 'en', out: 'index.html' },
-    { code: 'es', out: 'es.html' },
-    { code: 'ru', out: 'ru.html' },
+
+  // Each bundle is one content set rendered through one or more templates. The reset
+  // bundle drives two outputs from one content file because the email and the listening
+  // page share most of their words, and keeping them in separate files is exactly how
+  // EN/ES/RU drifted apart before this build system existed.
+  const BUNDLES = [
+    {
+      name: 'site',
+      content: 'content',
+      templates: [
+        { file: 'template.html', out: { en: 'index.html', es: 'es.html', ru: 'ru.html' } },
+      ],
+    },
+    {
+      name: 'reset',
+      content: 'reset/content',
+      templates: [
+        { file: 'reset/email.html', out: { en: 'email/reset-en.html', es: 'email/reset-es.html', ru: 'email/reset-ru.html' } },
+        { file: 'reset/page.html', out: { en: 'breath-reset.html', es: 'breath-reset-es.html', ru: 'breath-reset-ru.html' } },
+      ],
+    },
   ];
-  if (only.length) langs = langs.filter(l => only.includes(l.code));
-  const contentDir = path.join(DIR, 'content');
-  for (const { code, out } of langs) {
-    const ctx = JSON.parse(fs.readFileSync(path.join(contentDir, code + '.json'), 'utf8'));
-    // Auto-load raw HTML fragments (content/<token>.<code>.html) as ctx[token]. These hold
-    // the quote-heavy blocks (testimonial cards, language switcher) kept out of JSON so their
-    // markup is never hand-escaped. A fragment overrides any same-named JSON key.
-    const suffix = '.' + code + '.html';
-    for (const fn of fs.readdirSync(contentDir)) {
-      if (fn.endsWith(suffix)) {
-        const token = fn.slice(0, -suffix.length);
-        if (Object.prototype.hasOwnProperty.call(ctx, token)) {
-          const msg = `fragment ${fn} shadows JSON key "${token}"`;
-          if (strict) throw new Error(`[strict] ${msg}`);
-          console.warn(`WARN ${msg}`);
+
+  const ALL_LANGS = ['en', 'es', 'ru'];
+  const langCodes = only.length ? ALL_LANGS.filter(c => only.includes(c)) : ALL_LANGS;
+
+  for (const bundle of BUNDLES) {
+    const contentDir = path.join(DIR, bundle.content);
+    for (const code of langCodes) {
+      const ctx = loadContext(contentDir, code, strict);
+      for (const t of bundle.templates) {
+        const out = t.out[code];
+        if (!out) continue;
+        const tpl = fs.readFileSync(path.join(DIR, t.file), 'utf8');
+        const html = render(tpl, ctx, { strict });
+        if (!check) {
+          fs.mkdirSync(path.dirname(path.join(outRoot, out)), { recursive: true });
+          fs.writeFileSync(path.join(outRoot, out), html);
         }
-        ctx[token] = fs.readFileSync(path.join(contentDir, fn), 'utf8');
+        console.log(`${check ? 'built (not written)' : 'wrote'} ${out}: ${Buffer.byteLength(html, 'utf8')} bytes`);
       }
     }
-    const html = render(template, ctx, { strict });
-    if (!check) fs.writeFileSync(path.join(outRoot, out), html);
-    console.log(`${check ? 'built (not written)' : 'wrote'} ${out}: ${Buffer.byteLength(html, 'utf8')} bytes`);
   }
+}
+
+function loadContext(contentDir, code, strict) {
+  const ctx = JSON.parse(fs.readFileSync(path.join(contentDir, code + '.json'), 'utf8'));
+  // Auto-load raw HTML fragments (<token>.<code>.html) as ctx[token]. These hold the
+  // quote-heavy blocks (testimonial cards, language switcher) kept out of JSON so their
+  // markup is never hand-escaped. A fragment overrides any same-named JSON key.
+  const suffix = '.' + code + '.html';
+  for (const fn of fs.readdirSync(contentDir)) {
+    if (fn.endsWith(suffix)) {
+      const token = fn.slice(0, -suffix.length);
+      if (Object.prototype.hasOwnProperty.call(ctx, token)) {
+        const msg = `fragment ${fn} shadows JSON key "${token}"`;
+        if (strict) throw new Error(`[strict] ${msg}`);
+        console.warn(`WARN ${msg}`);
+      }
+      ctx[token] = fs.readFileSync(path.join(contentDir, fn), 'utf8');
+    }
+  }
+  return ctx;
 }
 
 main();

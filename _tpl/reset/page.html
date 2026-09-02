@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{lang}}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-    <title>Breathe with Diana, your free breath reset</title>
+    <title>{{page_title}}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -70,53 +70,52 @@
     <!-- ===== draft banner, Diana only, not part of the client copy ===== -->
     <!-- STRIP-BEFORE-LAUNCH -->
     <div class="draft">
-      <b>This is a draft for you, Diana 🤎</b><br>
-      This is the page your free breath reset lives on. It is where the email sends people. The player below is waiting for your recording. Read the words as someone new to you would, and tell me anything that does not sound like you.
+      {{draft_banner}}
     </div>
 
-    <p class="intro">Your breath reset.</p>
-    <p class="sub">Ten quiet minutes, lying down, wherever you are. Nothing to get right.</p>
+    <p class="intro">{{h1}}</p>
+    <p class="sub">{{page_sub}}</p>
 
     <!-- Keep both the player and the download link when the audio lands: some people
          want it on the phone for a flight or a room with no signal. -->
     <div class="player">
-      <p class="player-title">A breath to come home to</p>
-      <p class="player-meta">Guided by Diana</p>
+      <p class="player-title">{{player_title}}</p>
+      <p class="player-meta">{{player_meta}}</p>
       <!-- STRIP-WHEN-AUDIO-LANDS -->
       <div class="pending">
-        The recording is being finished. As soon as it is ready it will play right here, and you will not need to do anything, this page will simply have it.
+        {{pending}}
       </div>
       <!--
       <audio controls preload="metadata">
-        <source src="audio/breath-reset-en.m4a" type="audio/mp4">
-        <source src="audio/breath-reset-en.mp3" type="audio/mpeg">
-        Your browser cannot play this. <a href="audio/breath-reset-en.mp3">Download it instead.</a>
+        <source src="audio/breath-reset-{{lang}}.m4a" type="audio/mp4">
+        <source src="audio/breath-reset-{{lang}}.mp3" type="audio/mpeg">
+        {{no_player}} <a href="audio/breath-reset-{{lang}}.mp3">{{download_alt}}</a>
       </audio>
       -->
     </div>
     <!--
-    <p class="download"><a href="audio/breath-reset-en.mp3" download>Save it to your phone</a></p>
+    <p class="download"><a href="audio/breath-reset-{{lang}}.mp3" download>{{download_label}}</a></p>
     -->
 
-    <div class="sectionhead">Before you begin</div>
+    <div class="sectionhead">{{before_h}}</div>
     <ul class="steps">
-      <li>Find ten minutes where nobody needs you.</li>
-      <li>Lie down somewhere warm and comfortable.</li>
-      <li>Headphones if you have them, so my voice is close.</li>
-      <li>If it becomes too much, open your eyes and breathe normally. That is not failing, that is listening.</li>
+      <li>{{before_1}}</li>
+      <li>{{before_2}}</li>
+      <li>{{before_3}}</li>
+      <li>{{before_4}}</li>
     </ul>
-    <p class="after">Afterwards you may feel lighter, or tired, or a little tender. All of it is welcome. There is nothing to do with it except let it settle.</p>
+    <p class="after">{{after_p}}</p>
 
     <hr class="rule">
 
     <div class="deeper">
-      <h2>If this opens a door</h2>
-      <p>Some people do this practice and feel a small, quiet relief. Others notice something older underneath it, something a ten minute practice does not reach. If that is you, we can sit with it together.</p>
-      <p>The first conversation is free and takes fifteen minutes. No plan, no pressure, just the two of us working out whether this is right for you.</p>
-      <a class="cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B_Pi3BGo1dXRyh1MfxqbBzI2WsJi37BYzN_wqbi-OFiDytP4g3b6O6x13jVz-aQx00vrF55f2" target="_blank" rel="noopener">Book a free 15 minute call</a>
-      <p class="alt">or write to me on
-        <a href="https://wa.me/66631259588?text=Hi%20Diana%2C%20I%20listened%20to%20the%20breath%20reset" target="_blank" rel="noopener">WhatsApp</a>.</p>
-      <p class="sign">With warmth,<br>Diana</p>
+      <h2>{{door_h}}</h2>
+      <p>{{door_p1}}</p>
+      <p>{{door_p2}}</p>
+      <a class="cta" href="{{book_url}}" target="_blank" rel="noopener">{{cta_book}}</a>
+      <p class="alt">{{alt_before}}
+        <a href="{{wa_url}}" target="_blank" rel="noopener">WhatsApp</a>{{alt_after_page}}</p>
+      <p class="sign">{{sign}}</p>
     </div>
 
   </div>
