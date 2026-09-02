@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Your breath reset recording · Breathe with Diana</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#F4EFE6; --cream:#EFE7D8; --terracotta:#C97B5A; --terracotta-deep:#905840;
+    --sage:#8A8C6E; --umber:#5B4636; --ochre:#D4A24C; --muted:rgba(91,70,54,.62);
+    --hairline:rgba(91,70,54,.14);
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;scroll-behavior:smooth}
+  body{background:var(--bone);color:var(--umber);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(at 82% 6%,rgba(212,162,76,.10),transparent 44%),radial-gradient(at 8% 92%,rgba(201,123,90,.10),transparent 52%);
+    background-attachment:fixed}
+  .wrap{max-width:780px;margin:0 auto;padding:clamp(28px,6vw,56px) 22px 90px}
+
+  header.top{display:flex;align-items:center;gap:14px;margin-bottom:clamp(26px,5vw,38px)}
+  header.top img{height:52px;width:auto;display:block}
+  header.top .ttl{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted)}
+
+  .back{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;
+    color:var(--terracotta-deep);text-decoration:none;margin-bottom:26px}
+  .back:hover{text-decoration:underline}
+  .back svg{width:15px;height:15px}
+
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--terracotta-deep);margin:0 0 18px}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,7.5vw,54px);line-height:1.06;
+    letter-spacing:-.01em;margin:0 0 22px}
+  h1 em{font-style:italic;color:var(--terracotta-deep)}
+  .lead{font-size:clamp(16.5px,2.4vw,19px);max-width:610px;margin:0 0 14px}
+  .lead.soft{color:var(--muted)}
+
+  .rule{width:56px;height:1px;background:var(--hairline);border:none;margin:46px 0 30px}
+
+  h2.sec{font-family:var(--serif);font-weight:500;font-size:clamp(26px,5.2vw,33px);line-height:1.12;margin:0 0 6px}
+  .sec-note{font-size:15px;color:var(--muted);margin:0 0 24px;max-width:56ch}
+
+  /* the four stages her voice lands inside */
+  .stages{display:flex;flex-direction:column;gap:2px;background:var(--cream);
+    border:1px solid var(--hairline);border-radius:16px;padding:6px}
+  .stage{display:flex;gap:16px;align-items:flex-start;padding:16px 18px}
+  .stage + .stage{border-top:1px solid var(--hairline)}
+  .stage .num{flex:0 0 auto;width:24px;height:24px;border-radius:50%;border:1px solid var(--sage);
+    color:var(--sage);font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .stage.hers .num{border-color:var(--terracotta);color:var(--terracotta);background:rgba(201,123,90,.1)}
+  .stage h4{font-family:var(--serif);font-size:20px;font-weight:500;margin:0 0 3px;line-height:1.2}
+  .stage p{font-size:14.5px;margin:0;color:var(--umber);max-width:52ch}
+  .stage p a{color:var(--terracotta-deep);font-weight:500}
+  .stage.hers h4{color:var(--terracotta-deep)}
+
+  /* the shape of the recording */
+  .shape{background:rgba(255,255,255,.5);border:1px solid var(--hairline);border-radius:16px;
+    padding:8px 4px;margin:0}
+  .shape .r{display:flex;gap:18px;align-items:flex-start;padding:15px 20px}
+  .shape .r + .r{border-top:1px solid var(--hairline)}
+  .shape .mins{flex:0 0 76px;font-family:var(--serif);font-size:19px;color:var(--terracotta-deep);line-height:1.2;padding-top:1px;
+    font-variant-numeric:lining-nums tabular-nums}
+  .shape .what{font-size:15px;max-width:52ch}
+  .shape .what b{font-weight:600}
+
+  .note{background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:22px 24px;margin-top:18px}
+  .note h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 8px}
+  .note p{font-size:15px;margin:0 0 10px;max-width:56ch}
+  .note p:last-child{margin-bottom:0}
+  .note b{font-weight:600}
+
+  .note.warm{background:rgba(201,123,90,.1);border-color:rgba(201,123,90,.3)}
+  .note.gold{background:rgba(212,162,76,.13);border-color:rgba(212,162,76,.34)}
+
+  ul.kit{margin:0;padding:0;list-style:none}
+  ul.kit li{position:relative;padding-left:20px;font-size:15.5px;margin:0 0 14px;max-width:56ch}
+  ul.kit li:last-child{margin-bottom:0}
+  ul.kit li::before{content:"·";position:absolute;left:4px;color:var(--terracotta);font-weight:700;font-size:19px;line-height:1.2}
+  ul.kit li b{font-weight:600}
+
+  .qs{background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:8px 4px}
+  .qs .row{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-bottom:1px solid var(--hairline)}
+  .qs .row:last-child{border-bottom:none}
+  .qs .dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:var(--terracotta);margin-top:8px}
+  .qs h4{font-family:var(--serif);font-size:20px;font-weight:500;margin:0 0 4px;line-height:1.2}
+  .qs p{font-size:14.5px;margin:0;max-width:56ch}
+  .qs p a{color:var(--terracotta-deep);font-weight:500}
+
+  .howto{background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:24px 26px;margin-top:44px}
+  .howto h3{font-family:var(--serif);font-weight:500;font-size:22px;margin:0 0 10px}
+  .howto ul{margin:0;padding-left:19px}
+  .howto li{font-size:15px;margin:0 0 8px}
+  .howto li b{font-weight:600}
+
+  .foot{margin-top:34px;font-size:13.5px;color:var(--muted);line-height:1.7}
+  .foot b{color:var(--umber);font-weight:600}
+
+  @media(max-width:560px){
+    header.top img{height:44px}
+    .stage{padding:14px 14px}
+    .shape .r{flex-direction:column;gap:4px;padding:14px 16px}
+    .shape .mins{flex:none}
+  }
+</style>
+</head>
+<body data-fb-noun="line" data-fb-key="breath-reset-brief" data-fb-page="Breath reset recording" data-fb-email="d.blaecker@gmail.com">
+<main class="wrap">
+
+  <header class="top">
+    <img src="/logo-mark.svg" alt="Breathe with Diana">
+    <div class="ttl">Just for you</div>
+  </header>
+
+  <a class="back" href="/for-diana/">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg>
+    Back to everything
+  </a>
+
+  <p class="eyebrow">Your free breath reset</p>
+  <h1>The one piece only <em>your voice</em> can make.</h1>
+  <p class="lead">On your website there is a quiet offer: if someone is not ready for a full session yet, they can leave their email and receive a short practice from you. It is often the very first thing a stranger will experience of your work.</p>
+  <p class="lead soft">Everything around it is now built and waiting. The email, the page it opens, all of it. The practice itself is the only thing missing, and it can only come from you.</p>
+
+  <hr class="rule">
+
+  <h2 class="sec">Where your voice lands</h2>
+  <p class="sec-note">So you can picture the person on the other end while you record.</p>
+
+  <div class="stages">
+    <div class="stage">
+      <span class="num">1</span>
+      <div>
+        <h4>She leaves her email</h4>
+        <p>On your website, in whichever language she was reading it in.</p>
+      </div>
+    </div>
+    <div class="stage">
+      <span class="num">2</span>
+      <div>
+        <h4>An email arrives from you</h4>
+        <p>Within seconds, in her language, with one button. <a href="/email/reset-en.html">See the email</a>.</p>
+      </div>
+    </div>
+    <div class="stage hers">
+      <span class="num">3</span>
+      <div>
+        <h4>She hears you</h4>
+        <p>She lies down and presses play. <a href="/breath-reset.html">See the page</a>, the player is waiting for your recording.</p>
+      </div>
+    </div>
+    <div class="stage">
+      <span class="num">4</span>
+      <div>
+        <h4>She can come closer if she wants</h4>
+        <p>Underneath the practice sits your free fifteen minute call, and WhatsApp. No pressure anywhere.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="sec">What to record</h2>
+  <p class="sec-note">Around ten minutes, guiding one gentle practice. This is a suggestion, not a script. If your instinct says something different, follow it.</p>
+
+  <div class="shape">
+    <div class="r">
+      <div class="mins">0 to 1</div>
+      <div class="what"><b>Arriving.</b> She is lying down, eyes closing. Nothing asked of her yet.</div>
+    </div>
+    <div class="r">
+      <div class="mins">1 to 3</div>
+      <div class="what"><b>Noticing.</b> The body as it already is. No fixing, no effort, no getting it right.</div>
+    </div>
+    <div class="r">
+      <div class="mins">3 to 8</div>
+      <div class="what"><b>The breath.</b> The gentle practice, the everyday one from your first door, not the deep work.</div>
+    </div>
+    <div class="r">
+      <div class="mins">8 to 10</div>
+      <div class="what"><b>Coming back.</b> Slowly. And a sentence about what she might feel afterwards, so she is not alone with it.</div>
+    </div>
+  </div>
+
+  <div class="note gold">
+    <h3>It should feel whole, not like a sample</h3>
+    <p>The page promises her "a small taste of this work". That works best if the ten minutes are complete in themselves, something she could come back to on a hard evening, rather than a piece of something bigger that stops early.</p>
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="sec">How to record it</h2>
+  <p class="sec-note">Your phone is genuinely enough. Nothing needs to be bought.</p>
+
+  <ul class="kit">
+    <li><b>Voice Memos on your phone,</b> held about a hand's width from your mouth, in the quietest room you have.</li>
+    <li><b>The one thing that ruins a recording is steady hum.</b> Air conditioning, a fan, a fridge, traffic. It cannot be taken out afterwards, and it is the reason most home recordings have to be done again. Turn things off, and listen to the room for ten seconds before you start.</li>
+    <li><b>One continuous take beats a tidy one.</b> Pauses, a breath, a small stumble, they all belong. Please do not stop and start again to fix a word, that is what makes a recording sound like an advert.</li>
+    <li><b>No music needed.</b> If it wants music later, it can go underneath without you re-recording.</li>
+    <li><b>Send it exactly as your phone made it.</b> No renaming, no converting, no trimming. Drop it into the folder <b>Free Breath-Reset Audio</b> inside <b>01 Brand &amp; Assets</b> on your Drive, or just send it to me.</li>
+  </ul>
+
+  <div class="note warm">
+    <h3>Two things to hold on to</h3>
+    <p><b>It is always your voice.</b> Never a generated one, never someone else reading your words. This is the first time most people will hear you, and that has to be real.</p>
+    <p><b>Nothing is permanent.</b> The recording sits on a page rather than inside the email, so if you listen back in a month and want to do it again, we swap the file and everyone gets the new one. Nothing breaks, nothing needs re-sending. So the first take does not have to be the perfect one.</p>
+  </div>
+
+  <div class="note">
+    <h3>This is not the voice note for your website</h3>
+    <p>You have two recordings on your list and they are different things. The <b>voice note</b> is a few seconds of you greeting people on your <a href="/v2/">new homepage</a>. This <b>breath reset</b> is the ten minute practice above. If you only have energy for one, do the voice note first, it is much shorter and it is holding up your page.</p>
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="sec">Three small things</h2>
+  <p class="sec-note">Whenever they come to you. A voice note is perfect, in whichever language the thought arrives in.</p>
+
+  <div class="qs">
+    <div class="row">
+      <span class="dot"></span>
+      <div>
+        <h4>Does the email sound like you?</h4>
+        <p><a href="/email/reset-en.html">Read it here</a>. I wrote it as I imagine you would, which means some of it is a guess. Anything that is not your voice should change, and it is easier to change now, before the Spanish and Russian ones are written on top of it.</p>
+      </div>
+    </div>
+    <div class="row">
+      <span class="dot"></span>
+      <div>
+        <h4>Is the invitation too soon?</h4>
+        <p>Near the end of the email, after the practice, there is a gentle invitation to your free fifteen minute call. Some people feel that is right there in the moment something opens. Others feel it is too quick, in the same breath as a gift. What do you feel?</p>
+      </div>
+    </div>
+    <div class="row">
+      <span class="dot"></span>
+      <div>
+        <h4>Which languages, and in what order?</h4>
+        <p>English is written and ready for your recording. Spanish and Russian each need their own recording and their own words, not a translation, the same way your Spanish page is your own writing. Which one do you want to do second?</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <h2 class="sec">One thing I will need you for</h2>
+  <p class="sec-note">Five minutes on a call, whenever suits you.</p>
+  <div class="note">
+    <p>To let your website send emails and save answers from your forms, I need you signed in to your own Google account while I set it up. It is the same five minute step we did for your review form. You click, I do the rest.</p>
+    <p>Worth doing soon even if the recording takes a while: it is also what makes your <a href="/media-consent.html">photo and video consent form</a> work, and that consent is currently the last thing holding up your new website.</p>
+  </div>
+
+  <div class="howto">
+    <h3>How to tell me things</h3>
+    <ul>
+      <li><b>On this page:</b> type a note in the panel at the bottom right and press <b>Send feedback</b>. It comes straight to me.</li>
+      <li><b>Anywhere else:</b> a voice note is perfect, in any language.</li>
+      <li><b>Nothing here is fixed,</b> and you cannot break anything. This page is private and hidden from Google.</li>
+    </ul>
+  </div>
+
+  <p class="foot"><b>No rush.</b> Ten quiet minutes of your voice is a real thing to ask for, and it is worth waiting until you have them properly. Tell me when it is done and I will do the rest the same day.</p>
+
+</main>
+<!-- STRIP-BEFORE-LAUNCH -->
+<script src="/feedback.js?v=3"></script>
+</body>
+</html>
