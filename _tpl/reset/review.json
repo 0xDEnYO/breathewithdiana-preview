@@ -1,0 +1,5 @@
+{
+  "review_banner": "    <tr><td align=\"center\" style=\"padding:0 24px 20px\">\n      <div style=\"background:rgba(138,140,110,.14);border:1px solid rgba(138,140,110,.4);border-radius:12px;padding:13px 15px;font-family:Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:1.55;color:#5B4636;text-align:left\">\n        <b>This is the email, Diana 🤎</b><br>\n        Exactly as it will arrive. The few lines that belong only to the email are editable: tap one and type over it. Everything else lives on the listening page, where you can change it once for both.\n      </div>\n    </td></tr>",
+  "review_script": "<!-- STRIP-BEFORE-LAUNCH -->\n<script src=\"/feedback.js?v=4\"></script>",
+  "review": true
+}

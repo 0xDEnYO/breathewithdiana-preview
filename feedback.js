@@ -135,6 +135,11 @@
     delete store.edits[id]; save(); refresh();
   }
 
+  function refreshCount() {
+    var c = document.getElementById('fb-count');
+    if (c) c.textContent = favList().length + editList().length;
+  }
+
   function refresh() {
     document.querySelectorAll('.fav-btn').forEach(function (b) {
       b.classList.toggle('on', !!store.favs[b.dataset.id]);
@@ -146,7 +151,7 @@
     });
     var n = favList().length;
     var ne = editList().length;
-    var c = document.getElementById('fb-count'); if (c) c.textContent = n + ne;
+    refreshCount();
     var favs = document.getElementById('fb-favs');
     if (favs) {
       var hasHearts = !!document.querySelector('.fav-btn');
@@ -195,12 +200,16 @@
       if (nt) {
         var id = nt.dataset.id;
         if (!store.favs[id]) store.favs[id] = { name: nt.dataset.name || '', group: nt.dataset.group || '', note: '' };
-        store.favs[id].note = nt.value; save(); return;
+        store.favs[id].note = nt.value; save(); refreshCount(); return;
       }
     });
     var gen = document.getElementById('fb-general');
     gen.addEventListener('input', function () { store.general = gen.value; save(); refresh(); });
-    document.getElementById('fb-toggle').onclick = function () { var p = document.getElementById('fb-panel'); p.hidden = !p.hidden; };
+    document.getElementById('fb-toggle').onclick = function () {
+      var p = document.getElementById('fb-panel');
+      p.hidden = !p.hidden;
+      if (!p.hidden) refresh();
+    };
     document.getElementById('fb-close').onclick = function () { document.getElementById('fb-panel').hidden = true; };
     document.getElementById('fb-copy').onclick = function () {
       var txt = compile();

@@ -60,7 +60,7 @@
     .sign{font-family:var(--serif);font-size:var(--fs-md);font-style:italic;color:var(--umber);margin:30px 0 0}
   </style>
 </head>
-<body>
+<body data-fb-noun="line" data-fb-key="{{fb_key}}-page" data-fb-page="{{page_title}}" data-fb-email="d.blaecker@gmail.com">
 <div class="card">
   <div class="top"></div>
   <div class="inner">
@@ -72,14 +72,15 @@
     <div class="draft">
       {{draft_banner}}
     </div>
+    {{edit_hint}}
 
-    <p class="intro">{{h1}}</p>
-    <p class="sub">{{page_sub}}</p>
+    <p class="intro" data-edit="Headline">{{h1}}</p>
+    <p class="sub" data-edit="Line under the headline">{{page_sub}}</p>
 
     <!-- Keep both the player and the download link when the audio lands: some people
          want it on the phone for a flight or a room with no signal. -->
     <div class="player">
-      <p class="player-title">{{player_title}}</p>
+      <p class="player-title" data-edit="Name of the practice">{{player_title}}</p>
       <p class="player-meta">{{player_meta}}</p>
       <!-- STRIP-WHEN-AUDIO-LANDS -->
       <div class="pending">
@@ -99,26 +100,28 @@
 
     <div class="sectionhead">{{before_h}}</div>
     <ul class="steps">
-      <li>{{before_1}}</li>
-      <li>{{before_2}}</li>
-      <li>{{before_3}}</li>
-      <li>{{before_4}}</li>
+      <li data-edit="Before you begin 1">{{before_1}}</li>
+      <li data-edit="Before you begin 2">{{before_2}}</li>
+      <li data-edit="Before you begin 3">{{before_3}}</li>
+      <li data-edit="Before you begin 4">{{before_4}}</li>
     </ul>
-    <p class="after">{{after_p}}</p>
+    <p class="after" data-edit="How you might feel afterwards">{{after_p}}</p>
 
     <hr class="rule">
 
     <div class="deeper">
-      <h2>{{door_h}}</h2>
-      <p>{{door_p1}}</p>
-      <p>{{door_p2}}</p>
-      <a class="cta" href="{{book_url}}" target="_blank" rel="noopener">{{cta_book}}</a>
+      <h2 data-edit="Invitation heading">{{door_h}}</h2>
+      <p data-edit="Invitation, first paragraph">{{door_p1}}</p>
+      <p data-edit="Invitation, second paragraph">{{door_p2}}</p>
+      <a class="cta" href="{{book_url}}" target="_blank" rel="noopener"><span data-edit="The booking button">{{cta_book}}</span></a>
       <p class="alt">{{alt_before}}
         <a href="{{wa_url}}" target="_blank" rel="noopener">WhatsApp</a>{{alt_after_page}}</p>
-      <p class="sign">{{sign}}</p>
+      <p class="sign" data-edit="How you sign off">{{sign}}</p>
     </div>
 
   </div>
 </div>
+<!-- STRIP-BEFORE-LAUNCH -->
+<script src="/feedback.js?v=4"></script>
 </body>
 </html>

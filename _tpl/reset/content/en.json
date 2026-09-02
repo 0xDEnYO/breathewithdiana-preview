@@ -39,5 +39,10 @@
   "site_url": "https://breathe-with-diana.com/",
   "site_label": "breathe-with-diana.com",
   "foot_why": "You are receiving this because you asked for the free breath reset. If you would rather not hear from me again, just reply and say so.",
-  "draft_banner": "<b>This is a draft for you, Diana 🤎</b><br>\n      This is the page your free breath reset lives on. It is where the email sends people. The player below is waiting for your recording. Read the words as someone new to you would, and tell me anything that does not sound like you."
+  "draft_banner": "<b>This is a draft for you, Diana 🤎</b><br>\n      This is the page your free breath reset lives on. It is where the email sends people. The player below is waiting for your recording. Read the words as someone new to you would, and tell me anything that does not sound like you.",
+  "fb_key": "reset-en",
+  "edit_hint": "<div class=\"draft\" style=\"background:rgba(201,123,90,.1);border-color:rgba(201,123,90,.3)\"><b>You can rewrite any of these words directly.</b><br>\n      Tap a line, type over it, and it turns amber. The words here are shared with the email, so fixing them once fixes both. When you are done, press <b>Send feedback</b> at the bottom right. The email has a few lines of its own, on its own page.</div>",
+  "review_banner": "",
+  "review_script": "",
+  "review": false
 }

@@ -60,7 +60,7 @@
     .sign{font-family:var(--serif);font-size:var(--fs-md);font-style:italic;color:var(--umber);margin:30px 0 0}
   </style>
 </head>
-<body>
+<body data-fb-noun="line" data-fb-key="reset-en-page" data-fb-page="Breathe with Diana, your free breath reset" data-fb-email="d.blaecker@gmail.com">
 <div class="card">
   <div class="top"></div>
   <div class="inner">
@@ -73,14 +73,16 @@
       <b>This is a draft for you, Diana 🤎</b><br>
       This is the page your free breath reset lives on. It is where the email sends people. The player below is waiting for your recording. Read the words as someone new to you would, and tell me anything that does not sound like you.
     </div>
+    <div class="draft" style="background:rgba(201,123,90,.1);border-color:rgba(201,123,90,.3)"><b>You can rewrite any of these words directly.</b><br>
+      Tap a line, type over it, and it turns amber. The words here are shared with the email, so fixing them once fixes both. When you are done, press <b>Send feedback</b> at the bottom right. The email has a few lines of its own, on its own page.</div>
 
-    <p class="intro">Your breath reset.</p>
-    <p class="sub">Ten quiet minutes, lying down, wherever you are. Nothing to get right.</p>
+    <p class="intro" data-edit="Headline">Your breath reset.</p>
+    <p class="sub" data-edit="Line under the headline">Ten quiet minutes, lying down, wherever you are. Nothing to get right.</p>
 
     <!-- Keep both the player and the download link when the audio lands: some people
          want it on the phone for a flight or a room with no signal. -->
     <div class="player">
-      <p class="player-title">A breath to come home to</p>
+      <p class="player-title" data-edit="Name of the practice">A breath to come home to</p>
       <p class="player-meta">Guided by Diana</p>
       <!-- STRIP-WHEN-AUDIO-LANDS -->
       <div class="pending">
@@ -100,26 +102,28 @@
 
     <div class="sectionhead">Before you begin</div>
     <ul class="steps">
-      <li>Find ten minutes where nobody needs you.</li>
-      <li>Lie down somewhere warm and comfortable.</li>
-      <li>Headphones if you have them, so my voice is close.</li>
-      <li>If it becomes too much, open your eyes and breathe normally. That is not failing, that is listening.</li>
+      <li data-edit="Before you begin 1">Find ten minutes where nobody needs you.</li>
+      <li data-edit="Before you begin 2">Lie down somewhere warm and comfortable.</li>
+      <li data-edit="Before you begin 3">Headphones if you have them, so my voice is close.</li>
+      <li data-edit="Before you begin 4">If it becomes too much, open your eyes and breathe normally. That is not failing, that is listening.</li>
     </ul>
-    <p class="after">Afterwards you may feel lighter, or tired, or a little tender. All of it is welcome. There is nothing to do with it except let it settle.</p>
+    <p class="after" data-edit="How you might feel afterwards">Afterwards you may feel lighter, or tired, or a little tender. All of it is welcome. There is nothing to do with it except let it settle.</p>
 
     <hr class="rule">
 
     <div class="deeper">
-      <h2>If this opens a door</h2>
-      <p>Some people do this practice and feel a small, quiet relief. Others notice something older underneath it, something a ten minute practice does not reach. If that is you, we can sit with it together.</p>
-      <p>The first conversation is free and takes fifteen minutes. No plan, no pressure, just the two of us working out whether this is right for you.</p>
-      <a class="cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B_Pi3BGo1dXRyh1MfxqbBzI2WsJi37BYzN_wqbi-OFiDytP4g3b6O6x13jVz-aQx00vrF55f2" target="_blank" rel="noopener">Book a free 15 minute call</a>
+      <h2 data-edit="Invitation heading">If this opens a door</h2>
+      <p data-edit="Invitation, first paragraph">Some people do this practice and feel a small, quiet relief. Others notice something older underneath it, something a ten minute practice does not reach. If that is you, we can sit with it together.</p>
+      <p data-edit="Invitation, second paragraph">The first conversation is free and takes fifteen minutes. No plan, no pressure, just the two of us working out whether this is right for you.</p>
+      <a class="cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B_Pi3BGo1dXRyh1MfxqbBzI2WsJi37BYzN_wqbi-OFiDytP4g3b6O6x13jVz-aQx00vrF55f2" target="_blank" rel="noopener"><span data-edit="The booking button">Book a free 15 minute call</span></a>
       <p class="alt">or write to me on
         <a href="https://wa.me/66631259588?text=Hi%20Diana%2C%20I%20listened%20to%20the%20breath%20reset" target="_blank" rel="noopener">WhatsApp</a>.</p>
-      <p class="sign">With warmth,<br>Diana</p>
+      <p class="sign" data-edit="How you sign off">With warmth,<br>Diana</p>
     </div>
 
   </div>
 </div>
+<!-- STRIP-BEFORE-LAUNCH -->
+<script src="/feedback.js?v=4"></script>
 </body>
 </html>

@@ -92,6 +92,14 @@
   .qs p{font-size:14.5px;margin:0;max-width:56ch}
   .qs p a{color:var(--terracotta-deep);font-weight:500}
 
+  table.langs{width:100%;border-collapse:collapse;margin:14px 0 12px;font-size:15px}
+  table.langs th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);padding:0 12px 7px 0;border-bottom:1px solid var(--hairline)}
+  table.langs td{padding:10px 12px 10px 0;border-bottom:1px solid var(--hairline)}
+  table.langs tr:last-child td{border-bottom:none}
+  table.langs td a{color:var(--terracotta-deep);font-weight:600}
+  .note .hint{font-size:13.5px;color:var(--muted);margin:0}
+
   .howto{background:var(--cream);border:1px solid var(--hairline);border-radius:16px;padding:24px 26px;margin-top:44px}
   .howto h3{font-family:var(--serif);font-weight:500;font-size:22px;margin:0 0 10px}
   .howto ul{margin:0;padding-left:19px}
@@ -144,10 +152,10 @@
       <span class="num">2</span>
       <div>
         <h4>An email arrives from you</h4>
-        <p>Within seconds, in the language she was reading. See it in
-          <a href="/email/reset-en.html">English</a>,
-          <a href="/email/reset-es.html">Spanish</a> or
-          <a href="/email/reset-ru.html">Russian</a>.</p>
+        <p>Within seconds, in the language she was reading. Read it in
+          <a href="/email/review-en.html">English</a>,
+          <a href="/email/review-es.html">Spanish</a> or
+          <a href="/email/review-ru.html">Russian</a>.</p>
       </div>
     </div>
     <div class="stage hers">
@@ -224,15 +232,48 @@
 
   <hr class="rule">
 
+  <h2 class="sec">If the words are not yours, change them</h2>
+  <p class="sec-note">You do not need to describe what is wrong. Type over it.</p>
+
+  <div class="note">
+    <p><b>On any of these six pages, tap a line and rewrite it.</b> It turns amber so you can see what you changed, and it stays saved even if you close the page. When you are done, press <b>Send feedback</b> at the bottom right.</p>
+    <table class="langs">
+      <tr>
+        <th>Language</th>
+        <th>The practice page</th>
+        <th>The email</th>
+      </tr>
+      <tr>
+        <td>English</td>
+        <td><a href="/breath-reset.html">open</a></td>
+        <td><a href="/email/review-en.html">open</a></td>
+      </tr>
+      <tr>
+        <td>Spanish</td>
+        <td><a href="/breath-reset-es.html">open</a></td>
+        <td><a href="/email/review-es.html">open</a></td>
+      </tr>
+      <tr>
+        <td>Russian</td>
+        <td><a href="/breath-reset-ru.html">open</a></td>
+        <td><a href="/email/review-ru.html">open</a></td>
+      </tr>
+    </table>
+    <p class="hint">Most of the words are shared, so changing them on the practice page changes the email too. The email has a few lines of its own and they are editable on its own page.</p>
+  </div>
+
+  <hr class="rule">
+
   <h2 class="sec">Three small things</h2>
-  <p class="sec-note">Whenever they come to you. A voice note is perfect, in whichever language the thought arrives in.</p>
+  <p class="sec-note">Type your answer under each one, or send a voice note, in whichever language the thought arrives in.</p>
 
   <div class="qs">
     <div class="row">
       <span class="dot"></span>
       <div>
         <h4>Does the email sound like you?</h4>
-        <p><a href="/email/reset-en.html">Read it here</a>. I wrote it as I imagine you would, which means some of it is a guess. Anything that is not your voice should change, and it is easier to change now, before the Spanish and Russian ones are written on top of it.</p>
+        <p><a href="/email/review-en.html">Read it here</a>. I wrote it as I imagine you would, which means some of it is a guess. Anything that is not your voice should change, and you can type straight over it on that page.</p>
+        <input class="fav-note" data-id="q-sounds-like-you" data-name="Does the email sound like you?" data-group="Breath reset" placeholder="Yes, or what feels off…">
       </div>
     </div>
     <div class="row">
@@ -240,6 +281,7 @@
       <div>
         <h4>Is the invitation too soon?</h4>
         <p>Near the end of the email, after the practice, there is a gentle invitation to your free fifteen minute call. Some people feel that is right there in the moment something opens. Others feel it is too quick, in the same breath as a gift. What do you feel?</p>
+        <input class="fav-note" data-id="q-invitation-timing" data-name="Is the invitation too soon?" data-group="Breath reset" placeholder="Keep it, move it, or take it out…">
       </div>
     </div>
     <div class="row">
@@ -247,6 +289,7 @@
       <div>
         <h4>Which language first, and are my Spanish and Russian right?</h4>
         <p>All three emails and all three pages are written and waiting, so whichever language you record first can go live on its own. But the <a href="/email/reset-es.html">Spanish</a> and <a href="/email/reset-ru.html">Russian</a> words are mine, not yours, and your Spanish page is your own writing rather than a translation. Read them and rewrite anything that is not how you would say it. The Russian speaks formally, with «вы», the same as your Russian page.</p>
+        <input class="fav-note" data-id="q-language-order" data-name="Which language first" data-group="Breath reset" placeholder="Which one you will record first…">
       </div>
     </div>
   </div>
@@ -263,7 +306,8 @@
   <div class="howto">
     <h3>How to tell me things</h3>
     <ul>
-      <li><b>On this page:</b> type a note in the panel at the bottom right and press <b>Send feedback</b>. It comes straight to me.</li>
+      <li><b>On this page:</b> type your answers in the boxes above, or a note in the panel at the bottom right, then press <b>Send feedback</b>. It comes straight to me.</li>
+      <li><b>On the six pages above:</b> tap any line and type over it. Rewrites and notes are saved per page, so press <b>Send feedback</b> on each page you changed.</li>
       <li><b>Anywhere else:</b> a voice note is perfect, in any language.</li>
       <li><b>Nothing here is fixed,</b> and you cannot break anything. This page is private and hidden from Google.</li>
     </ul>
@@ -273,6 +317,6 @@
 
 </main>
 <!-- STRIP-BEFORE-LAUNCH -->
-<script src="/feedback.js?v=3"></script>
+<script src="/feedback.js?v=4"></script>
 </body>
 </html>

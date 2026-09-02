@@ -60,7 +60,7 @@
     .sign{font-family:var(--serif);font-size:var(--fs-md);font-style:italic;color:var(--umber);margin:30px 0 0}
   </style>
 </head>
-<body>
+<body data-fb-noun="line" data-fb-key="reset-es-page" data-fb-page="Respira con Diana, tu reset de respiración" data-fb-email="d.blaecker@gmail.com">
 <div class="card">
   <div class="top"></div>
   <div class="inner">
@@ -73,14 +73,16 @@
       <b>This is a draft for you, Diana 🤎</b><br>
       This is the page your free breath reset lives on. It is where the email sends people. The player below is waiting for your recording. Read the words as someone new to you would, and tell me anything that does not sound like you.
     </div>
+    <div class="draft" style="background:rgba(201,123,90,.1);border-color:rgba(201,123,90,.3)"><b>You can rewrite any of these words directly.</b><br>
+      Tap a line, type over it, and it turns amber. The words here are shared with the email, so fixing them once fixes both. When you are done, press <b>Send feedback</b> at the bottom right. The email has a few lines of its own, on its own page.</div>
 
-    <p class="intro">Tu reset de respiración.</p>
-    <p class="sub">Diez minutos tranquilos, tumbada, donde estés. Nada que hacer bien.</p>
+    <p class="intro" data-edit="Headline">Tu reset de respiración.</p>
+    <p class="sub" data-edit="Line under the headline">Diez minutos tranquilos, tumbada, donde estés. Nada que hacer bien.</p>
 
     <!-- Keep both the player and the download link when the audio lands: some people
          want it on the phone for a flight or a room with no signal. -->
     <div class="player">
-      <p class="player-title">Una respiración para volver a casa</p>
+      <p class="player-title" data-edit="Name of the practice">Una respiración para volver a casa</p>
       <p class="player-meta">Guiada por Diana</p>
       <!-- STRIP-WHEN-AUDIO-LANDS -->
       <div class="pending">
@@ -100,26 +102,28 @@
 
     <div class="sectionhead">Antes de empezar</div>
     <ul class="steps">
-      <li>Busca diez minutos en los que nadie te necesite.</li>
-      <li>Túmbate en un lugar cálido y cómodo.</li>
-      <li>Auriculares si los tienes, así mi voz está cerca.</li>
-      <li>Si en algún momento se vuelve demasiado, abre los ojos y respira normal. Eso no es fallar, eso es escucharte.</li>
+      <li data-edit="Before you begin 1">Busca diez minutos en los que nadie te necesite.</li>
+      <li data-edit="Before you begin 2">Túmbate en un lugar cálido y cómodo.</li>
+      <li data-edit="Before you begin 3">Auriculares si los tienes, así mi voz está cerca.</li>
+      <li data-edit="Before you begin 4">Si en algún momento se vuelve demasiado, abre los ojos y respira normal. Eso no es fallar, eso es escucharte.</li>
     </ul>
-    <p class="after">Después puedes sentirte más ligera, o cansada, o un poco sensible. Todo eso es bienvenido. No hay nada que hacer con ello, solo dejar que se asiente.</p>
+    <p class="after" data-edit="How you might feel afterwards">Después puedes sentirte más ligera, o cansada, o un poco sensible. Todo eso es bienvenido. No hay nada que hacer con ello, solo dejar que se asiente.</p>
 
     <hr class="rule">
 
     <div class="deeper">
-      <h2>Si esto abre una puerta</h2>
-      <p>Hay personas que hacen esta práctica y sienten un alivio pequeño y tranquilo. Otras notan algo más antiguo por debajo, algo que una práctica de diez minutos no alcanza. Si eres tú, podemos sostenerlo juntas.</p>
-      <p>La primera conversación es gratuita y dura quince minutos. Sin plan, sin presión, solo nosotras dos viendo si esto es para ti.</p>
-      <a class="cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B_Pi3BGo1dXRyh1MfxqbBzI2WsJi37BYzN_wqbi-OFiDytP4g3b6O6x13jVz-aQx00vrF55f2" target="_blank" rel="noopener">Reserva una llamada gratuita de 15 minutos</a>
+      <h2 data-edit="Invitation heading">Si esto abre una puerta</h2>
+      <p data-edit="Invitation, first paragraph">Hay personas que hacen esta práctica y sienten un alivio pequeño y tranquilo. Otras notan algo más antiguo por debajo, algo que una práctica de diez minutos no alcanza. Si eres tú, podemos sostenerlo juntas.</p>
+      <p data-edit="Invitation, second paragraph">La primera conversación es gratuita y dura quince minutos. Sin plan, sin presión, solo nosotras dos viendo si esto es para ti.</p>
+      <a class="cta" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1B_Pi3BGo1dXRyh1MfxqbBzI2WsJi37BYzN_wqbi-OFiDytP4g3b6O6x13jVz-aQx00vrF55f2" target="_blank" rel="noopener"><span data-edit="The booking button">Reserva una llamada gratuita de 15 minutos</span></a>
       <p class="alt">o escríbeme por
         <a href="https://wa.me/66631259588?text=Hola%20Diana%2C%20escuch%C3%A9%20el%20reset%20de%20respiraci%C3%B3n" target="_blank" rel="noopener">WhatsApp</a>.</p>
-      <p class="sign">Con cariño,<br>Diana</p>
+      <p class="sign" data-edit="How you sign off">Con cariño,<br>Diana</p>
     </div>
 
   </div>
 </div>
+<!-- STRIP-BEFORE-LAUNCH -->
+<script src="/feedback.js?v=4"></script>
 </body>
 </html>

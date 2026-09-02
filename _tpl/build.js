@@ -213,6 +213,13 @@ function main() {
       templates: [
         { file: 'reset/email.html', out: { en: 'email/reset-en.html', es: 'email/reset-es.html', ru: 'email/reset-ru.html' } },
         { file: 'reset/page.html', out: { en: 'breath-reset.html', es: 'breath-reset-es.html', ru: 'breath-reset-ru.html' } },
+        // Same email, plus the feedback widget, so Diana can review it without the
+        // script ever reaching a real inbox.
+        {
+          file: 'reset/email.html',
+          out: { en: 'email/review-en.html', es: 'email/review-es.html', ru: 'email/review-ru.html' },
+          extra: 'reset/review.json',
+        },
       ],
     },
   ];
@@ -228,7 +235,8 @@ function main() {
         const out = t.out[code];
         if (!out) continue;
         const tpl = fs.readFileSync(path.join(DIR, t.file), 'utf8');
-        const html = render(tpl, ctx, { strict });
+        const extra = t.extra ? JSON.parse(fs.readFileSync(path.join(DIR, t.extra), 'utf8')) : null;
+        const html = render(tpl, extra ? Object.assign({}, ctx, extra) : ctx, { strict });
         if (!check) {
           fs.mkdirSync(path.dirname(path.join(outRoot, out)), { recursive: true });
           fs.writeFileSync(path.join(outRoot, out), html);

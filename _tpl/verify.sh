@@ -16,6 +16,7 @@ node "$DIR/build.js" --strict
 GENERATED=(
   index.html es.html ru.html
   email/reset-en.html email/reset-es.html email/reset-ru.html
+  email/review-en.html email/review-es.html email/review-ru.html
   breath-reset.html breath-reset-es.html breath-reset-ru.html
 )
 
@@ -37,3 +38,18 @@ if grep -lP '\x{2014}|\x{2013}|&mdash;|&ndash;|&#8212;|&#8211;' "${PATHS[@]}" 2>
   exit 1
 fi
 echo "OK   no em/en dashes in output"
+
+# The delivered emails must never carry the feedback widget; only the review copies do.
+for f in email/reset-en.html email/reset-es.html email/reset-ru.html; do
+  if grep -q 'feedback\.js' "$ROOT/$f"; then
+    echo "FAIL $f carries the feedback widget; only email/review-*.html may"
+    exit 1
+  fi
+done
+for f in email/review-en.html email/review-es.html email/review-ru.html; do
+  if ! grep -q 'feedback\.js' "$ROOT/$f"; then
+    echo "FAIL $f is missing the feedback widget"
+    exit 1
+  fi
+done
+echo "OK   feedback widget only in the review copies"
