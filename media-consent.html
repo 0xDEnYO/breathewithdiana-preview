@@ -70,6 +70,7 @@
     .send:hover{background:#7A4A36}
     .send:active{transform:translateY(1px)}
     .footnote{font-size:var(--fs-2xs);color:var(--muted);text-align:center;margin:16px 0 0;line-height:1.5}
+    .err{color:var(--error);font-size:var(--fs-xs);text-align:center;margin:14px 0 0;min-height:1px}
   </style>
 </head>
 <body>
@@ -83,7 +84,7 @@
     <!-- STRIP-BEFORE-LAUNCH -->
     <div class="draft">
       <b>This is a draft for you, Diana 🤎</b><br>
-      This is the form you send to anyone whose photos or videos you would love to share. Read it as they would. The <b>Yes / No</b> buttons show how it will feel to fill in. Nothing here goes out yet, let me know if anything needs to change.
+      This is the form you send to anyone whose photos or videos you would love to share. Read it as they would. The <b>Send</b> button now works: a real answer is saved privately for you, so feel free to test it. Let me know if any wording needs to change.
     </div>
 
     <!-- ===== gentle intro ===== -->
@@ -112,7 +113,7 @@
     <div class="sectionhead">Where I may share</div>
     <p class="sectionsub">This may include my website, social media, and printed materials.</p>
 
-    <div class="q">
+    <div class="q" data-id="q-may-share">
       <div class="q-text">May I share photos or videos that include you in these places?</div>
       <div class="yn"><button type="button" class="yn-yes">Yes</button><button type="button" class="yn-no">No</button></div>
     </div>
@@ -121,12 +122,12 @@
     <div class="sectionhead">Your name with it</div>
     <p class="sectionsub">If you share words or a story with me too, may I use your name beside them?</p>
 
-    <div class="q">
+    <div class="q" data-id="q-may-use-name">
       <div class="q-text">Yes, you may use my first name</div>
       <div class="yn"><button type="button" class="yn-yes">Yes</button><button type="button" class="yn-no">No</button></div>
     </div>
 
-    <div class="q">
+    <div class="q" data-id="q-anonymous">
       <div class="q-text">I would rather stay anonymous<span class="q-help">No name shown, just the image or the words.</span></div>
       <div class="yn"><button type="button" class="yn-yes">Yes</button><button type="button" class="yn-no">No</button></div>
     </div>
@@ -161,18 +162,78 @@
       <input type="text" id="date" placeholder="e.g. 12 July 2026">
     </div>
 
-    <button type="button" class="send">Send to Diana 🤎</button>
-    <p class="footnote">Draft preview. The Send button is not wired up yet, we will connect it once you are happy with the wording.</p>
+    <!-- honeypot, hidden from people, filled in by bots -->
+    <input type="text" name="company" id="company" tabindex="-1" autocomplete="off"
+           aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+    <p class="err" id="err" role="alert"></p>
+    <button type="button" class="send" id="sendBtn">Send to Diana 🤎</button>
+    <p class="footnote" id="sendFootnote">Your answer goes straight to Diana and nobody else.</p>
 
   </div>
 </div>
 
 <script>
-  // Yes/No toggle, preview only, so Diana feels how it answers.
+  // ====== CONFIG ======
+  // Replace with the Apps Script /exec URL once
+  // _build/consent-and-reset-intake/deploy.md is done.
+  const ENDPOINT = "__CONSENT_RESET_APPS_SCRIPT_URL__";
+  const SUBMIT_TOKEN = "bwd_mc_4Rt8mJ2w"; // must match Code.gs TOKEN_CONSENT
+
+  // Yes/No toggle. Also records which one is selected, on the .yn container itself,
+  // so the submit handler can read it back (yn.dataset.value).
   document.querySelectorAll('.yn').forEach(function(yn){
     var yes = yn.querySelector('.yn-yes'), no = yn.querySelector('.yn-no');
-    yes.addEventListener('click', function(){ yes.classList.add('sel-yes'); no.classList.remove('sel-no'); });
-    no.addEventListener('click', function(){ no.classList.add('sel-no'); yes.classList.remove('sel-yes'); });
+    yes.addEventListener('click', function(){ yes.classList.add('sel-yes'); no.classList.remove('sel-no'); yn.dataset.value='yes'; setErr(''); });
+    no.addEventListener('click', function(){ no.classList.add('sel-no'); yes.classList.remove('sel-yes'); yn.dataset.value='no'; setErr(''); });
+  });
+
+  // ====== submit ======
+  function val(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function ynVal(qid){ var yn = document.querySelector('.q[data-id="'+qid+'"] .yn'); return yn ? (yn.dataset.value || '') : ''; }
+  function setErr(m){ document.getElementById('err').textContent = m || ''; }
+
+  document.getElementById('sendBtn').addEventListener('click', async function(){
+    var btn = this;
+    setErr('');
+    if (document.getElementById('company').value) return; // honeypot, do nothing
+    if (!val('name')) return setErr('Please add your name, so Diana knows whose blessing this is.');
+    var mayShare = ynVal('q-may-share');
+    if (!mayShare) return setErr('Please answer yes or no to sharing photos or videos.');
+    // A "no" is a real answer worth recording, so it must be submittable without
+    // ticking a box that reads as granting permission. Only a "yes" needs the box.
+    if (mayShare === 'yes' && !document.getElementById('consent').checked) {
+      return setErr('Please tick the box above to give your permission.');
+    }
+    if (!val('signature')) return setErr('Please type your full name as your signature.');
+    if (ENDPOINT.indexOf('APPS_SCRIPT_URL') !== -1) return setErr('This form is not connected yet. Ask Daniel to finish the one-time setup.');
+
+    var payload = {
+      form: 'media-consent',
+      name: val('name'),
+      contact: val('contact'),
+      when: val('when'),
+      mayShare: mayShare,
+      mayUseName: ynVal('q-may-use-name'),
+      anonymous: ynVal('q-anonymous'),
+      anythingElse: val('anything'),
+      consent: document.getElementById('consent').checked,
+      signature: val('signature'),
+      dateGiven: val('date'),
+      token: SUBMIT_TOKEN,
+      company: document.getElementById('company').value,
+      page: location.href
+    };
+
+    btn.disabled = true; var old = btn.textContent; btn.textContent = 'Sending\u2026';
+    try {
+      await fetch(ENDPOINT, { method:'POST', mode:'no-cors', body: JSON.stringify(payload) });
+      btn.textContent = 'Sent \ud83e\udd0e';
+      document.getElementById('sendFootnote').textContent = 'Thank you. Your answer has been saved privately, only Diana can see it. You can change your mind at any time, just message her.';
+    } catch (err) {
+      btn.disabled = false; btn.textContent = old;
+      setErr('Something went wrong sending this. Please try again in a moment.');
+    }
   });
 </script>
 </body>

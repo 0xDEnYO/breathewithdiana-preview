@@ -231,6 +231,12 @@
     .reset-form{display:flex;gap:10px;max-width:430px;margin:0 auto;justify-content:center;flex-wrap:wrap}
     .reset-form input{font-family:var(--sans);font-size:var(--fs-sm);padding:13px 18px;border-radius:var(--radius-pill);border:none;
       flex:1;min-width:220px;color:var(--umber)}
+    /* the placeholder would otherwise inherit .reset p's 28px bottom margin and
+       pad the band out before anyone has submitted anything */
+    .reset-note:empty{display:none}
+    .reset-note:not(:empty){display:block;max-width:430px;margin:16px auto 0;padding:13px 16px;
+      background:rgba(244,239,230,.95);border-radius:12px;
+      font-size:var(--fs-sm);line-height:1.55;color:var(--umber);text-align:center}
 
     /* ===================================================================== BOOK */
     .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:18px}
@@ -745,10 +751,19 @@
     <h2>Una pausa para volver a ti.</h2>
     <p class="reset-kicker">Reset de respiración gratis</p>
     <p>Si todavía no sientes que sea el momento para una sesión completa, puedes empezar aquí. Una práctica guiada y gratuita para bajar el ritmo, volver a tu respiración y experimentar, estés donde estés, una pequeña muestra de este trabajo. Déjame tu correo y te la enviaré directamente.</p>
-    <form class="reset-form" onsubmit="return false">
-      <input type="email" placeholder="tu@correo.com" aria-label="correo">
-      <button class="btn btn-primary" type="submit">Envíame el reset</button>
+    <form class="reset-form" id="reset-form" novalidate>
+      <input type="email" id="reset-email" placeholder="tu@correo.com" aria-label="correo" autocomplete="email">
+      <!-- honeypot, hidden from people, filled in by bots -->
+      <input type="text" name="company" id="reset-company" tabindex="-1" autocomplete="off"
+             aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button class="btn btn-primary" type="submit" id="reset-submit">Envíame el reset</button>
     </form>
+    <p class="reset-note" id="reset-note" role="status" aria-live="polite"
+       data-sending="Enviando…"
+       data-thanks="Gracias. Tu correo está guardado. Estoy terminando la grabación y te la enviaré en cuanto esté lista. 🤎"
+       data-err-email="Ese correo no parece del todo correcto. ¿Lo puedes revisar?"
+       data-err-send="Algo salió mal ahora mismo. Inténtalo de nuevo en un momento."
+       data-err-unwired="Todavía no está conectado. Escríbeme y te la envío yo misma."></p>
   </div>
 </section>
 
@@ -932,6 +947,50 @@
   });
   document.addEventListener('click', function(e){
     if(menu.open && !menu.contains(e.target)) close();
+  });
+})();
+
+/* Free-reset email capture, through the same Apps Script deployment as
+   media-consent.html (see _build/consent-and-reset-intake/).
+
+   reset_thanks promises a send "as soon as it is ready" rather than an instant
+   delivery on purpose: the recording does not exist yet, so a waitlist is the only
+   honest confirmation. Swap it for a delivery line once the audio ships. */
+(function(){
+  var ENDPOINT = "__CONSENT_RESET_APPS_SCRIPT_URL__";
+  var SUBMIT_TOKEN = "bwd_rs_6Yb1nZ5k"; // must match Code.gs TOKEN_RESET
+
+  var form = document.getElementById('reset-form');
+  var note = document.getElementById('reset-note');
+  var email = document.getElementById('reset-email');
+  var btn = document.getElementById('reset-submit');
+  var pot = document.getElementById('reset-company');
+  if(!form || !note || !email || !btn) return;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    note.textContent = '';
+    if(pot && pot.value) return; // honeypot, do nothing
+    var v = email.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ note.textContent = note.dataset.errEmail; return; }
+    if(ENDPOINT.indexOf('APPS_SCRIPT_URL') !== -1){ note.textContent = note.dataset.errUnwired; return; }
+
+    var old = btn.textContent;
+    btn.disabled = true; btn.textContent = note.dataset.sending;
+    fetch(ENDPOINT, {
+      method: 'POST', mode: 'no-cors',
+      body: JSON.stringify({
+        form: 'reset', email: v, token: SUBMIT_TOKEN,
+        lang: document.documentElement.lang || '',
+        company: pot ? pot.value : '', page: location.href
+      })
+    }).then(function(){
+      form.style.display = 'none';
+      note.textContent = note.dataset.thanks;
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = old;
+      note.textContent = note.dataset.errSend;
+    });
   });
 })();
 </script>
