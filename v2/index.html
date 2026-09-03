@@ -52,6 +52,26 @@
   --ring-from:1.22;       /* invitation ring settle */
   --measure:40rem;
   --head-h:56px;
+
+  /* Vertical rhythm. Two --gap make one boundary between sections. A boundary that
+     touches a photo plate, or closes a colour band, spends --gap-tight on that side:
+     an image or a band edge already separates, so it needs less air than a text block
+     to read as a new section. Every section boundary on the page resolves to one of
+     these two, which is what keeps the scroll rhythm even. */
+  --gap:clamp(1.9rem,2.6vw,2.5rem);
+  --gap-tight:clamp(1.1rem,1.7vw,1.6rem);
+
+  /* One type scale. A role has one size everywhere: body copy, small copy inside a
+     card or list, an italic serif aside, and three tiers of uppercase label
+     (section / control / byline). Nothing on the page sets a size outside this. */
+  --fs-body:1.0625rem;
+  --fs-body-sm:.97rem;
+  --fs-aside:1rem;
+  --fs-quote:clamp(1.25rem,3.4vw,1.6rem);
+  --fs-pull:1.18rem;
+  --fs-label:.72rem;
+  --fs-label-ui:.68rem;
+  --fs-micro:.64rem;
 }
 html[data-motion="calm"]{
   --dot-amp:1;
@@ -73,7 +93,7 @@ html{scroll-behavior:auto;overflow-x:hidden}
 body{
   background:var(--bone);
   color:var(--umber);
-  font:400 1.0625rem/1.75 var(--sans);
+  font:400 var(--fs-body)/1.75 var(--sans);
   -webkit-font-smoothing:antialiased;
   -webkit-tap-highlight-color:transparent;
   overflow-x:hidden;
@@ -91,7 +111,7 @@ section{scroll-margin-top:calc(var(--head-h) + 28px)}
 
 /* type */
 .smallcaps{
-  font:600 .72rem/1.5 var(--sans);
+  font:600 var(--fs-label)/1.5 var(--sans);
   letter-spacing:.24em;
   text-transform:uppercase;
   color:var(--muted-strong);
@@ -99,16 +119,16 @@ section{scroll-margin-top:calc(var(--head-h) + 28px)}
 h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--umber);text-wrap:balance}
 h2{font-size:clamp(1.9rem,5.2vw,3rem);line-height:1.15}
 h3{font-size:clamp(1.45rem,4.2vw,2rem);line-height:1.2}
-h4{font:600 1rem/1.4 var(--sans);color:var(--umber)}
+h4{font:600 1.02rem/1.4 var(--sans);color:var(--umber)}
 p{color:var(--umber)}
 .lead{font-size:clamp(1.0625rem,2.4vw,1.1875rem);line-height:1.8}
 .caption{
-  font:italic 400 1.02rem/1.55 var(--serif);
+  font:italic 400 var(--fs-aside)/1.55 var(--serif);
   color:var(--muted-strong);
   text-align:center;
 }
 .epigraph{
-  font:italic 400 clamp(1.25rem,3.4vw,1.6rem)/1.5 var(--serif);
+  font:italic 400 var(--fs-quote)/1.5 var(--serif);
   color:var(--umber);
   text-align:center;
   max-width:34rem;
@@ -194,13 +214,13 @@ html.js .reveal.in{opacity:1;transition:opacity .45s var(--sine)}
   position:relative;
 }
 .head-brand{
-  font:600 .66rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:var(--umber);text-decoration:none;
   display:inline-flex;align-items:center;min-height:44px;
 }
 .head-chapter{
   flex:1 1 auto;min-width:0;text-align:center;padding:0 1rem;
-  font:italic 400 .98rem/1 var(--serif);
+  font:italic 400 var(--fs-aside)/1 var(--serif);
   color:var(--muted-strong);
   transition:opacity .3s var(--sine);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;pointer-events:none;
@@ -208,20 +228,20 @@ html.js .reveal.in{opacity:1;transition:opacity .45s var(--sine)}
 .head-right{display:flex;align-items:center;gap:clamp(.4rem,1.4vw,1.1rem)}
 .head-btn{
   appearance:none;background:none;border:0;cursor:pointer;
-  font:600 .66rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted-strong);
   min-height:44px;padding:0 .35rem;
   display:inline-flex;align-items:center;
   transition:color .25s;
 }
 .head-btn:hover{color:var(--umber)}
-.head-langs{display:flex;align-items:center;gap:.55rem;font:600 .66rem/1 var(--sans);letter-spacing:.14em}
+.head-langs{display:flex;align-items:center;gap:.55rem;font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.16em}
 .head-langs .on{color:var(--umber)}
 .head-langs .off{color:rgba(91,70,54,.45);cursor:default}
 .motion-toggle{
   appearance:none;background:none;border:0;cursor:pointer;
   min-height:44px;padding:0 .35rem;
-  font:600 .66rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   display:inline-flex;align-items:center;gap:.45em;
   color:var(--muted-strong);
 }
@@ -232,7 +252,7 @@ html[data-motion="calm"] .motion-toggle .mt-on{color:rgba(91,70,54,.45)}
 html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .motion-toggle .mt-sep{color:rgba(91,70,54,.4)}
 .head-cta{
-  font:600 .66rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:var(--terracotta-deep);text-decoration:none;
   border:1px solid rgba(144,88,64,.55);border-radius:2px;
   min-height:44px;padding:0 1rem;
@@ -253,7 +273,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   display:inline-flex;align-items:center;justify-content:center;
   min-height:48px;padding:.85rem 1.7rem;
   border:1px solid var(--terracotta-deep);border-radius:2px;
-  font:600 .74rem/1.35 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  font:600 var(--fs-label)/1.35 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:var(--terracotta-deep);text-decoration:none;text-align:center;
   background:transparent;cursor:pointer;
   transition:color .25s,background .25s,border-color .25s;
@@ -262,7 +282,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .btn-fill{background:var(--terracotta-deep);color:var(--bone)}
 .btn-fill:hover{background:var(--terracotta-ink);color:var(--bone)}
 .whisper{
-  font:italic 400 .98rem/1.5 var(--serif);
+  font:italic 400 var(--fs-aside)/1.5 var(--serif);
   color:var(--muted-strong);
   text-align:center;
   margin-top:.5rem;
@@ -317,7 +337,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 }
 #hero[data-invited="done"] .ring{animation:none;opacity:0;transition:opacity .6s}
 .invite-cap{
-  font:italic 400 1.02rem/1.5 var(--serif);
+  font:italic 400 var(--fs-aside)/1.5 var(--serif);
   color:var(--terracotta-deep);
   margin-top:clamp(.9rem,2vh,1.4rem);
   min-height:1.55em;
@@ -334,7 +354,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   margin-top:clamp(1rem,2.4vh,1.8rem);
 }
 .author-face{
-  width:46px;height:46px;border-radius:50%;
+  width:80px;height:80px;border-radius:50%;
   /* a face crop, not the full frame: at 46px a full-body shot leaves the face at
      about a sixth of the circle and reads as a shape rather than as her */
   background-image:url("/img/diana-avatar.jpg");
@@ -342,7 +362,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   background-position:50% 44%;
   box-shadow:0 0 0 1px var(--hairline-mid);
 }
-.author-line .smallcaps{letter-spacing:.3em}
+.author-line .smallcaps{letter-spacing:.26em}
 .hero-sub{
   max-width:28em;
   margin-top:clamp(1.1rem,2.6vh,2rem);
@@ -358,7 +378,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .hero-ctas .btn{min-width:min(19rem,78vw)}
 .hero-reset-line{
   margin-top:clamp(.9rem,2vh,1.3rem);
-  font:italic 400 .98rem/1.5 var(--serif);
+  font:italic 400 var(--fs-aside)/1.5 var(--serif);
   color:var(--muted-strong);
 }
 .hero-reset-line a{color:var(--terracotta-deep);text-underline-offset:3px;text-decoration-color:rgba(144,88,64,.4)}
@@ -367,11 +387,11 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .plate{margin:0 auto;text-align:center}
 .plate img{margin-inline:auto;box-shadow:0 0 0 1px var(--hairline)}
 .plate figcaption{margin-top:1rem}
-#frontispiece{padding:clamp(1.2rem,3vh,3rem) 1.25rem clamp(2.2rem,4.4vw,3.4rem)}
+#frontispiece{padding:var(--gap-tight) 1.25rem var(--gap-tight)}
 /* per Diana: crop the hero photo shorter (less floor). Was 2/3 (very tall); now 4/5
    with the frame biased upward so the floor at the bottom is cropped, not Diana. */
 #frontispiece .plate img{width:min(520px,86vw);aspect-ratio:4/5;border-radius:22px;object-fit:cover;object-position:50% 20%}
-#space{padding:clamp(2.4rem,5vw,3.8rem) 1.25rem}
+#space{padding:calc(var(--gap) * .85) 1.25rem}
 /* the story photo takes the frontispiece's 4/5 frame so an upright shot does not
    tower over the text column beside it. The figure needs the explicit width: with
    `.plate{margin:0 auto}` an auto-margin grid item sizes to max-content, and a
@@ -380,62 +400,31 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 #story .plate img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 62%}
 
 /* ============ chapters ============ */
-.chapter{padding:clamp(2.6rem,5.4vw,4.4rem) 0}
-.chapter-head{text-align:center;margin-bottom:clamp(2.2rem,5vw,3.5rem)}
+.chapter{padding:var(--gap) 0}
+/* a chapter that opens on a photo plate, or closes on a full-bleed colour band,
+   hands that side of the boundary to the plate or the band */
+#session{padding-top:var(--gap-tight);padding-bottom:0}
+.chapter-head{text-align:center;margin-bottom:calc(var(--gap) * 1.2)}
 .chapter-head .divider{margin-bottom:1.6rem}
 .chapter-head .smallcaps{display:block;margin-bottom:1.1rem}
 .chapter-head h2{max-width:24ch;margin-inline:auto}
 .chapter-body p + p{margin-top:1.2em}
-
-/* the practice: the drawn breath plate */
-#practice{timeline-scope:--plate}
-.breathfig{margin:clamp(2.6rem,6vw,4rem) auto 0;max-width:960px}
-.breathfig-label{text-align:center;margin-bottom:.6rem}
-.breathfig-canvas{position:relative;view-timeline:--plate block}
-.breathfig-canvas svg{display:block;width:100%;height:auto}
-.breathfig-cover{display:none}  /* retired: the plate always ships complete, the line is drawn */
-.breathfig svg .line{stroke-dasharray:1;stroke-dashoffset:0}  /* default: the finished plate */
-.fig-steps{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:clamp(1.1rem,3vw,2.2rem);
-  margin-top:clamp(1.4rem,3.5vw,2.4rem);
-}
-.fig-step .fig-n{
-  font:500 1.55rem/1 var(--serif);
-  font-feature-settings:"onum" 1;
-  color:var(--terracotta-deep);
-  display:block;margin-bottom:.45rem;
-}
-.fig-step h4{margin-bottom:.35rem}
-.fig-step p{font-size:.92rem;line-height:1.65;color:var(--muted-strong)}
-@media (max-width:719px){
-  .fig-steps{grid-template-columns:1fr 1fr;gap:1.5rem 1.25rem}
-}
-/* Progressive enhancement: the visitor's own scroll inks the connected breath.
-   Defaults to a finished plate (dashoffset 0) so where scroll timelines are
-   unsupported, or motion is calm, the line is simply drawn and complete. It is
-   never hidden at rest, it only draws itself as the figure first enters view. */
-@supports ((animation-timeline: view()) and (timeline-scope: --plate)){
-  html[data-motion="full"] .breathfig svg .line{
-    animation:draw-breath linear both;
-    animation-timeline:--plate;
-    animation-range:entry 5% entry 45%;
-  }
-}
-@keyframes draw-breath{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+/* the centred paragraph that introduces a chapter under its heading */
+.chapter-intro{text-align:center;margin-bottom:var(--gap)}
 
 /* notes on the text (fact cards) */
 .notes{
   display:grid;grid-template-columns:repeat(3,1fr);
+  max-width:60rem;margin-inline:auto;
   gap:clamp(1.4rem,3.5vw,2.6rem);
-  margin-top:clamp(2.8rem,6vw,4.2rem);
-  padding-top:clamp(1.8rem,4vw,2.6rem);
+  margin-top:calc(var(--gap) * 1.5);
+  padding-top:calc(var(--gap) * .9);
   border-top:1px solid var(--hairline);
 }
 .note .smallcaps{display:block;margin-bottom:.6rem;color:var(--terracotta-deep)}
-.note p{font-size:.95rem;line-height:1.7}
+.note p{font-size:var(--fs-body-sm);line-height:1.7}
 @media (max-width:719px){.notes{grid-template-columns:1fr;gap:1.7rem}}
-.boundary{margin-top:clamp(2.8rem,6vw,4rem)}
+.boundary{margin-top:calc(var(--gap) * 1.2)}
 
 /* ============ the doors spread ============ */
 .spread{
@@ -451,7 +440,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .orn-terra{background:var(--terracotta)}
 .page-leaf .smallcaps{display:block;margin-bottom:.8rem}
 .page-leaf h3{margin-bottom:.8rem}
-.page-leaf > p{font-size:.98rem;line-height:1.72;max-width:26em;margin-inline:auto}
+.page-leaf > p{font-size:var(--fs-body-sm);line-height:1.72;max-width:26em;margin-inline:auto}
 .page-leaf .cta-unit{margin-top:1.6rem}
 .microrev{
   margin-top:1.7rem;padding-top:1.3rem;
@@ -460,14 +449,14 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   max-width:24rem;margin-inline:auto;
 }
 .microrev img{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 1px var(--hairline-mid)}
-.microrev p{font:italic 400 .98rem/1.55 var(--serif);color:var(--umber)}
-.microrev .who{display:block;margin-top:.3rem;font:600 .62rem/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-strong);font-style:normal}
+.microrev p{font:italic 400 var(--fs-aside)/1.55 var(--serif);color:var(--umber)}
+.microrev .who{display:block;margin-top:.3rem;font:600 var(--fs-micro)/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-strong);font-style:normal}
 .microrev .who a{color:var(--muted-strong)}
 @media (max-width:819px){
   .spread{grid-template-columns:1fr}
   .page-leaf + .page-leaf{border-left:0;border-top:1px solid var(--hairline)}
 }
-.doors-note{margin-top:clamp(2.4rem,5vw,3.4rem)}
+.doors-note{margin-top:calc(var(--gap) * 1.2)}
 
 /* ============ what to expect: contents page ============ */
 .toc{list-style:none;max-width:44rem;margin:0 auto}
@@ -481,11 +470,11 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   font-feature-settings:"onum" 1;
   color:var(--terracotta-deep);
 }
-.toc-row h4{margin-bottom:.45rem;font-size:1.05rem}
-.toc-row p{font-size:.98rem;line-height:1.72;color:var(--umber)}
+.toc-row h4{margin-bottom:.45rem}
+.toc-row p{font-size:var(--fs-body-sm);line-height:1.72;color:var(--umber)}
 .toc-row p + p{margin-top:.8em}
 .step-pull{
-  font:italic 400 1.18rem/1.55 var(--serif) !important;
+  font:italic 400 var(--fs-pull)/1.55 var(--serif) !important;
   color:var(--terracotta-deep) !important;
 }
 
@@ -493,29 +482,48 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .letter{
   background:var(--umber);
   color:var(--bone);
-  margin-top:clamp(3rem,7vw,5rem);
-  padding:clamp(3rem,8vw,5.5rem) 1.5rem;
+  margin-top:calc(var(--gap) * 1.5);
+  padding:calc(var(--gap) * 1.9) 1.5rem calc(var(--gap) * 1.6);
 }
 .letter-inner{max-width:36rem;margin-inline:auto}
 .letter .smallcaps{color:rgba(244,239,230,.75);display:block;text-align:center;margin-bottom:1rem}
 .letter h3{color:var(--bone);text-align:center;margin-bottom:2rem;font-weight:400}
-.letter p{color:rgba(244,239,230,.93);font-size:1rem;line-height:1.85}
+.letter p{color:rgba(244,239,230,.93);font-size:var(--fs-body);line-height:1.85}
 .letter p + p{margin-top:1.15em}
-.letter p:first-of-type::first-letter{
+.letter-inner > p:first-of-type::first-letter{
   font-family:var(--serif);font-weight:500;
   font-size:3.3em;line-height:.82;
   float:left;padding:.06em .12em 0 0;
   color:var(--bone);
 }
 .letter em{color:var(--bone)}
-.letter-sig{
-  margin-top:2.2rem;padding-top:1.6rem;
-  border-top:1px solid rgba(244,239,230,.22);
+/* The letter's closing blessing. It is a quote, not another paragraph of the letter,
+   so it gets its own ground: an ochre wash and ochre rules inside the dark spread.
+   Ochre is the brand's rare eye-catcher, which is exactly the job here. */
+.benediction{
+  margin:calc(var(--gap) * 1.4) auto 0;
+  padding:clamp(1.4rem,3.6vw,2rem) clamp(1.3rem,4vw,2.4rem) clamp(1.7rem,4.4vw,2.3rem);
+  background:rgba(212,162,76,.13);
+  border-top:1px solid rgba(212,162,76,.55);
+  border-bottom:1px solid rgba(212,162,76,.55);
   text-align:center;
 }
-.letter-sig p{font:italic 400 1.28rem/1.6 var(--serif);color:var(--bone)}
+.benediction::before{
+  content:"\201C";
+  display:block;
+  font:400 clamp(3rem,8vw,3.9rem)/.62 var(--serif);
+  color:var(--ochre);
+  margin-bottom:.55rem;
+}
+.benediction p{
+  font:italic 400 clamp(1.3rem,3.3vw,1.7rem)/1.45 var(--serif);
+  color:#FBF6EC;
+  max-width:26rem;margin-inline:auto;
+  text-wrap:balance;
+}
+.letter-sig{margin-top:calc(var(--gap) * 1.1);text-align:center}
 .letter-sig .sig-name{
-  display:block;margin-top:1rem;
+  display:block;
   font:italic 500 1.6rem/1 var(--serif);color:rgba(244,239,230,.9);
 }
 
@@ -541,7 +549,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .story-more{margin-top:1.4rem}
 .story-more summary{
   list-style:none;cursor:pointer;
-  font:600 .7rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:var(--terracotta-deep);
   padding:.9rem 0;border-top:1px solid var(--hairline);
   display:flex;align-items:center;min-height:44px;
@@ -553,47 +561,25 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .story-more .body{animation:dissolve .5s var(--sine) both}
 .story-more .body p + p{margin-top:1.15em}
 @keyframes dissolve{from{opacity:0}to{opacity:1}}
-.story-sig{margin-top:clamp(2.4rem,5vw,3.2rem)}
+.story-sig{margin-top:calc(var(--gap) * 1.2)}
 .story-cta{display:flex;flex-direction:column;align-items:center;margin-top:clamp(1.8rem,4vw,2.6rem)}
 
-/* ============ reviews as letters ============ */
-.letters{display:flex;flex-direction:column;gap:clamp(2.6rem,6vw,4rem);max-width:46rem;margin-inline:auto}
-.rletter{max-width:34rem}
-.rletter:nth-child(2){margin-left:auto;max-width:30rem}
-.rletter:nth-child(3){max-width:31rem;margin-left:clamp(0px,6vw,4rem)}
-.rletter .quote{
-  font:400 1.22rem/1.62 var(--serif);
-  color:var(--umber);
-}
-.rletter .quote + .quote{margin-top:.9em}
-.rletter .byline{
-  display:flex;align-items:center;gap:.75rem;
-  margin-top:1.3rem;
-}
-.rletter .byline img{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--hairline-mid)}
-.rletter .byline b{font:600 .7rem/1.5 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--umber);display:block}
-.rletter .byline a{font:500 .78rem/1.4 var(--sans);color:var(--muted-strong);letter-spacing:.02em}
-.rev-more summary{list-style:none;cursor:pointer}
-.rev-more summary::-webkit-details-marker{display:none}
-.rev-more .toggle-cta{
-  font:600 .64rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
-  color:var(--terracotta-deep);white-space:nowrap;
-}
-.rev-more[open] .quote-excerpt{display:none}
-.rev-more:not([open]) .quote-full{display:none}
-.rev-more[open] .quote-full{animation:dissolve .5s var(--sine) both}
+/* ============ reviews ============ */
 .reviews-foot{margin-top:clamp(2.6rem,6vw,3.6rem);text-align:center}
-.reviews-foot .note{font:italic 400 .95rem/1.6 var(--serif);color:var(--muted-strong)}
-.reviews-foot .share{display:inline-flex;align-items:center;min-height:44px;margin-top:.5rem;font:600 .7rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta-deep);text-decoration:none}
+.reviews-foot .note{font:italic 400 var(--fs-aside)/1.6 var(--serif);color:var(--muted-strong)}
+.reviews-foot .share{display:inline-flex;align-items:center;min-height:44px;margin-top:.5rem;font:600 var(--fs-label-ui)/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta-deep);text-decoration:none}
 .reviews-foot .share:hover{color:var(--terracotta-ink)}
 
 /* ============ reset appendix ============ */
-#reset{background:var(--cream);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
-#reset .chapter-head{margin-bottom:1.6rem}
+#reset{
+  background:var(--cream);
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  padding-bottom:calc(var(--gap) * .85);
+}
 #reset .lead{text-align:center}
 .reset-form{
   display:flex;gap:1rem;align-items:flex-end;justify-content:center;
-  max-width:30rem;margin:2.2rem auto 0;flex-wrap:wrap;
+  max-width:30rem;margin:var(--gap) auto 0;flex-wrap:wrap;
 }
 .reset-form input{
   flex:1;min-width:14rem;
@@ -603,19 +589,29 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 }
 .reset-form input::placeholder{color:var(--muted-strong);opacity:1}
 .reset-form input:focus{outline:none;border-bottom-color:var(--terracotta-deep)}
-.reset-note{margin-top:1.1rem;min-height:1.6em}
+.reset-note{margin-top:.75rem;min-height:1.5em}
 
 /* ============ book: the final chapter ============ */
+/* the final chapter's opening words, then the offer it leads into */
+.book-intro{text-align:center}
+.offer{
+  text-align:center;
+  max-width:44rem;margin:calc(var(--gap) * 1.5) auto 0;
+  padding-top:calc(var(--gap) * .9);
+  border-top:1px solid var(--hairline);
+}
+.offer h3{margin-bottom:.9rem}
+.offer-label{display:block;color:var(--terracotta-deep)}
 .included{
   text-align:center;
   font:italic 400 1.08rem/2 var(--serif);
   color:var(--umber);
-  max-width:44rem;margin:1.4rem auto 0;
+  max-width:44rem;margin:.9rem auto 0;
 }
 .included .mid{color:var(--terracotta);padding:0 .45em}
-.minutes{max-width:38rem;margin:clamp(2.6rem,6vw,3.6rem) auto 0}
-.minutes-head{text-align:center;margin-bottom:.4rem}
-.minutes-sub{text-align:center;font:italic 400 1rem/1.5 var(--serif);color:var(--muted-strong);margin-bottom:1.4rem}
+.minutes{max-width:38rem;margin:calc(var(--gap) * 1.5) auto 0}
+.minutes-head{display:block;text-align:center;margin-bottom:.4rem}
+.minutes-sub{text-align:center;font:italic 400 var(--fs-aside)/1.5 var(--serif);color:var(--muted-strong);margin-bottom:1.4rem}
 .minute-row{
   display:grid;grid-template-columns:5.4rem 1fr;gap:1rem;
   padding:1.05rem 0;border-top:1px solid var(--hairline);
@@ -628,12 +624,13 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   font-feature-settings:"lnum" 1;
   color:var(--terracotta-deep);white-space:nowrap;
 }
-.minute-row p{font-size:.95rem;line-height:1.7;color:var(--umber)}
+.minute-row p{font-size:var(--fs-body-sm);line-height:1.7;color:var(--umber)}
 .book-close{
-  max-width:44rem;margin:clamp(3rem,7vw,4.5rem) auto 0;
+  max-width:44rem;margin:calc(var(--gap) * 1.5) auto 0;
   text-align:center;
 }
 .book-close .divider{margin-bottom:2rem}
+#rest-dot .glyph{width:10px;height:10px}
 .book-face{
   width:84px;height:84px;border-radius:50%;
   margin:0 auto 0.9rem;
@@ -646,16 +643,16 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   display:flex;flex-wrap:wrap;justify-content:center;gap:1.1rem 2.4rem;
 }
 .book-ctas .btn{min-width:min(19rem,78vw)}
-.prefer{margin-top:1.6rem;font:italic 400 1rem/1.5 var(--serif);color:var(--muted-strong)}
+.prefer{margin-top:1.6rem;font:italic 400 var(--fs-aside)/1.5 var(--serif);color:var(--muted-strong)}
 .book-microrev{
   display:flex;gap:.8rem;align-items:center;justify-content:center;text-align:left;
   max-width:26rem;margin:2rem auto 0;
 }
 .book-microrev img{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 1px var(--hairline-mid)}
-.book-microrev p{font:italic 400 .98rem/1.5 var(--serif);color:var(--umber)}
-.book-microrev .who{display:block;margin-top:.25rem;font:600 .62rem/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-strong);font-style:normal}
+.book-microrev p{font:italic 400 var(--fs-aside)/1.5 var(--serif);color:var(--umber)}
+.book-microrev .who{display:block;margin-top:.25rem;font:600 var(--fs-micro)/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-strong);font-style:normal}
 .book-microrev .who a{color:var(--muted-strong)}
-.faqs{max-width:38rem;margin:clamp(3rem,7vw,4.5rem) auto 0}
+.faqs{max-width:38rem;margin:calc(var(--gap) * 1.5) auto 0}
 .faqs .smallcaps{display:block;text-align:center;margin-bottom:1rem}
 .faq{border-top:1px solid var(--hairline)}
 .faq:last-child{border-bottom:1px solid var(--hairline)}
@@ -669,7 +666,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 .faq summary::after{content:"+";font:400 1.3rem/1 var(--serif);color:var(--terracotta-deep);flex:none}
 .faq[open] summary::after{content:"·"}
 .faq .a{padding:0 0 1.2rem;animation:dissolve .5s var(--sine) both}
-.faq .a p{font-size:.95rem;line-height:1.72;color:var(--muted-strong)}
+.faq .a p{font-size:var(--fs-body-sm);line-height:1.72;color:var(--muted-strong)}
 
 /* ============ colophon ============ */
 .colophon{
@@ -683,7 +680,7 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   flex-wrap:wrap;text-align:center;
 }
 .colo-h{
-  font:600 .66rem/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:rgba(244,239,230,.9);
   padding-top:.9rem;margin-bottom:1rem;
   position:relative;
@@ -694,13 +691,13 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 }
 .colo-cols a{
   display:block;color:rgba(244,239,230,.85);text-decoration:none;
-  font:400 .95rem/2.2 var(--sans);
+  font:400 var(--fs-body-sm)/2.2 var(--sans);
 }
 .colo-cols a:hover{color:var(--bone)}
 .colo-end{margin:2.6rem auto 0;width:7px;height:7px;border-radius:50%;background:rgba(244,239,230,.55)}
 .colo-small{
   margin-top:2rem;
-  font:400 .8rem/1.8 var(--sans);color:rgba(244,239,230,.75);
+  font:400 .82rem/1.8 var(--sans);color:rgba(244,239,230,.75);
 }
 
 /* ============ sticky invitation (mobile) ============ */
@@ -718,17 +715,17 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   min-height:52px;border-radius:2px;
   background:var(--terracotta-deep);color:var(--bone);text-decoration:none;
-  font:600 .7rem/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;
   padding:.4rem .8rem;text-align:center;
   transition:background .25s;
 }
 .bar-call:hover{background:var(--terracotta-ink);color:var(--bone)}
-.bar-call .bw{font:italic 400 .78rem/1.3 var(--serif);letter-spacing:.02em;text-transform:none;color:rgba(244,239,230,.92);margin-top:.15rem}
+.bar-call .bw{font:italic 400 .8rem/1.3 var(--serif);letter-spacing:.02em;text-transform:none;color:rgba(244,239,230,.92);margin-top:.15rem}
 .bar-wa{
   display:flex;align-items:center;gap:.45rem;
   min-height:52px;padding:0 .9rem;border:1px solid rgba(144,88,64,.55);border-radius:2px;
   color:var(--terracotta-deep);text-decoration:none;
-  font:600 .66rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;
 }
 .bar-wa svg{width:17px;height:17px;flex:none}
 @media (min-width:900px){.stickybar{display:none}}
@@ -754,7 +751,7 @@ dialog.contents::backdrop{background:rgba(244,239,230,.82)}
 .contents-close{
   appearance:none;background:none;border:0;cursor:pointer;
   display:block;margin:1rem auto 0;min-height:44px;padding:0 1rem;
-  font:600 .66rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;
+  font:600 var(--fs-label-ui)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted-strong);
 }
 .contents-close:hover{color:var(--umber)}
@@ -818,7 +815,7 @@ html.ritual .phase2 .w1{opacity:0}
 html.ritual .phase2 .w2{opacity:1}
 .ob-skip{
   margin-top:3rem;
-  font:600 .62rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;
+  font:600 var(--fs-micro)/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted-strong);
 }
 .visually-hidden{
@@ -863,7 +860,6 @@ html.ritual .phase2 .w2{opacity:1}
   .book-ctas .btn[href^="https://wa.me"]:hover{
     background:var(--terracotta-ink);color:var(--bone);border-color:var(--terracotta-ink);
   }
-  .rletter,.rletter:nth-child(2),.rletter:nth-child(3){margin-left:auto;margin-right:auto;max-width:100%}
   /* mobile running head: keep the language switcher and motion toggle reachable
      but let the row breathe. Each control is trimmed so the four groups
      (wordmark, Contents, EN/ES/RU, motion) sit in one calm line with real gaps
@@ -894,8 +890,8 @@ html.ritual .phase2 .w2{opacity:1}
 
 /* --- S2: the process wave + icons (from proposal A) --- */
 #practice{view-timeline-name:--wave}
-.process{margin:clamp(2.6rem,6vw,4rem) auto 0;max-width:1040px}
-.alt-label{font:600 .72rem/1.5 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--terracotta-deep);text-align:center;margin:0 0 .5rem}
+.process{margin:calc(var(--gap) * 1.5) auto 0;max-width:1040px}
+.alt-label{font:600 var(--fs-label)/1.5 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--terracotta-deep);text-align:center;margin:0 0 .5rem}
 .wave-wrap{position:relative;max-width:1040px;margin:0 auto}
 .wave-svg{display:block;width:100%;height:auto}
 .wave-path{stroke:rgba(91,70,54,.34);stroke-width:1.6;fill:none;stroke-linecap:round}
@@ -912,9 +908,9 @@ html.ritual .phase2 .w2{opacity:1}
 @keyframes wave-travel{from{offset-distance:0%}to{offset-distance:100%}}
 .wave-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.1rem,3vw,2rem);max-width:1040px;margin:1.4rem auto 0;text-align:center}
 .proc-step img{width:66px;height:66px;border-radius:50%;margin:0 auto 12px;background:var(--cream)}
-.proc-step h4{font:600 .78rem/1.4 var(--sans);margin:0 0 6px;letter-spacing:.14em;text-transform:uppercase;color:var(--umber)}
-.proc-step p{font-size:.92rem;color:var(--muted-strong);margin:0;line-height:1.6}
-.proc-step .phase{display:block;font:italic 400 .95rem/1.4 var(--serif);letter-spacing:0;text-transform:none;color:var(--muted-strong);margin-top:6px}
+.proc-step h4{font:600 var(--fs-label)/1.4 var(--sans);margin:0 0 6px;letter-spacing:.16em;text-transform:uppercase;color:var(--umber)}
+.proc-step p{font-size:var(--fs-body-sm);color:var(--muted-strong);margin:0;line-height:1.6}
+.proc-step .phase{display:block;font:italic 400 var(--fs-aside)/1.4 var(--serif);letter-spacing:0;text-transform:none;color:var(--muted-strong);margin-top:6px}
 .wave-mobile{display:none}
 @media (max-width:719px){
   .wave-wrap,.wave-steps-d{display:none}
@@ -927,16 +923,14 @@ html.ritual .phase2 .w2{opacity:1}
 }
 
 /* --- S4: portrait opening the honesty chapter --- */
-.honesty-portrait{display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(2.4rem,6vw,3.6rem) 1.25rem 0}
+.honesty-portrait{display:flex;flex-direction:column;align-items:center;text-align:center;padding:calc(var(--gap) * 1.5) 1.25rem 0}
 /* a rounded rectangle in the frame's own 3:2, per Diana: the photo holds two people
    side by side, so any square or round crop bites into whichever of them sits nearer
    an edge. */
 .honesty-portrait img{width:min(520px,86vw);aspect-ratio:3/2;border-radius:22px;object-fit:cover;object-position:50% 50%;box-shadow:0 0 0 1px var(--hairline-mid)}
 .honesty-portrait figcaption{margin-top:1.1rem;max-width:26rem}
 /* A: opening the chapter, the section's own top padding already carries the air */
-.honesty-portrait--top{padding-top:0;padding-bottom:clamp(2.4rem,6vw,3.6rem)}
-/* B: sitting above the dark letter spread, so it needs air on both sides */
-.honesty-portrait--before-letter{padding-bottom:clamp(2.8rem,7vw,4.2rem)}
+.honesty-portrait--top{padding-top:0;padding-bottom:calc(var(--gap) * 1.5)}
 
 /* --- S5: the room, quote centred on it --- */
 .space-plate{position:relative}
@@ -959,24 +953,24 @@ html.ritual .phase2 .w2{opacity:1}
 .voice-card{display:flex;gap:16px;align-items:center;background:var(--bone);border:1px solid var(--hairline);border-radius:14px;padding:16px 18px;max-width:34rem;margin:1.8rem 0 0}
 .voice-play{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:var(--cream);border:1px solid var(--hairline-mid)}
 .voice-play svg{width:15px;height:17px;opacity:.55}
-.voice-label{font:italic 400 1.05rem/1.4 var(--serif);color:var(--umber);margin:0 0 5px}
-.voice-soon{font:600 .64rem/1.5 var(--sans);letter-spacing:.1em;color:var(--muted-strong);margin:0;text-transform:uppercase}
+.voice-label{font:italic 400 var(--fs-aside)/1.4 var(--serif);color:var(--umber);margin:0 0 5px}
+.voice-soon{font:600 var(--fs-micro)/1.5 var(--sans);letter-spacing:.16em;color:var(--muted-strong);margin:0;text-transform:uppercase}
 
 /* --- S7: aigoddesses-style testimonial carousel (sample) --- */
 .ai-highlights{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;max-width:52rem;margin:0 auto clamp(2.2rem,5vw,3.2rem);padding:0}
-.ai-pill{font:600 .72rem/1.4 var(--sans);letter-spacing:.05em;color:var(--terracotta-deep);background:var(--cream);border:1px solid var(--hairline);border-radius:999px;padding:.55rem 1.05rem}
+.ai-pill{font:600 var(--fs-label-ui)/1.4 var(--sans);letter-spacing:.08em;color:var(--terracotta-deep);background:var(--cream);border:1px solid var(--hairline);border-radius:999px;padding:.55rem 1.05rem}
 .ai-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .ai-track{display:flex;gap:1.4rem;width:max-content;padding:.4rem 0;animation:ai-scroll 66s linear infinite}
 .ai-marquee:hover .ai-track,.ai-marquee:focus-within .ai-track{animation-play-state:paused}
 @keyframes ai-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .ai-card{flex:0 0 auto;width:min(340px,80vw);background:var(--bone);border:1px solid var(--hairline);border-radius:18px;padding:1.6rem 1.5rem;display:flex;flex-direction:column;gap:1.1rem;box-shadow:0 8px 26px rgba(91,70,54,.07)}
-.ai-quote{font:400 1.05rem/1.6 var(--serif);color:var(--umber);margin:0}
+.ai-quote{font:400 1.1rem/1.6 var(--serif);color:var(--umber);margin:0}
 .ai-quote::before{content:"\201C";color:var(--terracotta);font-size:1.5em;line-height:0;vertical-align:-.35em;margin-right:.06em}
 .ai-who{display:flex;align-items:center;gap:.75rem;margin-top:auto}
 .ai-who img{width:46px;height:46px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--hairline-mid)}
 .ai-av-letter{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--cream);color:var(--terracotta-deep);font:500 1.3rem/1 var(--serif);box-shadow:0 0 0 1px var(--hairline-mid)}
-.ai-who b{font:600 .7rem/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--umber);display:block}
-.ai-who a{font:500 .8rem/1.3 var(--sans);color:var(--muted-strong)}
+.ai-who b{font:600 var(--fs-micro)/1.5 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--umber);display:block}
+.ai-who a{font:500 .82rem/1.3 var(--sans);color:var(--muted-strong)}
 html[data-motion="calm"] .ai-track{animation:none}
 html[data-motion="calm"] .ai-marquee{overflow-x:auto}
 @media (prefers-reduced-motion: reduce){
@@ -1118,7 +1112,7 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
           </div>
         </div>
 
-        <div class="notes measure reveal" style="max-width:60rem">
+        <div class="notes reveal">
           <div class="note">
             <span class="smallcaps">How long together?</span>
             <p>The breathing itself takes around 90 minutes. With the conversation before and time to integrate after, plan for about 2.5 to 3 hours together.</p>
@@ -1145,7 +1139,7 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
           <span class="smallcaps">Two ways in</span>
           <h2>Start gentle. Or go deep.</h2>
         </header>
-        <div class="chapter-body measure reveal" style="text-align:center;margin-bottom:clamp(2rem,5vw,3rem)">
+        <div class="chapter-body measure chapter-intro reveal">
           <p class="lead">There is no right place to begin. Some people start with a simple breathing practice to reconnect with themselves. Others feel ready to explore more deeply. We simply begin where you are.</p>
         </div>
 
@@ -1200,7 +1194,7 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
           <span class="smallcaps">What to expect</span>
           <h2>Every rebirthing session is different, because every person is different.</h2>
         </header>
-        <div class="chapter-body measure reveal" style="text-align:center;margin-bottom:clamp(1.6rem,4vw,2.4rem)">
+        <div class="chapter-body measure chapter-intro reveal">
           <p class="lead">There is no right experience, and nothing you need to force. My role is to create a space where you feel safe enough to be yourself: to soften, to breathe, and to let your body guide the experience at its own pace.</p>
         </div>
 
@@ -1238,8 +1232,10 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
           <p>Sessions last around two and a half hours and can be emotionally and physically intense. Some people leave energized. Others feel emotional, deeply relaxed, or pleasantly tired.</p>
           <p>I won't promise to heal you or transform your life. What I do promise is a safe, grounded, trauma-informed space where there's nothing you need to force and nothing you need to prove.</p>
           <p>I trust your body's own wisdom and timing, and I'll be there to support you, not to push you toward a breakthrough. Because <em>when we feel truly safe, the body often knows exactly what it needs to do.</em></p>
+          <figure class="benediction">
+            <blockquote><p>Whether you cry, laugh, scream, stay quiet, or simply breathe, you are welcome exactly as you are.</p></blockquote>
+          </figure>
           <div class="letter-sig">
-            <p>Whether you cry, laugh, scream, stay quiet, or simply breathe, you are welcome exactly as you are.</p>
             <span class="sig-name">Diana</span>
           </div>
         </div>
@@ -1316,7 +1312,7 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
           <span class="smallcaps">In their words</span>
           <h2>When people feel safe enough to let go.</h2>
         </header>
-        <div class="chapter-body measure reveal" style="text-align:center;margin-bottom:clamp(2.2rem,5vw,3.4rem)">
+        <div class="chapter-body measure chapter-intro reveal">
           <p class="lead">Every experience is unique. These stories are shared with permission by people who chose to open their hearts, trust the process, and share what the experience meant to them.</p>
         </div>
 
@@ -1388,11 +1384,12 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
     <section id="reset" class="chapter" data-chapter="Start here">
       <div class="wrap">
         <header class="chapter-head reveal">
-          <span class="smallcaps" style="display:block;margin-bottom:1.1rem">Start here &middot; free</span>
+          <div class="divider" aria-hidden="true"><span class="rule"></span><span class="dot-station"><span class="halo"></span><span class="glyph"></span></span><span class="rule"></span></div>
+          <span class="smallcaps">Start here &middot; free</span>
           <h2>Your free breath reset.</h2>
         </header>
         <div class="measure reveal">
-          <p class="lead" style="text-align:center">If you're not ready for a full session yet, this is a gentle place to begin. A free guided practice to help you slow down, reconnect with your breath, and experience a small taste of this work, wherever you are. Leave your email and I'll send it straight to you.</p>
+          <p class="lead">If you're not ready for a full session yet, this is a gentle place to begin. A free guided practice to help you slow down, reconnect with your breath, and experience a small taste of this work, wherever you are. Leave your email and I'll send it straight to you.</p>
           <form class="reset-form" id="reset-form" novalidate>
             <input type="email" name="email" placeholder="your@email.com" aria-label="email" autocomplete="email">
             <button class="btn" type="submit">Send me the reset</button>
@@ -1410,14 +1407,20 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
           <span class="smallcaps">Work with me</span>
           <h2>Start your journey.</h2>
         </header>
-        <div class="chapter-body measure reveal" style="text-align:center">
-          <p class="lead">Every session begins with a free 15-minute call, so we can make sure it's right for you and answer any questions. From there, we'll agree together on the time and format that feels right for you.</p>
-          <p class="smallcaps" style="margin-top:2.2rem;display:block">Private 1:1 rebirthing session &middot; What's included</p>
+        <div class="chapter-body measure book-intro reveal">
+          <p class="lead">Every session begins with a free 15-minute call, a little space for us to meet, connect, and talk about what brings you here.</p>
+          <p class="lead">You can share whatever feels important, ask any questions you may have, and tell me a little about where you are right now. It also gives me the opportunity to understand your needs and get a sense of how I can best support you, so we can create a session that feels right for you.</p>
+          <p class="lead">And if, together, we feel this is the right approach, we'll find a time and format that works for you and take the next step from there.</p>
+        </div>
+
+        <div class="offer reveal">
+          <h3>Private one-on-one rebirthing session</h3>
+          <span class="smallcaps offer-label">What's included</span>
           <p class="included">2-3 hours, fully held start to finish<span class="mid">&middot;</span>Pre-session conversation beforehand<span class="mid">&middot;</span>Follow-up support in the days after<span class="mid">&middot;</span>In person or online worldwide</p>
         </div>
 
         <div class="minutes reveal">
-          <span class="smallcaps minutes-head" style="display:block">The first call, minute by minute</span>
+          <span class="smallcaps minutes-head">The first call, minute by minute</span>
           <p class="minutes-sub">so you know exactly what you're saying yes to</p>
           <div class="minute-row">
             <span class="mn">1 to 3</span>
@@ -1438,7 +1441,7 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
         </div>
 
         <div class="book-close reveal">
-          <div class="divider" aria-hidden="true"><span class="rule"></span><span class="dot-station" id="rest-dot"><span class="halo"></span><span class="glyph" style="width:10px;height:10px"></span></span><span class="rule"></span></div>
+          <div class="divider" aria-hidden="true"><span class="rule"></span><span class="dot-station" id="rest-dot"><span class="halo"></span><span class="glyph"></span></span><span class="rule"></span></div>
           <div class="book-face" role="img" aria-label="Diana"></div>
           <p class="caption book-face-cap">I'll be the one on the other end of the call.</p>
           <div class="book-ctas" id="book-ctas">

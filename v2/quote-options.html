@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The closing quote, three ways &middot; Breathe with Diana</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#F4EFE6;
+  --cream:#EFE7D8;
+  --terracotta:#C97B5A;
+  --terracotta-deep:#905840;
+  --terracotta-ink:#7C4A34;
+  --sage:#8A8C6E;
+  --umber:#5B4636;
+  --ochre:#D4A24C;
+  --muted-strong:rgba(91,70,54,.84);
+  --hairline:rgba(91,70,54,.14);
+  --hairline-mid:rgba(91,70,54,.30);
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --gap:clamp(1.9rem,2.6vw,2.5rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bone);color:var(--umber);
+  font:400 1.0625rem/1.75 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:5rem;
+}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:44rem;margin-inline:auto;padding-inline:clamp(1.1rem,4vw,2rem)}
+
+/* ---------- page furniture ---------- */
+.top{display:flex;align-items:center;gap:.9rem;padding:clamp(1.4rem,4vw,2.4rem) 0 0}
+.top img{height:46px;width:auto}
+.top .kicker{
+  font:600 .68rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted-strong);
+}
+h1{
+  font:500 clamp(2rem,5.4vw,2.9rem)/1.14 var(--serif);
+  margin:clamp(1.6rem,4vw,2.4rem) 0 .8rem;
+  text-wrap:balance;
+}
+.standfirst{font-size:1.0625rem;line-height:1.75;max-width:36rem}
+.standfirst + .standfirst{margin-top:1rem}
+.rule{height:1px;background:var(--hairline);margin:clamp(2rem,5vw,2.8rem) 0}
+
+.opt{margin-top:clamp(2.4rem,6vw,3.6rem)}
+.opt-head{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.5rem}
+.opt-n{
+  font:600 .68rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--terracotta-deep);
+}
+.opt-h{font:500 1.5rem/1.25 var(--serif)}
+.opt-pick{
+  font:600 .62rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--umber);background:var(--ochre);
+  border-radius:999px;padding:.42rem .8rem;
+}
+.opt-why{font-size:.97rem;line-height:1.7;color:var(--muted-strong);max-width:34rem;margin-bottom:1.3rem}
+
+/* the heart + note, same controls as the other review pages */
+.pick-row{display:flex;align-items:center;gap:.8rem;margin-top:1.1rem;flex-wrap:wrap}
+.fav-btn{
+  appearance:none;cursor:pointer;
+  font:500 .82rem/1 var(--sans);
+  border:1px solid var(--sage);background:none;color:var(--sage);
+  border-radius:999px;padding:.7rem 1.1rem;
+  transition:background .15s,color .15s;
+}
+.fav-btn::before{content:"\2661\00a0\00a0"}
+.fav-btn:hover{background:rgba(138,140,110,.12)}
+.fav-btn.on{background:var(--sage);color:var(--bone);border-color:var(--sage)}
+.fav-btn.on::before{content:"\2665\00a0\00a0"}
+.fav-note{
+  width:100%;font:400 .9rem/1.6 var(--sans);
+  border:1px solid var(--hairline);border-radius:10px;
+  padding:.7rem .85rem;color:var(--umber);background:#fff;resize:vertical;
+}
+
+/* ---------- the mock: the dark letter spread, as it is on the page ---------- */
+.mock{border:1px solid var(--hairline);border-radius:4px;overflow:hidden}
+.letter{background:var(--umber);color:var(--bone);padding:clamp(2rem,5vw,3rem) 1.4rem}
+.letter-inner{max-width:34rem;margin-inline:auto}
+.letter .label{
+  font:600 .68rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(244,239,230,.75);display:block;text-align:center;margin-bottom:.9rem;
+}
+.letter h3{
+  font:400 clamp(1.4rem,4vw,1.9rem)/1.2 var(--serif);
+  color:var(--bone);text-align:center;margin-bottom:1.7rem;
+}
+.letter p{color:rgba(244,239,230,.93);font-size:1.0625rem;line-height:1.85}
+.letter p + p{margin-top:1.15em}
+.letter em{color:var(--bone)}
+.sig-name{
+  display:block;text-align:center;
+  font:italic 500 1.6rem/1 var(--serif);color:rgba(244,239,230,.9);
+}
+
+/* option 1: ochre inset, inside the dark spread */
+.benediction{
+  margin:calc(var(--gap) * 1.4) auto 0;
+  padding:clamp(1.4rem,3.6vw,2rem) clamp(1.3rem,4vw,2.4rem) clamp(1.7rem,4.4vw,2.3rem);
+  background:rgba(212,162,76,.13);
+  border-top:1px solid rgba(212,162,76,.55);
+  border-bottom:1px solid rgba(212,162,76,.55);
+  text-align:center;
+}
+.benediction::before{
+  content:"\201C";
+  display:block;
+  font:400 clamp(3rem,8vw,3.9rem)/.62 var(--serif);
+  color:var(--ochre);
+  margin-bottom:.55rem;
+}
+.benediction p{
+  font:italic 400 clamp(1.3rem,3.3vw,1.7rem)/1.45 var(--serif);
+  color:#FBF6EC;
+  max-width:26rem;margin-inline:auto;
+  text-wrap:balance;
+}
+.after-sig{margin-top:calc(var(--gap) * 1.1)}
+
+/* option 2: a cream card laid on the dark spread */
+.bene-card{
+  margin:calc(var(--gap) * 1.4) auto 0;
+  max-width:30rem;
+  background:var(--cream);
+  border-radius:16px;
+  padding:clamp(1.5rem,4vw,2.1rem) clamp(1.4rem,4vw,2.2rem) clamp(1.7rem,4vw,2.2rem);
+  text-align:center;
+  box-shadow:0 14px 40px rgba(31,21,12,.28);
+}
+.bene-card::before{
+  content:"\201C";
+  display:block;
+  font:400 clamp(3rem,8vw,3.9rem)/.62 var(--serif);
+  color:var(--terracotta);
+  margin-bottom:.55rem;
+}
+.bene-card p{
+  font:italic 400 clamp(1.25rem,3.2vw,1.6rem)/1.45 var(--serif);
+  color:var(--umber);
+  text-wrap:balance;
+}
+
+/* option 3: lifted out of the letter, its own band on the page */
+.bene-band{
+  background:var(--cream);
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  padding:clamp(2.4rem,6vw,3.4rem) 1.4rem;
+  text-align:center;
+}
+.bene-band .orn{
+  width:2.6rem;height:2px;background:var(--ochre);
+  margin:0 auto 1.4rem;
+}
+.bene-band p{
+  font:italic 400 clamp(1.4rem,4vw,2.1rem)/1.4 var(--serif);
+  color:var(--umber);
+  max-width:28rem;margin-inline:auto;
+  text-wrap:balance;
+}
+.bene-band .attrib{
+  display:block;margin-top:1.2rem;
+  font:600 .64rem/1.5 var(--sans);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted-strong);
+}
+
+/* ---------- recommendation + close ---------- */
+.reco{
+  background:rgba(212,162,76,.15);
+  border-radius:12px;
+  padding:clamp(1.2rem,3.5vw,1.6rem) clamp(1.2rem,3.5vw,1.7rem);
+  margin-top:clamp(2.4rem,6vw,3.4rem);
+}
+.reco .lbl{
+  font:600 .68rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:#93701d;display:block;margin-bottom:.5rem;
+}
+.reco p{font-size:.99rem;line-height:1.72}
+.reco p + p{margin-top:.7rem}
+.foot{
+  margin-top:clamp(2.6rem,6vw,3.6rem);padding-top:1.4rem;
+  border-top:1px solid var(--hairline);
+  font-size:.9rem;color:var(--muted-strong);
+}
+.foot a{color:var(--terracotta-deep)}
+</style>
+</head>
+<body data-fb-noun="option" data-fb-key="v2-closing-quote" data-fb-page="v2 · the closing quote, three ways" data-fb-email="d.blaecker@gmail.com">
+
+<div class="wrap">
+  <header class="top">
+    <img src="/logo-mark.svg" alt="Breathe with Diana" width="150" height="48">
+    <span class="kicker">For Diana &middot; pick one</span>
+  </header>
+
+  <h1>The closing quote, three ways</h1>
+  <p class="standfirst">You asked to make this line feel more special, so it is immediately clear that it is a quote and not just another paragraph of the letter:</p>
+  <p class="standfirst"><em>&ldquo;Whether you cry, laugh, scream, stay quiet, or simply breathe, you are welcome exactly as you are.&rdquo;</em></p>
+  <p class="standfirst">Here are three ways to do it, each shown in place at the end of the dark brown letter. Tap the heart on the one you like, and add a note if you want something changed. Option 1 is the one currently live on the page.</p>
+
+  <div class="rule"></div>
+
+  <!-- ============ option 1 ============ -->
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 1</span>
+      <span class="opt-h">Ochre panel</span>
+      <span class="opt-pick">My recommendation &middot; live now</span>
+    </div>
+    <p class="opt-why">The quote gets its own warm ground inside the letter: a soft ochre wash between two ochre lines, with an ochre quotation mark above it. It stays part of your letter, and your name still signs it off underneath. Ochre is the colour we use rarely, only where we want the eye to stop, which is exactly this job.</p>
+    <div class="mock">
+      <div class="letter">
+        <div class="letter-inner">
+          <span class="label">A letter, before you book</span>
+          <h3>A little honesty before you book</h3>
+          <p>I won't promise to heal you or transform your life. What I do promise is a safe, grounded, trauma-informed space where there's nothing you need to force and nothing you need to prove.</p>
+          <p>I trust your body's own wisdom and timing, and I'll be there to support you, not to push you toward a breakthrough. Because <em>when we feel truly safe, the body often knows exactly what it needs to do.</em></p>
+          <figure class="benediction">
+            <blockquote><p>Whether you cry, laugh, scream, stay quiet, or simply breathe, you are welcome exactly as you are.</p></blockquote>
+          </figure>
+          <div class="after-sig"><span class="sig-name">Diana</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="fav-btn" type="button" data-id="opt1" data-name="Option 1 · ochre panel" data-group="closing quote" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="opt1" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <!-- ============ option 2 ============ -->
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 2</span>
+      <span class="opt-h">Cream card</span>
+    </div>
+    <p class="opt-why">The quote sits on a light card laid on top of the dark letter, like a handwritten note left on the page. This is the loudest of the three: impossible to miss, and it lifts the line completely out of the brown. The risk is that it can read as a separate element pasted on, rather than as the letter's own last words.</p>
+    <div class="mock">
+      <div class="letter">
+        <div class="letter-inner">
+          <span class="label">A letter, before you book</span>
+          <h3>A little honesty before you book</h3>
+          <p>I won't promise to heal you or transform your life. What I do promise is a safe, grounded, trauma-informed space where there's nothing you need to force and nothing you need to prove.</p>
+          <p>I trust your body's own wisdom and timing, and I'll be there to support you, not to push you toward a breakthrough. Because <em>when we feel truly safe, the body often knows exactly what it needs to do.</em></p>
+          <figure class="bene-card">
+            <blockquote><p>Whether you cry, laugh, scream, stay quiet, or simply breathe, you are welcome exactly as you are.</p></blockquote>
+          </figure>
+          <div class="after-sig"><span class="sig-name">Diana</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="fav-btn" type="button" data-id="opt2" data-name="Option 2 · cream card" data-group="closing quote" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="opt2" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <!-- ============ option 3 ============ -->
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 3</span>
+      <span class="opt-h">Its own band</span>
+    </div>
+    <p class="opt-why">The letter ends and you sign it, then the quote gets a full-width sand band of its own underneath, with an ochre line above it. The quote becomes a moment the reader passes through, rather than something inside the letter. The one thing to weigh: the room photo that follows already carries a big centred line (&ldquo;Breathe. Soften. Come home.&rdquo;), so this puts two large quotes back to back.</p>
+    <div class="mock">
+      <div class="letter">
+        <div class="letter-inner">
+          <span class="label">A letter, before you book</span>
+          <h3>A little honesty before you book</h3>
+          <p>I won't promise to heal you or transform your life. What I do promise is a safe, grounded, trauma-informed space where there's nothing you need to force and nothing you need to prove.</p>
+          <p>I trust your body's own wisdom and timing, and I'll be there to support you, not to push you toward a breakthrough. Because <em>when we feel truly safe, the body often knows exactly what it needs to do.</em></p>
+          <div class="after-sig"><span class="sig-name">Diana</span></div>
+        </div>
+      </div>
+      <div class="bene-band">
+        <div class="orn" aria-hidden="true"></div>
+        <blockquote><p>Whether you cry, laugh, scream, stay quiet, or simply breathe, you are welcome exactly as you are.</p></blockquote>
+        <span class="attrib">Diana</span>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="fav-btn" type="button" data-id="opt3" data-name="Option 3 · its own band" data-group="closing quote" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="opt3" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <div class="reco">
+    <span class="lbl">What I'd choose</span>
+    <p>Option 1. It makes the line unmistakably a quote while keeping it inside your letter, where it belongs: it is the last thing you say to someone before they decide, and your name still signs it. It also uses ochre the way the rest of the brand does, sparingly, so it feels like the same website rather than a new idea.</p>
+    <p>Option 2 is the eye-catcher if you want maximum contrast. Option 3 is the most dramatic, but it competes with the room photo right after it.</p>
+  </div>
+
+  <p class="foot">Nothing here is public. <a href="/v2/">Back to the page</a> &middot; <a href="/for-diana/">Everything waiting on you</a></p>
+</div>
+
+<script src="/feedback.js?v=4" defer></script>
+</body>
+</html>
