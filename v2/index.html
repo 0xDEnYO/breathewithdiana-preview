@@ -49,6 +49,8 @@
   --halo-lo:.28;
   --halo-hi:.95;
   --ritual-amp:2.7;       /* guided-breath dot swell */
+  --sol-travel:34px;      /* seed of life: how far the six circles leave the centre */
+  --sol-amp:1.12;         /* seed of life: centre circle swell */
   --ring-from:1.22;       /* invitation ring settle */
   --measure:40rem;
   --head-h:56px;
@@ -76,6 +78,8 @@
 html[data-motion="calm"]{
   --dot-amp:1;
   --ritual-amp:1;
+  --sol-travel:0px;
+  --sol-amp:1;
   --ring-from:1;
   --halo-lo:.38;
   --halo-hi:.92;
@@ -84,6 +88,7 @@ html[data-motion="calm"]{
 @media (prefers-reduced-motion: reduce){
   html:not([data-motion]){
     --dot-amp:1; --ritual-amp:1; --ring-from:1; --halo-lo:.38; --halo-hi:.92;
+    --sol-travel:0px; --sol-amp:1;
   }
 }
 
@@ -782,33 +787,34 @@ html.ritual #page{opacity:.12}
 }
 html.ritual #breath-overlay{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .8s var(--sine)}
 .ob-stage{text-align:center;outline:none}
-.ob-dot{position:relative;display:inline-block;line-height:0;margin-bottom:4.5rem}
-.ob-dot .glyph{
-  display:block;width:22px;height:22px;border-radius:50%;
-  background:var(--terracotta-deep);
+/* The seed of life: six circles drawn out of one on the in-breath and folded
+   back into it on the out. Same physiology as everything else here, 4s out,
+   7s back. In calm mode --sol-travel is 0, so the figure stays whole and only
+   the ink strength breathes. */
+.ob-sol{
+  display:block;overflow:visible;
+  width:min(64vw,300px);height:min(64vw,300px);
+  margin:0 auto 4.5rem;
 }
-.ob-dot .halo{
-  position:absolute;left:50%;top:50%;width:260px;height:260px;
-  transform:translate(-50%,-50%);border-radius:50%;
-  background:radial-gradient(closest-side,rgba(201,123,90,.55),rgba(201,123,90,0) 72%);
-  opacity:.25;pointer-events:none;
-}
-html.ritual .ob-dot .glyph{
+.ob-sol circle{fill:none;stroke:var(--terracotta-deep);stroke-width:1.1}
+.ob-sol .ring{opacity:.18;transform:translateY(var(--sol-travel))}
+.ob-sol .mid{opacity:.3;transform-origin:100px 100px}
+html.ritual .ob-sol .ring{
   will-change:transform;
-  animation:ritual-glyph 11s cubic-bezier(.5,0,.5,1) 1 both;
+  animation:ritual-sol 11s cubic-bezier(.5,0,.5,1) 1 both;
 }
-html.ritual .ob-dot .halo{
-  animation:ritual-halo 11s cubic-bezier(.5,0,.5,1) 1 both;
+html.ritual .ob-sol .mid{
+  animation:ritual-sol-mid 11s cubic-bezier(.5,0,.5,1) 1 both;
 }
-@keyframes ritual-glyph{
-  0%{transform:scale(1)}
-  36.4%{transform:scale(var(--ritual-amp))}
-  100%{transform:scale(1)}
+@keyframes ritual-sol{
+  0%{transform:translateY(var(--sol-travel));opacity:.18}
+  36.4%{transform:translateY(0);opacity:.62}
+  100%{transform:translateY(var(--sol-travel));opacity:.18}
 }
-@keyframes ritual-halo{
-  0%{opacity:.25}
-  36.4%{opacity:.95}
-  100%{opacity:.3}
+@keyframes ritual-sol-mid{
+  0%{opacity:.3;transform:scale(1)}
+  36.4%{opacity:.85;transform:scale(var(--sol-amp))}
+  100%{opacity:.3;transform:scale(1)}
 }
 .ob-words{position:relative;height:2.4em}
 .ob-words .w{
@@ -1513,7 +1519,15 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
 <!-- ============ one breath overlay ============ -->
 <div id="breath-overlay" aria-hidden="true">
   <div class="ob-stage" role="dialog" aria-modal="true" aria-label="One breath with Diana" tabindex="-1">
-    <span class="ob-dot" aria-hidden="true"><span class="halo"></span><span class="glyph"></span></span>
+    <svg class="ob-sol" viewBox="0 0 200 200" aria-hidden="true">
+      <circle class="mid" cx="100" cy="100" r="34"/>
+      <g transform="rotate(0 100 100)"><circle class="ring" cx="100" cy="66" r="34"/></g>
+      <g transform="rotate(60 100 100)"><circle class="ring" cx="100" cy="66" r="34"/></g>
+      <g transform="rotate(120 100 100)"><circle class="ring" cx="100" cy="66" r="34"/></g>
+      <g transform="rotate(180 100 100)"><circle class="ring" cx="100" cy="66" r="34"/></g>
+      <g transform="rotate(240 100 100)"><circle class="ring" cx="100" cy="66" r="34"/></g>
+      <g transform="rotate(300 100 100)"><circle class="ring" cx="100" cy="66" r="34"/></g>
+    </svg>
     <div class="ob-words" id="ob-words" aria-hidden="true">
       <span class="w w1">breathe in</span>
       <span class="w w2">and let it go</span>
