@@ -339,18 +339,40 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
 }
 #hero[data-invited="done"] .ring{animation:none;opacity:0;transition:opacity .6s}
 .invite-cap{
+  appearance:none;-webkit-appearance:none;
+  display:inline-flex;align-items:center;gap:.55em;
+  min-height:44px;padding:.5rem 1.15rem;
+  border:1px solid var(--hairline-mid);border-radius:999px;
+  background:var(--cream);
   font:italic 400 var(--fs-aside)/1.5 var(--serif);
   color:var(--terracotta-deep);
+  cursor:pointer;
   margin-top:clamp(.9rem,2vh,1.4rem);
-  min-height:1.55em;
   /* present and visible at rest: the tap invite reads immediately, so the
      breathing full stop is legibly interactive within the first seconds.
      A short fade at load only, no hold delay. */
   opacity:1;
   animation:fade-in .6s var(--sine) both;
+  transition:border-color .25s,color .25s;
+}
+.invite-cap:hover{border-color:var(--terracotta);color:var(--umber)}
+/* the global :focus-visible squares every corner to 2px; a pill must keep its own */
+.invite-cap:focus-visible{border-radius:999px}
+.invite-cap .ico{
+  position:relative;flex:none;
+  width:13px;height:13px;border-radius:50%;
+  border:1px solid var(--terracotta-deep);
+}
+.invite-cap .ico::after{
+  content:"";position:absolute;left:50%;top:50%;
+  width:4px;height:4px;margin:-2px 0 0 -2px;
+  border-radius:50%;background:var(--terracotta-deep);
 }
 @keyframes fade-in{from{opacity:0}to{opacity:1}}
-#hero[data-invited="done"] .invite-cap{animation:none;opacity:0;transition:opacity .6s}
+#hero[data-invited="done"] .invite-cap{
+  animation:none;opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .6s,visibility 0s linear .6s;
+}
 .author-line{
   display:flex;align-items:center;gap:.7rem;
   margin-top:clamp(1rem,2.4vh,1.8rem);
@@ -1006,7 +1028,7 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
       <div class="hero-col">
       <p class="smallcaps hero-eyebrow">Rebirthing breathwork &middot; Presencial y en línea</p>
       <h1 class="title">Vuelve a casa.<br>Vuelve a tu<br class="m-br"> <em>cuerpo</em><button class="dot-station breath-dot alive" id="breath-btn" type="button" aria-label="Respira una vez conmigo"><span class="halo" aria-hidden="true"></span><span class="glyph" aria-hidden="true"></span><span class="ring" aria-hidden="true"></span></button></h1>
-      <p class="invite-cap" id="invite-cap">Tócame, cerca del punto que respira &middot; o simplemente toca</p>
+      <button class="invite-cap" id="invite-cap" type="button"><span class="ico" aria-hidden="true"></span>Respira una vez conmigo</button>
       <div class="author-line">
         <span class="author-face" role="img" aria-label="Diana"></span>
         <span class="smallcaps">con Diana</span>
@@ -1743,7 +1765,9 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
       listen(document,"keydown",function(e){if(e.key==="Escape"){cancel();}},true);
     },350);
   }
+  var invite=document.getElementById("invite-cap");
   if(btn){btn.addEventListener("click",start);}
+  if(invite){invite.addEventListener("click",start);}
   if(location.hash==="#breath-demo"){later(start,900);}
 
   /* ---------- reset form (design preview, does not send) ---------- */
