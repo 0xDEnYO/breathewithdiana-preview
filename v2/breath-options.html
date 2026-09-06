@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The one breath, seven ways &middot; Breathe with Diana</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#F4EFE6;
+  --cream:#EFE7D8;
+  --terracotta:#C97B5A;
+  --terracotta-deep:#905840;
+  --sage:#8A8C6E;
+  --umber:#5B4636;
+  --ochre:#D4A24C;
+  --muted-strong:rgba(91,70,54,.84);
+  --hairline:rgba(91,70,54,.14);
+  --hairline-mid:rgba(91,70,54,.30);
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,"Segoe UI",Roboto,sans-serif;
+  /* the page's breath physiology, unchanged: 11s cycle, 4s in (36.4%), 7s out */
+  --cyc:11s;
+  --sine:cubic-bezier(.5,0,.5,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bone);color:var(--umber);
+  font:400 1.0625rem/1.75 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:5rem;
+}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:44rem;margin-inline:auto;padding-inline:clamp(1.1rem,4vw,2rem)}
+:focus-visible{outline:2px solid var(--terracotta-deep);outline-offset:3px}
+
+.top{display:flex;align-items:center;gap:.9rem;padding:clamp(1.4rem,4vw,2.4rem) 0 0}
+.top img{height:46px;width:auto}
+.top .kicker{
+  font:600 .68rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted-strong);
+}
+h1{
+  font:500 clamp(2rem,5.4vw,2.9rem)/1.14 var(--serif);
+  margin:clamp(1.6rem,4vw,2.4rem) 0 .8rem;
+  text-wrap:balance;
+}
+.standfirst{font-size:1.0625rem;line-height:1.75;max-width:36rem}
+.standfirst + .standfirst{margin-top:1rem}
+.rule{height:1px;background:var(--hairline);margin:clamp(2rem,5vw,2.8rem) 0}
+
+.opt{margin-top:clamp(2.4rem,6vw,3.6rem)}
+.opt-head{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.5rem}
+.opt-n{
+  font:600 .68rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--terracotta-deep);
+}
+.opt-h{font:500 1.5rem/1.25 var(--serif)}
+.opt-pick{
+  font:600 .62rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--umber);background:var(--ochre);
+  border-radius:999px;padding:.42rem .8rem;
+}
+.opt-why{font-size:.97rem;line-height:1.7;color:var(--muted-strong);max-width:34rem;margin-bottom:1.3rem}
+
+.stage{
+  border:1px solid var(--hairline);border-radius:4px;background:var(--bone);
+  display:grid;place-items:center;padding:1.6rem;min-height:260px;
+}
+.bx{width:200px;height:200px}
+.bx svg{width:100%;height:100%;overflow:visible}
+.bx-wave{width:100%;max-width:34rem;height:150px}
+
+.pick-row{display:flex;align-items:center;gap:.8rem;margin-top:1.1rem;flex-wrap:wrap}
+.play{
+  appearance:none;cursor:pointer;
+  font:500 .82rem/1 var(--sans);
+  border:1px solid var(--hairline-mid);background:var(--cream);color:var(--terracotta-deep);
+  border-radius:999px;padding:.7rem 1.1rem;
+  transition:border-color .2s,color .2s;
+}
+.play:hover{border-color:var(--terracotta);color:var(--umber)}
+.fav-btn{
+  appearance:none;cursor:pointer;
+  font:500 .82rem/1 var(--sans);
+  border:1px solid var(--sage);background:none;color:var(--sage);
+  border-radius:999px;padding:.7rem 1.1rem;
+  transition:background .15s,color .15s;
+}
+.fav-btn::before{content:"\2661\00a0\00a0"}
+.fav-btn:hover{background:rgba(138,140,110,.12)}
+.fav-btn.on{background:var(--sage);color:var(--bone);border-color:var(--sage)}
+.fav-btn.on::before{content:"\2665\00a0\00a0"}
+.fav-note{
+  width:100%;font:400 .9rem/1.6 var(--sans);
+  border:1px solid var(--hairline);border-radius:10px;
+  padding:.7rem .85rem;color:var(--umber);background:#fff;resize:vertical;
+  margin-top:.7rem;
+}
+.reco{
+  margin-top:clamp(2.6rem,6vw,3.6rem);
+  background:rgba(212,162,76,.14);border-radius:4px;
+  padding:clamp(1.2rem,3vw,1.7rem);
+}
+.reco .label{
+  font:600 .68rem/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:#93701d;display:block;margin-bottom:.5rem;
+}
+.reco p{font-size:.99rem;line-height:1.72}
+.reco p + p{margin-top:.7rem}
+.foot{
+  margin-top:clamp(2.6rem,6vw,3.6rem);padding-top:1.4rem;
+  border-top:1px solid var(--hairline);
+  font-size:.9rem;color:var(--muted-strong);
+}
+.foot a{color:var(--terracotta-deep)}
+
+/* ============================================================
+   THE SEVEN VISUALS
+   Every one is bound to the same physiology as the live page:
+   an 11s cycle peaking at 36.4% (4s in), sine easing only.
+   Nothing animates until the block carries .go, so the
+   full-screen player can run a single cycle on demand.
+   ============================================================ */
+.bx svg{fill:none;stroke:none}
+.halo{fill:var(--terracotta);opacity:.08}
+.glyph,.core{fill:var(--terracotta-deep);transform-origin:100px 100px}
+.seeds line,.drift line{stroke:var(--terracotta-deep);stroke-width:.8;opacity:.6;stroke-linecap:round}
+.seeds .hair{stroke-width:.55;opacity:.4}
+.drift circle{fill:var(--terracotta-deep);opacity:.8}
+.petal{fill:var(--terracotta);fill-opacity:.16;stroke:var(--terracotta-deep);stroke-width:.9;stroke-opacity:.55}
+.petal-in{fill-opacity:.26;stroke-opacity:.7}
+.sol{stroke:var(--terracotta-deep);stroke-width:1.1;opacity:.5}
+.sol-mid{opacity:.75;transform-origin:100px 100px}
+.pipe{stroke:var(--terracotta-deep);stroke-width:2;stroke-linecap:round;opacity:.7}
+.lobe{fill:var(--terracotta);opacity:.34;stroke:var(--terracotta-deep);stroke-width:1.2}
+.rip{stroke:var(--terracotta-deep);stroke-width:1.2;opacity:.2;transform-origin:100px 100px}
+.wv-echo{stroke:var(--hairline-mid);stroke-width:2}
+.wv{stroke:var(--terracotta);stroke-width:2.4;stroke-linecap:round}
+.wv-dot{fill:var(--ochre)}
+
+.bx.go .halo{animation:b-halo var(--cyc) var(--sine) 1 both}
+.bx.go.loop .halo{animation-iteration-count:infinite}
+
+/* 1 · the dot as it is now */
+.bx.go .glyph{animation:b-swell var(--cyc) var(--sine) 1 both}
+.bx.go.loop .glyph{animation-iteration-count:infinite}
+
+/* 2 · the dandelion */
+.bx.go .seeds{animation:b-open var(--cyc) var(--sine) 1 both;transform-origin:100px 100px}
+.bx.go .drift{animation:b-drift var(--cyc) var(--sine) 1 both;animation-delay:var(--dd)}
+.bx.go.loop .seeds,.bx.go.loop .drift{animation-iteration-count:infinite}
+.drift{opacity:0}
+
+/* 3 · the flower */
+.bx.go .bloom{animation:b-bloom var(--cyc) var(--sine) 1 both;transform-origin:100px 100px}
+.bx.go .petal{animation:b-petal var(--cyc) var(--sine) 1 both;transform-origin:100px 100px}
+.bx.go.loop .bloom,.bx.go.loop .petal{animation-iteration-count:infinite}
+
+/* 4 · the seed of life */
+.bx.go .sol{animation:b-sol var(--cyc) var(--sine) 1 both;transform-origin:100px 100px}
+.bx.go .sol-mid{animation:b-solmid var(--cyc) var(--sine) 1 both}
+.bx.go.loop .sol,.bx.go.loop .sol-mid{animation-iteration-count:infinite}
+.sol{transform:translateY(34px)}
+
+/* 5 · the lungs */
+.bx.go .lobes{animation:b-lungs var(--cyc) var(--sine) 1 both;transform-origin:100px 86px}
+.bx.go.loop .lobes{animation-iteration-count:infinite}
+
+/* 6 · rings on water */
+.bx.go .rip{animation:b-rip var(--cyc) var(--sine) 1 both;animation-delay:var(--rd);transform-origin:100px 100px}
+.bx.go .glyph{animation:b-swell var(--cyc) var(--sine) 1 both}
+.bx.go.loop .rip{animation-iteration-count:infinite}
+
+/* 7 · the breath wave */
+.wv{stroke-dasharray:1 0}
+.bx.go .wv-dot{
+  offset-path:path("M 18 206 C 60 201 96 191 128 179 C 196 154 300 76 378 61 C 432 51 452 71 500 105 C 549 140 590 157 626 168 C 692 188 776 203 872 210 C 914 213 954 212 984 211");
+  offset-rotate:0deg;
+  animation:b-travel var(--cyc) var(--sine) 1 both;
+}
+.bx.go .wv{animation:b-wave var(--cyc) var(--sine) 1 both}
+.bx.go.loop .wv-dot,.bx.go.loop .wv{animation-iteration-count:infinite}
+
+@keyframes b-swell{0%{transform:scale(1)}36.4%{transform:scale(1.9)}100%{transform:scale(1)}}
+@keyframes b-halo{0%{opacity:.06}36.4%{opacity:.2}100%{opacity:.06}}
+@keyframes b-open{0%{transform:scale(.55)}36.4%{transform:scale(1.15)}100%{transform:scale(.55)}}
+@keyframes b-drift{
+  0%,30%{opacity:0;transform:translate(0,0)}
+  40%{opacity:.9;transform:translate(0,0)}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy))}
+}
+@keyframes b-bloom{0%{transform:scale(.8)}36.4%{transform:scale(1.08)}100%{transform:scale(.8)}}
+@keyframes b-petal{0%{transform:translateY(16px) scaleY(.8)}36.4%{transform:translateY(-8px) scaleY(1.05)}100%{transform:translateY(16px) scaleY(.8)}}
+@keyframes b-sol{0%{transform:translateY(34px);opacity:.18}36.4%{transform:translateY(0);opacity:.62}100%{transform:translateY(34px);opacity:.18}}
+@keyframes b-solmid{0%{opacity:.3;transform:scale(.9)}36.4%{opacity:.85;transform:scale(1)}100%{opacity:.3;transform:scale(.9)}}
+@keyframes b-lungs{0%{transform:scale(.9,.88)}36.4%{transform:scale(1.1,1.14)}100%{transform:scale(.9,.88)}}
+@keyframes b-rip{0%{transform:scale(.55);opacity:.06}36.4%{transform:scale(1.2);opacity:.42}100%{transform:scale(.55);opacity:.06}}
+@keyframes b-travel{0%{offset-distance:0%}36.4%{offset-distance:38%}100%{offset-distance:100%}}
+@keyframes b-wave{0%{opacity:.35}36.4%{opacity:1}100%{opacity:.35}}
+
+/* calm mode holds every figure at the top of the inhale rather than moving it,
+   the same bargain the live page makes with prefers-reduced-motion */
+@media (prefers-reduced-motion:reduce){
+  .bx.go *{animation:none !important}
+  .bx.go .seeds{transform:scale(1.18)}
+  .bx.go .sol{transform:translateY(0);opacity:.5}
+  .drift{opacity:0}
+}
+
+/* ---------- the full screen player, the real thing ---------- */
+#ob{
+  position:fixed;inset:0;z-index:70;background:var(--bone);
+  display:grid;place-items:center;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .8s var(--sine),visibility 0s .8s;
+}
+body.playing #ob{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .8s var(--sine)}
+body.playing .wrap{opacity:.12;transition:opacity 1s var(--sine)}
+.wrap{transition:opacity 1s var(--sine)}
+.ob-stage{text-align:center}
+#ob-slot{display:grid;place-items:center;min-height:300px;margin-bottom:3rem}
+#ob-slot .bx{width:300px;height:300px}
+#ob-slot .bx-wave{width:min(86vw,44rem);height:200px}
+.ob-words{position:relative;height:2.4em}
+.ob-words .w{
+  position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font:italic 400 1.7rem/1.4 var(--serif);color:var(--umber);
+  opacity:0;transition:opacity 1.4s var(--sine);
+}
+body.playing .ob-words .w1{opacity:1}
+body.playing .ob-words.phase2 .w1{opacity:0}
+body.playing .ob-words.phase2 .w2{opacity:1}
+.ob-skip{
+  margin-top:3rem;
+  font:600 .62rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted-strong);
+}
+</style>
+</head>
+<body data-fb-noun="option" data-fb-key="v2-breath-visual" data-fb-page="v2 &middot; the one breath, seven ways" data-fb-email="d.blaecker@gmail.com">
+
+<div class="wrap">
+  <header class="top">
+    <img src="/logo-mark.svg" alt="Breathe with Diana" width="150" height="48">
+    <span class="kicker">The breath ritual &middot; pick one</span>
+  </header>
+
+  <h1>The one breath, seven ways</h1>
+  <p class="standfirst">Tapping <em>Take one breath with me</em> on your page opens a full screen moment: everything else fades back, and one shape breathes with you for eleven seconds while the words change from <em>breathe in</em> to <em>and let it go</em>. Right now that shape is a circle getting bigger and smaller, which does the job but says nothing.</p>
+  <p class="standfirst">Here are six alternatives, plus the current one to compare against. Every one of them keeps the same physiology as the page: eleven seconds, four seconds filling, seven seconds emptying, and no easing that a body would not recognise. Each preview below loops so you can compare them at a glance; <em>See it full screen</em> plays a single breath exactly as a visitor would meet it.</p>
+  <p class="standfirst">Tap the heart on the one you want, and leave a note if something should change.</p>
+
+  <div class="rule"></div>
+
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 1</span>
+      <span class="opt-h">The dot, as it is now</span>
+      <span class="opt-pick">live now</span>
+    </div>
+    <p class="opt-why">One point of terracotta swelling and settling inside a soft halo. It is honest and it matches the breathing full stop in the headline, but it is also the most generic thing on a page that is otherwise full of character. Here as the thing to beat.</p>
+    <div class="stage">
+      <div class="bx bx-dot go loop" data-vis="dot">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="halo" cx="100" cy="100" r="72"/>
+        <circle class="glyph" cx="100" cy="100" r="11"/>
+      </svg>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="play" type="button" data-vis="dot">See it full screen</button>
+      <button class="fav-btn" type="button" data-id="dot" data-name="The dot, as it is now" data-group="breath ritual" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="dot" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 2</span>
+      <span class="opt-h">The dandelion opening</span>
+      <span class="opt-pick">my recommendation</span>
+    </div>
+    <p class="opt-why">Your own logo, breathing. The filaments fan open on the in-breath, and on the long out-breath four seeds let go and drift away. Nothing else here says <em>this is Diana's page</em> so immediately, and the metaphor is the work itself: you fill, then you release, and something leaves you.</p>
+    <div class="stage">
+      <div class="bx bx-dandelion go loop" data-vis="dandelion">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="halo" cx="100" cy="100" r="72"/>
+        <g class="seeds">
+        <line x1="100.0" y1="93.0" x2="100.0" y2="59.0"/>
+        <line class="hair" x1="100.0" y1="59.0" x2="97.6" y2="53.5"/>
+        <line class="hair" x1="100.0" y1="59.0" x2="100.0" y2="53.0"/>
+        <line class="hair" x1="100.0" y1="59.0" x2="102.4" y2="53.5"/>
+        <line x1="101.8" y1="93.2" x2="110.3" y2="61.5"/>
+        <line class="hair" x1="110.3" y1="61.5" x2="109.4" y2="55.6"/>
+        <line class="hair" x1="110.3" y1="61.5" x2="111.9" y2="55.7"/>
+        <line class="hair" x1="110.3" y1="61.5" x2="114.1" y2="56.9"/>
+        <line x1="103.5" y1="93.9" x2="118.5" y2="68.0"/>
+        <line class="hair" x1="118.5" y1="68.0" x2="119.1" y2="62.0"/>
+        <line class="hair" x1="118.5" y1="68.0" x2="121.5" y2="62.8"/>
+        <line class="hair" x1="118.5" y1="68.0" x2="123.4" y2="64.4"/>
+        <line x1="104.9" y1="95.1" x2="124.2" y2="75.8"/>
+        <line class="hair" x1="124.2" y1="75.8" x2="126.3" y2="70.2"/>
+        <line class="hair" x1="124.2" y1="75.8" x2="128.4" y2="71.6"/>
+        <line class="hair" x1="124.2" y1="75.8" x2="129.8" y2="73.7"/>
+        <line x1="106.1" y1="96.5" x2="128.6" y2="83.5"/>
+        <line class="hair" x1="128.6" y1="83.5" x2="132.1" y2="78.6"/>
+        <line class="hair" x1="128.6" y1="83.5" x2="133.8" y2="80.5"/>
+        <line class="hair" x1="128.6" y1="83.5" x2="134.5" y2="82.9"/>
+        <line x1="106.8" y1="98.2" x2="133.0" y2="91.2"/>
+        <line class="hair" x1="133.0" y1="91.2" x2="137.7" y2="87.4"/>
+        <line class="hair" x1="133.0" y1="91.2" x2="138.8" y2="89.6"/>
+        <line class="hair" x1="133.0" y1="91.2" x2="138.9" y2="92.1"/>
+        <line x1="107.0" y1="100.0" x2="137.0" y2="100.0"/>
+        <line class="hair" x1="137.0" y1="100.0" x2="142.5" y2="97.6"/>
+        <line class="hair" x1="137.0" y1="100.0" x2="143.0" y2="100.0"/>
+        <line class="hair" x1="137.0" y1="100.0" x2="142.5" y2="102.4"/>
+        <line x1="106.8" y1="101.8" x2="138.5" y2="110.3"/>
+        <line class="hair" x1="138.5" y1="110.3" x2="144.4" y2="109.4"/>
+        <line class="hair" x1="138.5" y1="110.3" x2="144.3" y2="111.9"/>
+        <line class="hair" x1="138.5" y1="110.3" x2="143.1" y2="114.1"/>
+        <line x1="106.1" y1="103.5" x2="135.5" y2="120.5"/>
+        <line class="hair" x1="135.5" y1="120.5" x2="141.5" y2="121.1"/>
+        <line class="hair" x1="135.5" y1="120.5" x2="140.7" y2="123.5"/>
+        <line class="hair" x1="135.5" y1="120.5" x2="139.0" y2="125.4"/>
+        <line x1="104.9" y1="104.9" x2="128.2" y2="128.2"/>
+        <line class="hair" x1="128.2" y1="128.2" x2="133.8" y2="130.3"/>
+        <line class="hair" x1="128.2" y1="128.2" x2="132.4" y2="132.4"/>
+        <line class="hair" x1="128.2" y1="128.2" x2="130.3" y2="133.8"/>
+        <line x1="103.5" y1="106.1" x2="118.5" y2="132.0"/>
+        <line class="hair" x1="118.5" y1="132.0" x2="123.4" y2="135.6"/>
+        <line class="hair" x1="118.5" y1="132.0" x2="121.5" y2="137.2"/>
+        <line class="hair" x1="118.5" y1="132.0" x2="119.1" y2="138.0"/>
+        <line x1="101.8" y1="106.8" x2="108.8" y2="133.0"/>
+        <line class="hair" x1="108.8" y1="133.0" x2="112.6" y2="137.7"/>
+        <line class="hair" x1="108.8" y1="133.0" x2="110.4" y2="138.8"/>
+        <line class="hair" x1="108.8" y1="133.0" x2="107.9" y2="138.9"/>
+        <line x1="100.0" y1="107.0" x2="100.0" y2="133.0"/>
+        <line class="hair" x1="100.0" y1="133.0" x2="102.4" y2="138.5"/>
+        <line class="hair" x1="100.0" y1="133.0" x2="100.0" y2="139.0"/>
+        <line class="hair" x1="100.0" y1="133.0" x2="97.6" y2="138.5"/>
+        <line x1="98.2" y1="106.8" x2="91.2" y2="133.0"/>
+        <line class="hair" x1="91.2" y1="133.0" x2="92.1" y2="138.9"/>
+        <line class="hair" x1="91.2" y1="133.0" x2="89.6" y2="138.8"/>
+        <line class="hair" x1="91.2" y1="133.0" x2="87.4" y2="137.7"/>
+        <line x1="96.5" y1="106.1" x2="81.5" y2="132.0"/>
+        <line class="hair" x1="81.5" y1="132.0" x2="80.9" y2="138.0"/>
+        <line class="hair" x1="81.5" y1="132.0" x2="78.5" y2="137.2"/>
+        <line class="hair" x1="81.5" y1="132.0" x2="76.6" y2="135.6"/>
+        <line x1="95.1" y1="104.9" x2="71.8" y2="128.2"/>
+        <line class="hair" x1="71.8" y1="128.2" x2="69.7" y2="133.8"/>
+        <line class="hair" x1="71.8" y1="128.2" x2="67.6" y2="132.4"/>
+        <line class="hair" x1="71.8" y1="128.2" x2="66.2" y2="130.3"/>
+        <line x1="93.9" y1="103.5" x2="64.5" y2="120.5"/>
+        <line class="hair" x1="64.5" y1="120.5" x2="61.0" y2="125.4"/>
+        <line class="hair" x1="64.5" y1="120.5" x2="59.3" y2="123.5"/>
+        <line class="hair" x1="64.5" y1="120.5" x2="58.5" y2="121.1"/>
+        <line x1="93.2" y1="101.8" x2="61.5" y2="110.3"/>
+        <line class="hair" x1="61.5" y1="110.3" x2="56.9" y2="114.1"/>
+        <line class="hair" x1="61.5" y1="110.3" x2="55.7" y2="111.9"/>
+        <line class="hair" x1="61.5" y1="110.3" x2="55.6" y2="109.4"/>
+        <line x1="93.0" y1="100.0" x2="63.0" y2="100.0"/>
+        <line class="hair" x1="63.0" y1="100.0" x2="57.5" y2="102.4"/>
+        <line class="hair" x1="63.0" y1="100.0" x2="57.0" y2="100.0"/>
+        <line class="hair" x1="63.0" y1="100.0" x2="57.5" y2="97.6"/>
+        <line x1="93.2" y1="98.2" x2="67.0" y2="91.2"/>
+        <line class="hair" x1="67.0" y1="91.2" x2="61.1" y2="92.1"/>
+        <line class="hair" x1="67.0" y1="91.2" x2="61.2" y2="89.6"/>
+        <line class="hair" x1="67.0" y1="91.2" x2="62.3" y2="87.4"/>
+        <line x1="93.9" y1="96.5" x2="71.4" y2="83.5"/>
+        <line class="hair" x1="71.4" y1="83.5" x2="65.5" y2="82.9"/>
+        <line class="hair" x1="71.4" y1="83.5" x2="66.2" y2="80.5"/>
+        <line class="hair" x1="71.4" y1="83.5" x2="67.9" y2="78.6"/>
+        <line x1="95.1" y1="95.1" x2="75.8" y2="75.8"/>
+        <line class="hair" x1="75.8" y1="75.8" x2="70.2" y2="73.7"/>
+        <line class="hair" x1="75.8" y1="75.8" x2="71.6" y2="71.6"/>
+        <line class="hair" x1="75.8" y1="75.8" x2="73.7" y2="70.2"/>
+        <line x1="96.5" y1="93.9" x2="81.5" y2="68.0"/>
+        <line class="hair" x1="81.5" y1="68.0" x2="76.6" y2="64.4"/>
+        <line class="hair" x1="81.5" y1="68.0" x2="78.5" y2="62.8"/>
+        <line class="hair" x1="81.5" y1="68.0" x2="80.9" y2="62.0"/>
+        <line x1="98.2" y1="93.2" x2="89.7" y2="61.5"/>
+        <line class="hair" x1="89.7" y1="61.5" x2="85.9" y2="56.9"/>
+        <line class="hair" x1="89.7" y1="61.5" x2="88.1" y2="55.7"/>
+        <line class="hair" x1="89.7" y1="61.5" x2="90.6" y2="55.6"/>
+        </g>
+        <g class="drift d1" style="--dx:34px;--dy:-70px;--dd:0s"><line x1="118.0" y1="63.1" x2="111.4" y2="76.6"/><circle cx="118.0" cy="63.1" r="1.8"/></g>
+        <g class="drift d2" style="--dx:66px;--dy:-41px;--dd:0.5s"><line x1="134.8" y1="78.3" x2="122.0" y2="86.2"/><circle cx="134.8" cy="78.3" r="1.8"/></g>
+        <g class="drift d3" style="--dx:-8px;--dy:-78px;--dd:1.1s"><line x1="95.7" y1="59.2" x2="97.3" y2="74.1"/><circle cx="95.7" cy="59.2" r="1.8"/></g>
+        <g class="drift d4" style="--dx:77px;--dy:-11px;--dd:1.7s"><line x1="140.6" y1="94.3" x2="125.7" y2="96.4"/><circle cx="140.6" cy="94.3" r="1.8"/></g>
+        <circle class="core" cx="100" cy="100" r="4.5"/>
+      </svg>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="play" type="button" data-vis="dandelion">See it full screen</button>
+      <button class="fav-btn" type="button" data-id="dandelion" data-name="The dandelion opening" data-group="breath ritual" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="dandelion" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 3</span>
+      <span class="opt-h">The flower opening</span>
+    </div>
+    <p class="opt-why">Two rings of petals opening from a centre and closing again. The most literal reading of &ldquo;a breath&rdquo; and the easiest to understand in one second. The risk is that an opening lotus is the single most used image in the wellness world, so it costs you some of the distinctness the rest of the page has earned.</p>
+    <div class="stage">
+      <div class="bx bx-lotus go loop" data-vis="lotus">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="halo" cx="100" cy="100" r="70"/>
+        <g class="bloom">
+        <g transform="rotate(0 100 100)"><ellipse class="petal" cx="100" cy="70" rx="10" ry="30"/></g>
+        <g transform="rotate(60 100 100)"><ellipse class="petal" cx="100" cy="70" rx="10" ry="30"/></g>
+        <g transform="rotate(120 100 100)"><ellipse class="petal" cx="100" cy="70" rx="10" ry="30"/></g>
+        <g transform="rotate(180 100 100)"><ellipse class="petal" cx="100" cy="70" rx="10" ry="30"/></g>
+        <g transform="rotate(240 100 100)"><ellipse class="petal" cx="100" cy="70" rx="10" ry="30"/></g>
+        <g transform="rotate(300 100 100)"><ellipse class="petal" cx="100" cy="70" rx="10" ry="30"/></g>
+        <g transform="rotate(30 100 100)"><ellipse class="petal petal-in" cx="100" cy="78" rx="8" ry="22"/></g>
+        <g transform="rotate(90 100 100)"><ellipse class="petal petal-in" cx="100" cy="78" rx="8" ry="22"/></g>
+        <g transform="rotate(150 100 100)"><ellipse class="petal petal-in" cx="100" cy="78" rx="8" ry="22"/></g>
+        <g transform="rotate(210 100 100)"><ellipse class="petal petal-in" cx="100" cy="78" rx="8" ry="22"/></g>
+        <g transform="rotate(270 100 100)"><ellipse class="petal petal-in" cx="100" cy="78" rx="8" ry="22"/></g>
+        <g transform="rotate(330 100 100)"><ellipse class="petal petal-in" cx="100" cy="78" rx="8" ry="22"/></g>
+        </g>
+        <circle class="core" cx="100" cy="100" r="6"/>
+      </svg>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="play" type="button" data-vis="lotus">See it full screen</button>
+      <button class="fav-btn" type="button" data-id="lotus" data-name="The flower opening" data-group="breath ritual" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="lotus" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 4</span>
+      <span class="opt-h">The seed of life</span>
+    </div>
+    <p class="opt-why">Six circles drawing themselves out of one on the in-breath, folding back into it on the out-breath. Quiet, precise, and it rewards a second look because the figure only completes at the top of the inhale. It leans spiritual, which suits the deep door and may sit oddly beside the gentle one.</p>
+    <div class="stage">
+      <div class="bx bx-geometry go loop" data-vis="geometry">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <g class="sol-set">
+        <circle class="sol sol-mid" cx="100" cy="100" r="34"/>
+        <g transform="rotate(0 100 100)"><circle class="sol" cx="100" cy="66" r="34"/></g>
+        <g transform="rotate(60 100 100)"><circle class="sol" cx="100" cy="66" r="34"/></g>
+        <g transform="rotate(120 100 100)"><circle class="sol" cx="100" cy="66" r="34"/></g>
+        <g transform="rotate(180 100 100)"><circle class="sol" cx="100" cy="66" r="34"/></g>
+        <g transform="rotate(240 100 100)"><circle class="sol" cx="100" cy="66" r="34"/></g>
+        <g transform="rotate(300 100 100)"><circle class="sol" cx="100" cy="66" r="34"/></g>
+        </g>
+      </svg>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="play" type="button" data-vis="geometry">See it full screen</button>
+      <button class="fav-btn" type="button" data-id="geometry" data-name="The seed of life" data-group="breath ritual" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="geometry" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 5</span>
+      <span class="opt-h">A pair of lungs</span>
+    </div>
+    <p class="opt-why">Two soft lobes filling and emptying below a slim airway. The most immediately readable of all seven, and the only one that names the body directly. Kept deliberately abstract, as leaf shapes rather than anatomy, because anything more accurate turns the moment clinical.</p>
+    <div class="stage">
+      <div class="bx bx-lungs go loop" data-vis="lungs">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="halo" cx="100" cy="126" r="66"/>
+        <path class="pipe" d="M 100 40 L 100 82"/>
+        <path class="pipe" d="M 100 82 C 100 82 96 86 92 91"/>
+        <path class="pipe" d="M 100 82 C 100 82 104 86 108 91"/>
+        <g class="lobes">
+          <path class="lobe" d="M 96 96 C 96 88 90 84 84 86 C 66 92 52 116 52 142
+                                C 52 162 62 174 76 172 C 88 170 96 160 96 146 Z"/>
+          <path class="lobe" d="M 104 96 C 104 88 110 84 116 86 C 134 92 148 116 148 142
+                                C 148 162 138 174 124 172 C 112 170 104 160 104 146 Z"/>
+        </g>
+      </svg>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="play" type="button" data-vis="lungs">See it full screen</button>
+      <button class="fav-btn" type="button" data-id="lungs" data-name="A pair of lungs" data-group="breath ritual" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="lungs" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 6</span>
+      <span class="opt-h">Rings on water</span>
+    </div>
+    <p class="opt-why">Three hairline rings spreading outward from a still point, each a beat behind the one before. Closest in spirit to what is there now, just with something to watch. It is the calmest of the six and the one least likely to ever irritate on a second visit.</p>
+    <div class="stage">
+      <div class="bx bx-ripple go loop" data-vis="ripple">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="rip r1" cx="100" cy="100" r="26" style="--rd:0.0s"/>
+        <circle class="rip r2" cx="100" cy="100" r="46" style="--rd:0.28s"/>
+        <circle class="rip r3" cx="100" cy="100" r="66" style="--rd:0.56s"/>
+        <circle class="glyph" cx="100" cy="100" r="7"/>
+      </svg>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="play" type="button" data-vis="ripple">See it full screen</button>
+      <button class="fav-btn" type="button" data-id="ripple" data-name="Rings on water" data-group="breath ritual" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="ripple" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <section class="opt">
+    <div class="opt-head">
+      <span class="opt-n">Option 7</span>
+      <span class="opt-h">Your own breath wave</span>
+    </div>
+    <p class="opt-why">The wave already drawn in your practice chapter, with the gold point travelling it: up the rise for the four seconds in, down the long fall for the seven seconds out. It makes the ritual and the explanation the same picture, and it is the only option that shows the shape of the breath rather than just its size.</p>
+    <div class="stage">
+      <div class="bx bx-wave go loop" data-vis="wave">
+      <svg viewBox="0 0 1000 240" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path class="wv-echo" d="M 18 206 C 60 201 96 191 128 179 C 196 154 300 76 378 61 C 432 51 452 71 500 105 C 549 140 590 157 626 168 C 692 188 776 203 872 210 C 914 213 954 212 984 211"/>
+        <path class="wv" d="M 18 206 C 60 201 96 191 128 179 C 196 154 300 76 378 61 C 432 51 452 71 500 105 C 549 140 590 157 626 168 C 692 188 776 203 872 210 C 914 213 954 212 984 211"/>
+        <circle class="wv-dot" r="7"/>
+      </svg>
+      </div>
+    </div>
+    <div class="pick-row">
+      <button class="play" type="button" data-vis="wave">See it full screen</button>
+      <button class="fav-btn" type="button" data-id="wave" data-name="Your own breath wave" data-group="breath ritual" aria-pressed="false">This one</button>
+    </div>
+    <textarea class="fav-note" data-id="wave" rows="2" placeholder="Anything you'd change about this one?"></textarea>
+  </section>
+
+  <div class="reco">
+    <span class="label">If you want my opinion</span>
+    <p>Option 2, the dandelion. It is the only one that could not belong to anybody else's website, and it turns the eleven seconds into a small piece of meaning rather than a loading spinner: you fill up, and then you let four seeds go. It also finally makes the logo do something, instead of only sitting in the corner.</p>
+    <p>If that feels too much like a signature to repeat on every tap, option 6, the rings, is the safe one. It is the version you would still be happy with on the fiftieth viewing. Option 7 is the interesting outsider: it is the only one that draws the <em>shape</em> of a breath, and it quietly ties the ritual back to the wave in your practice chapter.</p>
+  </div>
+
+  <p class="foot">Nothing here is public. <a href="/v2/">Back to the page</a> &middot; <a href="/for-diana/">Everything waiting on you</a></p>
+</div>
+
+<div id="ob" aria-hidden="true">
+  <div class="ob-stage" role="dialog" aria-modal="true" aria-label="One breath" tabindex="-1">
+    <div id="ob-slot"></div>
+    <div class="ob-words" id="ob-words" aria-hidden="true">
+      <span class="w w1">breathe in</span>
+      <span class="w w2">and let it go</span>
+    </div>
+    <p class="ob-skip">tap anywhere to close</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var ob=document.getElementById("ob");
+  var slot=document.getElementById("ob-slot");
+  var words=document.getElementById("ob-words");
+  var stage=ob.querySelector(".ob-stage");
+  var timers=[];
+  var opener=null;
+  var running=false;
+
+  function later(fn,ms){timers.push(setTimeout(fn,ms));}
+
+  function close(){
+    timers.forEach(clearTimeout);timers=[];
+    document.body.classList.remove("playing");
+    words.classList.remove("phase2");
+    ob.setAttribute("aria-hidden","true");
+    slot.innerHTML="";
+    running=false;
+    if(opener){opener.focus({preventScroll:true});}
+  }
+
+  function play(key,btn){
+    if(running){return;}
+    var src=document.querySelector('.bx[data-vis="'+key+'"]');
+    if(!src){return;}
+    running=true;opener=btn;
+    var node=src.cloneNode(true);
+    node.classList.remove("loop");
+    node.classList.remove("go");
+    slot.innerHTML="";
+    slot.appendChild(node);
+    ob.removeAttribute("aria-hidden");
+    document.body.classList.add("playing");
+    /* a forced reflow, not rAF: a backgrounded tab never fires the frame and the
+       figure would sit there frozen */
+    void node.offsetWidth;
+    node.classList.add("go");
+    stage.focus({preventScroll:true});
+    later(function(){words.classList.add("phase2");},4000);
+    later(close,11600);
+  }
+
+  [].forEach.call(document.querySelectorAll(".play"),function(b){
+    b.addEventListener("click",function(){play(b.dataset.vis,b);});
+  });
+  ob.addEventListener("click",close);
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&running){close();}
+  });
+})();
+</script>
+<script src="/feedback.js?v=4" defer></script>
+</body>
+</html>
