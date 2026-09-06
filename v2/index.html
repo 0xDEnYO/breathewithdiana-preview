@@ -609,22 +609,6 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   max-width:44rem;margin:.9rem auto 0;
 }
 .included .mid{color:var(--terracotta);padding:0 .45em}
-.minutes{max-width:38rem;margin:calc(var(--gap) * 1.5) auto 0}
-.minutes-head{display:block;text-align:center;margin-bottom:.4rem}
-.minutes-sub{text-align:center;font:italic 400 var(--fs-aside)/1.5 var(--serif);color:var(--muted-strong);margin-bottom:1.4rem}
-.minute-row{
-  display:grid;grid-template-columns:5.4rem 1fr;gap:1rem;
-  padding:1.05rem 0;border-top:1px solid var(--hairline);
-}
-.minute-row:last-child{border-bottom:1px solid var(--hairline)}
-.minute-row .mn{
-  font:500 1.15rem/1.5 var(--serif);
-  /* lining figures: these are minute ranges (1 to 3, 10 to 15), so plain
-     upright numerals read clearly. Oldstyle figures made them look roman. */
-  font-feature-settings:"lnum" 1;
-  color:var(--terracotta-deep);white-space:nowrap;
-}
-.minute-row p{font-size:var(--fs-body-sm);line-height:1.7;color:var(--umber)}
 .book-close{
   max-width:44rem;margin:calc(var(--gap) * 1.5) auto 0;
   text-align:center;
@@ -694,7 +678,6 @@ html[data-motion="calm"] .motion-toggle .mt-off{color:var(--umber)}
   font:400 var(--fs-body-sm)/2.2 var(--sans);
 }
 .colo-cols a:hover{color:var(--bone)}
-.colo-end{margin:2.6rem auto 0;width:7px;height:7px;border-radius:50%;background:rgba(244,239,230,.55)}
 .colo-small{
   margin-top:2rem;
   font:400 .82rem/1.8 var(--sans);color:rgba(244,239,230,.75);
@@ -869,7 +852,6 @@ html.ritual .phase2 .w2{opacity:1}
   .motion-toggle{gap:.28em}
   .head-right{gap:.72rem}
   .notes{max-width:100%}
-  .minute-row{grid-template-columns:4.4rem 1fr}
 }
 @media (min-width:461px) and (max-width:600px){
   .wrap,.letter-inner,.colo-cols,.plate,.hero-col,.band-in,.bar-in,.head-inner{
@@ -1419,27 +1401,6 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
           <p class="included">2-3 hours, fully held start to finish<span class="mid">&middot;</span>Pre-session conversation beforehand<span class="mid">&middot;</span>Follow-up support in the days after<span class="mid">&middot;</span>In person or online worldwide</p>
         </div>
 
-        <div class="minutes reveal">
-          <span class="smallcaps minutes-head">The first call, minute by minute</span>
-          <p class="minutes-sub">so you know exactly what you're saying yes to</p>
-          <div class="minute-row">
-            <span class="mn">1 to 3</span>
-            <p>We say hello. You tell me what brings you here, or simply that you're curious. Both are enough.</p>
-          </div>
-          <div class="minute-row">
-            <span class="mn">4 to 9</span>
-            <p>I explain how a session works, and I listen. A few gentle questions about how you're doing, so I can meet you where you are.</p>
-          </div>
-          <div class="minute-row">
-            <span class="mn">10 to 15</span>
-            <p>Your questions. Ask me anything, including whether this is right for you at all.</p>
-          </div>
-          <div class="minute-row">
-            <span class="mn">After</span>
-            <p>You decide in your own time. If it doesn't feel right, that's a complete answer. Nothing to prepare, nothing to bring.</p>
-          </div>
-        </div>
-
         <div class="book-close reveal">
           <div class="divider" aria-hidden="true"><span class="rule"></span><span class="dot-station" id="rest-dot"><span class="halo"></span><span class="glyph"></span></span><span class="rule"></span></div>
           <div class="book-face" role="img" aria-label="Diana"></div>
@@ -1509,7 +1470,6 @@ html[data-motion="calm"] .ai-marquee{overflow-x:auto}
         <a href="mailto:I-want-to@breathe-with-diana.com">I-want-to@breathe-with-diana.com</a>
       </div>
     </div>
-    <div class="colo-end" aria-hidden="true"></div>
     <p class="colo-small">&copy; 2026 Breathe with Diana &middot; breathe-with-diana.com<br>Rebirthing breathwork is not a substitute for medical or psychological care.</p>
   </footer>
 
